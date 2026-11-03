@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Deep Learning Intelligence — Intelligence. Deployed.</title>
+<meta name="description" content="Deep Learning Intelligence (DLI) engineers, deploys and operates intelligent systems: forward-deployed AI engineering, agentic workflows, AI-native products and managed AI operations for enterprises in the UAE, GCC and internationally.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://deeplearningintelligence.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Deep Learning Intelligence">
+<meta property="og:title" content="DLI | Intelligence. Deployed.">
+<meta property="og:description" content="Forward-deployed AI engineering, agentic workflows, AI-native products and managed AI operations for enterprises in the UAE, GCC and internationally.">
+<meta property="og:url" content="https://deeplearningintelligence.com/">
+<meta property="og:image" content="https://deeplearningintelligence.com/assets/continuum-hero-flat.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="/assets/continuum-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap">
+<style>
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{margin:0;background:#f4f3f6;color:#0a1424;font-family:Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*{box-sizing:border-box}
+a{color:inherit;text-decoration:none}
+a:hover{color:inherit}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid #3d7df2;outline-offset:3px}
+::selection{background:rgba(61,125,242,.22)}
+.philo-line{display:block;position:relative;white-space:pre-wrap;overflow-wrap:break-word}
+.philo-ghost{visibility:hidden}
+.philo-text{position:absolute;inset:0;white-space:pre-wrap;overflow-wrap:break-word}
+.philo-grad .philo-text{background:linear-gradient(100deg,#132c46 10%,#3d7df2 46%,#65a5c4 64%,#132c46 92%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tw-cursor{display:inline-block;width:.09em;height:.82em;margin-left:.03em;background:#3d7df2;vertical-align:text-bottom;animation:tw-blink 1.1s steps(1,end) infinite}
+@keyframes tw-blink{0%,60%{opacity:1}61%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.tw-cursor{animation:none}}
+</style>
+</helmet>
+
+<header onFocus="{{ headerFocus }}" onBlur="{{ headerBlur }}" onMouseEnter="{{ headerEnter }}" onMouseLeave="{{ headerLeave }}" style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;justify-content:center;padding:12px clamp(10px,2vw,24px);pointer-events:none;transform:{{ headerT }};opacity:{{ headerO }};transition:transform .42s cubic-bezier(.2,.8,.2,1),opacity .32s ease">
+  <nav aria-label="Primary" style="pointer-events:{{ navPE }};width:100%;max-width:1440px;display:flex;align-items:center;gap:20px;padding:9px 10px 9px 16px;border-radius:14px;border:1px solid {{ nav.border }};background:{{ nav.bg }};color:{{ nav.fg }};backdrop-filter:blur(22px) saturate(160%);box-shadow:{{ nav.shadow }};transition:background .45s ease,color .45s ease,border-color .45s ease,box-shadow .45s ease">
+    <a href="#top" aria-label="Deep Learning Intelligence — home" style="display:flex;align-items:center;gap:10px;flex:none">
+      <span ref="{{ markRef }}" aria-hidden="true" style="position:relative;display:block;width:40px;height:32px;filter:{{ nav.markFilter }};transition:filter .45s">
+        <span data-frag="0" style="position:absolute;inset:0;background:url('assets/continuum-mark.png') center/contain no-repeat;clip-path:polygon(0 0,50% 0,50% 50%,0 50%)"></span>
+        <span data-frag="1" style="position:absolute;inset:0;background:url('assets/continuum-mark.png') center/contain no-repeat;clip-path:polygon(50% 0,100% 0,100% 50%,50% 50%)"></span>
+        <span data-frag="2" style="position:absolute;inset:0;background:url('assets/continuum-mark.png') center/contain no-repeat;clip-path:polygon(50% 50%,100% 50%,100% 100%,50% 100%)"></span>
+        <span data-frag="3" style="position:absolute;inset:0;background:url('assets/continuum-mark.png') center/contain no-repeat;clip-path:polygon(0 50%,50% 50%,50% 100%,0 100%)"></span>
+      </span>
+      <span style="font-weight:800;font-size:25px;letter-spacing:-.04em;line-height:1">DLI</span>
+      <span aria-hidden="true" style="width:1px;height:26px;background:currentColor;opacity:.35"></span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:600;letter-spacing:.34em;line-height:1.45;text-transform:uppercase">Deep Learning<br>Intelligence</span>
+    </a>
+    <div style="flex:1"></div>
+    <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;align-items:center;gap:clamp(14px,2.4vw,40px);font-size:14px;font-weight:500">
+        <sc-for list="{{ navLinks }}" as="l" hint-placeholder-count="5">
+          <a href="{{ l.href }}" style="position:relative;padding:8px 2px;white-space:nowrap;opacity:.82;background-image:linear-gradient(90deg,#3d7df2,#65d8f4 55%,#9a83f7);background-repeat:no-repeat;background-size:0% 1.5px;background-position:100% calc(100% - 2px);transition:background-size .5s cubic-bezier(.65,0,.2,1),opacity .3s ease,transform .45s cubic-bezier(.2,.8,.2,1),letter-spacing .45s cubic-bezier(.2,.8,.2,1)" style-hover="opacity:1;background-size:100% 1.5px;background-position:0% calc(100% - 2px);transform:translateY(-1px);letter-spacing:.012em">{{ l.label }}</a>
+        </sc-for>
+      </div>
+    </sc-if>
+    <a href="#start" style="display:flex;align-items:center;gap:10px;min-height:44px;padding:0 18px;border-radius:9px;background:{{ nav.ctaBg }};color:{{ nav.ctaFg }};font-size:14px;font-weight:600;white-space:nowrap;transition:background .45s,color .45s">Start a Deployment <span aria-hidden="true">→</span></a>
+    <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+      <button type="button" onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpen }}" aria-label="Menu" style="width:44px;height:44px;border-radius:9px;border:1px solid {{ nav.border }};background:transparent;color:inherit;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px">
+        <span style="width:18px;height:1.5px;background:currentColor"></span>
+        <span style="width:18px;height:1.5px;background:currentColor"></span>
+      </button>
+    </sc-if>
+  </nav>
+</header>
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-label="Menu" style="position:fixed;inset:0;z-index:55;background:rgba(244,243,246,.97);backdrop-filter:blur(20px);padding:100px 28px 28px;display:flex;flex-direction:column;gap:6px">
+    <sc-for list="{{ navLinks }}" as="l" hint-placeholder-count="5">
+      <a href="{{ l.href }}" onClick="{{ closeMenu }}" style="font-size:32px;font-weight:500;letter-spacing:-.03em;padding:10px 0;border-bottom:1px solid rgba(10,20,36,.1)">{{ l.label }}</a>
+    </sc-for>
+  </div>
+</sc-if>
+
+<main>
+<section id="top" ref="{{ heroRef }}" data-nav-theme="light" data-screen-label="01 Hero" aria-labelledby="hero-h" style="position:relative;overflow:hidden;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:92px 20px 26px;background:#ffffff;color:#0a1424">
+  <div style="perspective:1400px;position:relative;z-index:1">
+    <div ref="{{ heroArtRef }}" style="will-change:transform,opacity;transform-style:preserve-3d">
+      <div ref="{{ floatRef }}" role="img" aria-label="The DLI Continuum: a sculptural silver Möbius-inspired ribbon whose openings show a city skyline, a connected globe, a data wave and enterprise interfaces." style="position:relative;width:clamp(300px,min(84vw,calc((100vh - 380px) * 1.333)),660px);aspect-ratio:660/495;will-change:transform;transform-style:preserve-3d">
+        <div aria-hidden="true" style="position:absolute;inset:0;transform:translateZ(-42px) scale(1.03);mask-image:url('assets/continuum-cutout.png');mask-size:100% 100%;mask-repeat:no-repeat">
+          <div ref="{{ imageryRef }}" style="position:absolute;inset:0;background:url('assets/continuum-cutout.png') center/100% 100% no-repeat;will-change:transform"></div>
+        </div>
+        <div aria-hidden="true" style="position:absolute;inset:0;transform:translateZ(-8px) scale(1.006);background:url('assets/continuum-ribbon.png') center/100% 100% no-repeat;filter:brightness(.62) contrast(1.1)"></div>
+        <div aria-hidden="true" style="position:absolute;inset:0;transform:translateZ(-4px) scale(1.003);background:url('assets/continuum-ribbon.png') center/100% 100% no-repeat;filter:brightness(.8)"></div>
+        <div style="position:absolute;inset:0;transform:translateZ(0);background:url('assets/continuum-ribbon.png') center/100% 100% no-repeat"></div>
+        <div ref="{{ shineRef }}" aria-hidden="true" style="position:absolute;inset:0;transform:translateZ(1px);pointer-events:none;mix-blend-mode:soft-light;background:radial-gradient(ellipse 34% 30% at var(--mx,50%) var(--my,38%),rgba(255,255,255,1),rgba(255,255,255,0) 100%),linear-gradient(var(--ang,135deg),rgba(255,255,255,.35),rgba(40,50,70,.25));mask-image:url('assets/continuum-ribbon.png');mask-size:100% 100%;mask-repeat:no-repeat"></div>
+        <div ref="{{ sweepRef }}" aria-hidden="true" style="position:absolute;inset:0;transform:translateZ(2px);pointer-events:none;mix-blend-mode:overlay;background:linear-gradient(105deg,rgba(255,255,255,0) 42%,rgba(255,255,255,.85) 50%,rgba(255,255,255,0) 58%);background-size:260% 100%;background-position:-80% 0;mask-image:url('assets/continuum-ribbon.png');mask-size:100% 100%;mask-repeat:no-repeat"></div>
+      </div>
+    </div>
+  </div>
+  <div style="position:relative;z-index:2;margin-top:-6px;display:flex;flex-direction:column;align-items:center;text-align:center;max-width:960px">
+    <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.5em;text-transform:uppercase;color:#2c3a4e">Deep Learning Intelligence</p>
+    <h1 id="hero-h" style="margin:10px 0 0;font-size:clamp(44px,5.6vw,84px);font-weight:500;letter-spacing:-.045em;line-height:1.04;color:#0a1424">Intelligence. Deployed.</h1>
+    <p style="margin:16px 0 0;max-width:800px;font-size:clamp(15px,1.25vw,18px);line-height:1.55;color:#4a5468;text-wrap:balance">We engineer, deploy and operate intelligent systems that turn data, technology and operational complexity into real-world outcomes — across markets, industries and organizations.</p>
+    <div style="margin-top:26px;display:flex;flex-wrap:wrap;justify-content:center;gap:14px 28px">
+      <a href="#experience-lab" style="display:flex;align-items:center;gap:14px;min-height:46px;padding:0 30px;border-radius:9px;background:#0a1424;color:#fff;font-size:15px;font-weight:600;box-shadow:0 10px 24px rgba(20,35,61,.14);transition:transform .25s" style-hover="transform:translateY(-2px)">Explore the Experience Lab <span aria-hidden="true">→</span></a>
+      <a href="#start" style="display:flex;align-items:center;min-height:46px;padding:0 32px;border-radius:9px;border:1px solid rgba(10,20,36,.55);background:rgba(255,255,255,.25);color:#0a1424;font-size:15px;font-weight:600;transition:background .25s" style-hover="background:rgba(255,255,255,.75)">Work with DLI</a>
+    </div>
+  </div>
+  <a href="#technology" style="position:relative;z-index:2;margin-top:auto;padding-top:26px;display:flex;flex-direction:column;align-items:center;gap:10px;color:#5d6a7e">
+    <span ref="{{ cueRef }}" aria-hidden="true" style="width:1px;height:30px;background:linear-gradient(#5d6a7e,rgba(93,106,126,0));transform-origin:top"></span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.42em;text-transform:uppercase">Scroll to explore</span>
+  </a>
+</section>
+
+<section id="technology" data-nav-theme="light" data-screen-label="02 Technology strip" aria-labelledby="tech-h" style="position:relative;background:linear-gradient(180deg,#eef0f5,#f7f7fa);border-top:1px solid rgba(10,20,36,.07);padding:56px 0 34px">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,64px);display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px 48px">
+    <div>
+      <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:#4c5a6e">Technology ecosystems</p>
+      <h2 id="tech-h" style="margin:10px 0 0;font-size:clamp(32px,3.4vw,52px);font-weight:500;letter-spacing:-.045em;line-height:1.02">Your stack. Our engineering.</h2>
+    </div>
+    <div style="display:flex;align-items:center;gap:18px;max-width:520px">
+      <p style="margin:0;font-size:16px;line-height:1.55;color:#4a5468">Independent engineering for the AI and enterprise platforms your organization chooses.</p>
+      <button type="button" onClick="{{ toggleMarquee }}" aria-pressed="{{ marqueePaused }}" style="flex:none;min-height:44px;padding:0 14px;border-radius:999px;border:1px solid rgba(10,20,36,.2);background:transparent;color:#2c3a4e;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase">{{ marqueeLabel }}</button>
+    </div>
+  </div>
+  <div ref="{{ marqueeShellRef }}" onMouseEnter="{{ pauseMarquee }}" onMouseLeave="{{ resumeMarquee }}" onFocus="{{ pauseMarquee }}" onBlur="{{ resumeMarquee }}" role="region" aria-label="Technologies DLI engineers with" tabIndex="0" style="margin-top:34px;overflow:{{ marqueeOverflow }};mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)">
+    <div ref="{{ marqueeRef }}" style="display:flex;width:max-content;will-change:transform">
+      <ul style="display:flex;align-items:center;margin:0;padding:0;list-style:none">
+        <sc-for list="{{ wordmarks }}" as="w" hint-placeholder-count="0">
+          <li style="display:flex;align-items:center">
+            <span title="{{ w.name }}" style="display:flex;align-items:center;gap:12px;height:116px;padding:0 clamp(28px,3.4vw,56px);font-size:clamp(22px,2.2vw,32px);font-weight:600;letter-spacing:-.03em;color:#16263b;white-space:nowrap;transition:transform .3s" style-hover="transform:translateY(-3px)"><span role="img" aria-label="{{ w.alt }}" style="display:block;flex:none;height:{{ w.h }};aspect-ratio:{{ w.ar }};background:{{ w.bgImg }} center/contain no-repeat;border-radius:{{ w.r }}"></span><sc-if value="{{ w.showText }}" hint-placeholder-val="{{ false }}"><span>{{ w.text }}</span></sc-if></span>
+            <span aria-hidden="true" style="width:5px;height:5px;border-radius:50%;background:rgba(22,38,59,.2)"></span>
+          </li>
+        </sc-for>
+      </ul>
+      <sc-if value="{{ marqueeAnimated }}" hint-placeholder-val="{{ true }}">
+        <ul aria-hidden="true" style="display:flex;align-items:center;margin:0;padding:0;list-style:none">
+          <sc-for list="{{ wordmarks }}" as="w" hint-placeholder-count="0">
+            <li style="display:flex;align-items:center">
+              <span style="display:flex;align-items:center;gap:12px;height:116px;padding:0 clamp(28px,3.4vw,56px);font-size:clamp(22px,2.2vw,32px);font-weight:600;letter-spacing:-.03em;color:#16263b;white-space:nowrap"><span style="display:block;flex:none;height:{{ w.h }};aspect-ratio:{{ w.ar }};background:{{ w.bgImg }} center/contain no-repeat;border-radius:{{ w.r }}"></span><sc-if value="{{ w.showText }}" hint-placeholder-val="{{ false }}"><span>{{ w.text }}</span></sc-if></span>
+              <span style="width:5px;height:5px;border-radius:50%;background:rgba(22,38,59,.2)"></span>
+            </li>
+          </sc-for>
+        </ul>
+      </sc-if>
+    </div>
+  </div>
+  <p style="margin:22px auto 0;max-width:1440px;padding:0 clamp(20px,4vw,64px);font-size:12px;line-height:1.5;color:#5d6a7e;text-align:center">Independent engineering services. Referenced technologies are trademarks of their respective owners. No partnership or endorsement is implied.</p>
+</section>
+
+<section id="experience-lab" data-nav-theme="dark" data-screen-label="03 Experience Lab" aria-labelledby="lab-h" style="position:relative;overflow:hidden;color:#f2f5f9;background:#050c18;padding:clamp(110px,12vw,150px) 0 72px">
+  <div aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;pointer-events:none"><div ref="{{ bgLabRef }}" data-parallax="" style="position:absolute;left:0;right:0;top:-20%;bottom:-20%;background-image:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=2200&amp;q=70&amp;auto=format&amp;fit=crop');background-size:cover;background-position:center;will-change:transform"></div></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(4,10,22,.82) 0%,rgba(4,10,22,.62) 40%,rgba(4,10,22,.9) 100%)"></div>
+  <canvas ref="{{ waveRef }}" aria-hidden="true" style="position:absolute;top:0;right:0;width:min(1100px,78vw);height:540px;mask-image:linear-gradient(90deg,transparent 0%,#000 35%);opacity:.95"></canvas>
+  <div style="position:relative;max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,64px)">
+    <div style="display:flex;align-items:center;gap:16px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.34em;text-transform:uppercase;color:#cfe0f2">The DLI Experience Lab <span aria-hidden="true" style="width:40px;height:1px;background:rgba(207,224,242,.45)"></span></div>
+    <h2 id="lab-h" style="margin:18px 0 0;max-width:760px;font-size:clamp(42px,5.4vw,80px);font-weight:500;letter-spacing:-.045em;line-height:1.02">Experience intelligence in action.</h2>
+    <p style="margin:20px 0 0;max-width:600px;font-size:clamp(16px,1.3vw,19px);line-height:1.55;color:#c2cfde">Explore intelligent systems, from natural conversation and digital humans to autonomous agents and multi-market intelligence.</p>
+    <ul aria-label="Status key" style="margin:26px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px">
+      <sc-for list="{{ statusKey }}" as="s" hint-placeholder-count="4">
+        <li style="display:flex;align-items:center;gap:8px;padding:6px 11px;border-radius:999px;border:1px solid rgba(255,255,255,.12);font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.06em;color:#c9d6e4"><span style="width:6px;height:6px;border-radius:50%;background:{{ s.dot }}"></span>{{ s.label }}</li>
+      </sc-for>
+    </ul>
+  </div>
+  <div ref="{{ trackRef }}" onScroll="{{ onTrackScroll }}" tabIndex="0" role="region" aria-label="Experience Lab portfolio — use arrow keys or the controls to browse" style="position:relative;margin-top:44px;display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:12px max(clamp(20px,4vw,64px),calc((100vw - 1440px) / 2 + 64px)) 26px;scroll-padding-left:max(clamp(20px,4vw,64px),calc((100vw - 1440px) / 2 + 64px))">
+    <sc-for list="{{ labs }}" as="lab" hint-placeholder-count="6">
+      <article style="flex:none;width:clamp(282px,25vw,352px);scroll-snap-align:start;display:flex;flex-direction:column;border-radius:14px;overflow:hidden;border:1px solid rgba(190,215,240,.16);background:linear-gradient(180deg,rgba(22,42,70,.55),rgba(7,16,30,.92));box-shadow:0 30px 60px rgba(0,0,0,.25);transition:transform .45s cubic-bezier(.2,.8,.2,1),border-color .3s" style-hover="transform:translateY(-8px);border-color:rgba(101,216,244,.5)">
+        <div style="position:relative;aspect-ratio:16/10;overflow:hidden;background:#06101e">
+          <sc-if value="{{ lab.hasImg }}" hint-placeholder-val="{{ false }}">
+            <img src="{{ lab.img }}" alt="{{ lab.alt }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></img>
+          </sc-if>
+          <sc-if value="{{ lab.noImg }}" hint-placeholder-val="{{ false }}">
+            <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(135deg,rgba(101,216,244,.06) 0 10px,transparent 10px 20px);font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8ea4ba;text-align:center;padding:20px">product visual — cloud &amp; AI readiness assessment</div>
+          </sc-if>
+          <span style="position:absolute;top:12px;left:12px;display:flex;align-items:center;gap:7px;padding:5px 10px;border-radius:999px;background:rgba(5,12,24,.72);backdrop-filter:blur(8px);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;color:{{ lab.badgeFg }}"><span style="width:6px;height:6px;border-radius:50%;background:{{ lab.badgeFg }}"></span>{{ lab.status }}</span>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;padding:20px 22px 22px">
+          <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:#d7e3f0">{{ lab.name }}</p>
+          <h3 style="margin:6px 0 0;font-size:23px;font-weight:500;letter-spacing:-.03em;line-height:1.15">{{ lab.cat }}</h3>
+          <p style="margin:8px 0 0;font-size:14px;line-height:1.5;color:#b7c5d5;flex:1">{{ lab.outcome }}</p>
+          <button type="button" onClick="{{ lab.open }}" aria-haspopup="dialog" style="margin-top:18px;align-self:flex-start;display:flex;align-items:center;gap:10px;min-height:44px;padding:0 16px 0 8px;border-radius:999px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.04);color:#fff;font-size:14px;font-weight:600;transition:background .25s,border-color .25s" style-hover="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.5)">
+            <span aria-hidden="true" style="width:26px;height:26px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><span style="width:0;height:0;border-left:8px solid #0a1424;border-top:5px solid transparent;border-bottom:5px solid transparent;margin-left:2px"></span></span>
+            {{ lab.cta }} <span aria-hidden="true">→</span>
+          </button>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+  <div style="position:relative;max-width:1440px;margin:6px auto 0;padding:0 clamp(20px,4vw,64px);display:flex;align-items:center;gap:22px">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#c2cfde;min-width:62px">{{ labCounter }}</span>
+    <div aria-hidden="true" style="flex:1;height:1px;background:rgba(255,255,255,.14);position:relative"><div style="position:absolute;left:0;top:-0.5px;height:2px;width:{{ labProgW }};background:linear-gradient(90deg,#65d8f4,#9a83f7);transition:width .2s"></div></div>
+    <button type="button" onClick="{{ labPrev }}" aria-label="Previous experience" style="width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;font-size:17px" style-hover="background:rgba(255,255,255,.1)">←</button>
+    <button type="button" onClick="{{ labNext }}" aria-label="Next experience" style="width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;font-size:17px" style-hover="background:rgba(255,255,255,.1)">→</button>
+  </div>
+</section>
+
+<section id="philosophy" ref="{{ philoRef }}" data-nav-theme="light" data-screen-label="04 Philosophy" aria-labelledby="philo-h" style="background:#f4f3f6;padding:clamp(120px,18vh,200px) clamp(20px,4vw,64px) clamp(100px,14vh,160px)">
+  <div style="max-width:1320px;margin:0 auto">
+    <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.34em;text-transform:uppercase;color:#4c5a6e">Our philosophy</p>
+    <h2 id="philo-h" aria-label="AI is not the outcome. What it makes possible is." style="margin:24px 0 0;font-size:clamp(48px,8.4vw,136px);font-weight:500;letter-spacing:-.055em;line-height:.98;color:#0a1424">
+      <span aria-hidden="true" class="philo-line"><span class="philo-ghost">AI is not the outcome.</span><span class="philo-text">{{ philoL1 }}<sc-if value="{{ philoC1 }}"><span class="tw-cursor"></span></sc-if></span></span>
+      <span aria-hidden="true" class="philo-line"><span class="philo-ghost">What it makes</span><span class="philo-text">{{ philoL2 }}<sc-if value="{{ philoC2 }}"><span class="tw-cursor"></span></sc-if></span></span>
+      <span aria-hidden="true" class="philo-line philo-grad"><span class="philo-ghost">possible is.</span><span class="philo-text">{{ philoL3 }}<sc-if value="{{ philoC3 }}"><span class="tw-cursor"></span></sc-if></span></span>
+    </h2>
+    <div style="margin-top:clamp(48px,7vw,96px);display:flex;flex-wrap:wrap;gap:24px 80px;align-items:flex-start;justify-content:space-between">
+      <p style="margin:0;max-width:620px;font-size:clamp(18px,1.6vw,24px);line-height:1.5;color:#2c3a4e;text-wrap:pretty">The value of AI is measured in what changes: decisions made with better context, work that moves without waiting, services that reach people sooner. We engineer for that change and measure our work against it.</p>
+      <a href="#architecture" style="display:flex;align-items:center;gap:12px;font-size:15px;font-weight:600;padding:12px 0;border-bottom:1px solid #0a1424">See how the system fits together <span aria-hidden="true">↓</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="architecture" data-nav-theme="dark" data-screen-label="05 Architecture" aria-labelledby="arch-h" style="position:relative;overflow:hidden;color:#f2f5f9;background:#061222;padding:clamp(110px,12vw,150px) clamp(20px,4vw,64px) 110px">
+  <div aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;pointer-events:none"><div ref="{{ bgArchRef }}" data-parallax="" style="position:absolute;left:0;right:0;top:-20%;bottom:-20%;background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=2200&amp;q=70&amp;auto=format&amp;fit=crop');background-size:cover;background-position:center;will-change:transform"></div></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(5,14,28,.88),rgba(5,14,28,.8) 50%,rgba(5,14,28,.92))"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;background-image:linear-gradient(rgba(101,216,244,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(101,216,244,.05) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse at 45% 50%,#000,transparent 70%)"></div>
+  <div style="position:relative;max-width:1440px;margin:0 auto">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px 60px">
+      <div>
+        <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.34em;text-transform:uppercase;color:#9fe8fa">Intelligence architecture</p>
+        <h2 id="arch-h" style="margin:16px 0 0;max-width:820px;font-size:clamp(40px,5vw,76px);font-weight:500;letter-spacing:-.045em;line-height:1.02">Many moving parts. One intelligent system.</h2>
+      </div>
+      <p style="margin:0;max-width:440px;font-size:16px;line-height:1.6;color:#b7c5d5">Select a layer to see what it does and how DLI engineers it. This is the reference model we build to, assembled from your systems and chosen technologies. It is not a packaged DLI software product.</p>
+    </div>
+    <div style="margin-top:56px;display:flex;flex-wrap:wrap;gap:28px;align-items:stretch">
+      <div role="tablist" aria-label="System layers" aria-orientation="vertical" style="flex:1 1 230px;max-width:300px;display:flex;flex-direction:column;gap:4px">
+        <sc-for list="{{ layersTop }}" as="ly" hint-placeholder-count="8">
+          <button type="button" role="tab" aria-selected="{{ ly.sel }}" onClick="{{ ly.onSel }}" style="display:flex;align-items:center;gap:14px;min-height:48px;padding:0 14px;border-radius:10px;border:1px solid {{ ly.bd }};background:{{ ly.bg }};color:{{ ly.fg }};text-align:left;font-size:15px;font-weight:500;transition:all .3s" style-hover="border-color:rgba(101,216,244,.4)">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;opacity:.7">{{ ly.n }}</span>{{ ly.label }}
+          </button>
+        </sc-for>
+      </div>
+      <div aria-hidden="true" style="flex:1 1 380px;min-height:540px;position:relative;perspective:1500px">
+        <div style="position:absolute;left:50%;top:54%;width:0;height:0;transform-style:preserve-3d;transform:{{ stackTransform }};transition:transform .9s cubic-bezier(.2,.8,.2,1)">
+          <sc-for list="{{ plates }}" as="p" hint-placeholder-count="8">
+            <div onClick="{{ p.onSel }}" style="position:absolute;left:0;top:0;width:260px;height:260px;margin:-130px 0 0 -130px;border-radius:18px;border:1px solid {{ p.bd }};background-color:{{ p.bg }};background-image:linear-gradient(rgba(150,200,240,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(150,200,240,.07) 1px,transparent 1px);background-size:26px 26px;box-shadow:{{ p.shadow }};opacity:{{ p.op }};transform:translateZ({{ p.z }});transition:transform .7s cubic-bezier(.2,.8,.2,1),background-color .4s,border-color .4s,box-shadow .4s,opacity .4s;cursor:pointer">
+              <span style="position:absolute;left:16px;top:14px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:{{ p.fg }}">{{ p.n }} · {{ p.label }}</span>
+              <span style="position:absolute;right:18px;bottom:18px;width:{{ p.core }};height:{{ p.core }};border-radius:6px;border:1px solid {{ p.bd }};transition:all .4s"></span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div role="tabpanel" aria-live="polite" style="flex:1 1 320px;max-width:440px;display:flex;flex-direction:column;padding:28px;border-radius:16px;border:1px solid rgba(190,215,240,.16);background:rgba(8,22,40,.72);backdrop-filter:blur(10px)">
+        <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9fe8fa">Layer {{ arch.n }} / 08 · {{ arch.label }}</p>
+        <h3 style="margin:14px 0 0;font-size:30px;font-weight:500;letter-spacing:-.035em;line-height:1.12">{{ arch.title }}</h3>
+        <p style="margin:12px 0 0;font-size:15px;line-height:1.6;color:#c2cfde">{{ arch.text }}</p>
+        <p style="margin:24px 0 10px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#8ea4ba">What DLI engineers</p>
+        <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px">
+          <sc-for list="{{ arch.eng }}" as="e" hint-placeholder-count="3">
+            <li style="display:flex;gap:10px;font-size:14.5px;line-height:1.45;color:#e6edf5"><span aria-hidden="true" style="flex:none;margin-top:7px;width:6px;height:6px;border-radius:1px;background:#65d8f4"></span>{{ e }}</li>
+          </sc-for>
+        </ul>
+        <div style="margin-top:22px;padding:12px 14px;border-radius:10px;background:rgba(101,216,244,.08);border:1px solid rgba(101,216,244,.2);font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:#bff1fc">{{ arch.signal }}</div>
+        <div style="flex:1"></div>
+        <div style="margin-top:24px;display:flex;gap:10px">
+          <button type="button" onClick="{{ archDown }}" style="flex:1;min-height:44px;border-radius:9px;border:1px solid rgba(255,255,255,.22);background:transparent;color:#fff;font-size:13px;font-weight:600">↓ Layer below</button>
+          <button type="button" onClick="{{ archUp }}" style="flex:1;min-height:44px;border-radius:9px;border:1px solid rgba(255,255,255,.22);background:transparent;color:#fff;font-size:13px;font-weight:600">↑ Layer above</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="solutions" data-nav-theme="light" data-screen-label="06 What we engineer" aria-labelledby="cap-h" style="background:#f4f3f6;padding:clamp(110px,12vw,150px) clamp(20px,4vw,64px)">
+  <div style="max-width:1440px;margin:0 auto">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px 60px">
+      <div>
+        <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.34em;text-transform:uppercase;color:#4c5a6e">What we engineer</p>
+        <h2 id="cap-h" style="margin:16px 0 0;font-size:clamp(40px,5vw,76px);font-weight:500;letter-spacing:-.045em;line-height:1.02">From possibility to production.</h2>
+      </div>
+      <p style="margin:0;max-width:440px;font-size:16px;line-height:1.6;color:#4a5468">Four ways we work with organizations. Forward-deployed engineering is where most engagements begin.</p>
+    </div>
+    <div style="margin-top:52px;display:flex;flex-wrap:wrap;gap:18px">
+      <article style="flex:1 1 560px;position:relative;overflow:hidden;min-height:560px;border-radius:20px;padding:clamp(28px,3.4vw,48px);color:#f2f5f9;background:radial-gradient(ellipse at 85% 85%,rgba(61,125,242,.35),transparent 55%),linear-gradient(160deg,#0d2038,#061222);display:flex;flex-direction:column">
+        <div ref="{{ geoRef }}" aria-hidden="true" style="position:absolute;right:-90px;bottom:-90px;width:420px;height:420px">
+          <span style="position:absolute;inset:0;border:1px solid rgba(101,216,244,.28);border-radius:34%;transform:rotate(18deg)"></span>
+          <span style="position:absolute;inset:40px;border:1px solid rgba(154,131,247,.3);border-radius:34%;transform:rotate(36deg)"></span>
+          <span style="position:absolute;inset:80px;border:1px solid rgba(101,216,244,.22);border-radius:34%;transform:rotate(54deg)"></span>
+          <span style="position:absolute;inset:120px;border:1px solid rgba(255,255,255,.18);border-radius:34%;transform:rotate(72deg)"></span>
+        </div>
+        <p style="position:relative;margin:0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#9fe8fa">01 · Primary engagement</p>
+        <h3 style="position:relative;margin:18px 0 0;max-width:560px;font-size:clamp(34px,3.6vw,56px);font-weight:500;letter-spacing:-.045em;line-height:1.02">Forward-Deployed AI Engineering</h3>
+        <p style="position:relative;margin:18px 0 0;max-width:520px;font-size:17px;line-height:1.6;color:#c2cfde">Engineers embedded with your team to design, integrate, validate and operate AI inside real workflows, accountable to an outcome agreed at the start.</p>
+        <ul style="position:relative;margin:28px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0;max-width:460px">
+          <sc-for list="{{ fdePoints }}" as="f" hint-placeholder-count="3">
+            <li style="display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-top:1px solid rgba(255,255,255,.12);font-size:14.5px;color:#e6edf5"><span>{{ f.a }}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#8ea4ba">{{ f.b }}</span></li>
+          </sc-for>
+        </ul>
+        <div style="flex:1"></div>
+        <div style="position:relative;margin-top:32px;display:flex;flex-wrap:wrap;gap:12px">
+          <a href="#start" onClick="{{ pathFde }}" style="display:flex;align-items:center;gap:12px;min-height:46px;padding:0 22px;border-radius:9px;background:#fff;color:#0a1424;font-size:14px;font-weight:600">Explore an FDE engagement <span aria-hidden="true">→</span></a>
+          <a href="#method" style="display:flex;align-items:center;min-height:46px;padding:0 22px;border-radius:9px;border:1px solid rgba(255,255,255,.3);font-size:14px;font-weight:600">How it works</a>
+        </div>
+      </article>
+      <div style="flex:1 1 380px;display:flex;flex-direction:column;gap:18px">
+        <sc-for list="{{ capsOther }}" as="c" hint-placeholder-count="3">
+          <article style="flex:1;border-radius:20px;padding:28px 30px;background:#fff;border:1px solid rgba(10,20,36,.08);display:flex;flex-direction:column;gap:10px;transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s" style-hover="transform:translateY(-4px);box-shadow:0 24px 50px rgba(19,44,70,.1)">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#4c5a6e">{{ c.n }}</p><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#3d6fd0">{{ c.tag }}</span></div>
+            <h3 style="margin:0;font-size:25px;font-weight:600;letter-spacing:-.035em;line-height:1.15">{{ c.title }}</h3>
+            <p style="margin:0;font-size:15px;line-height:1.55;color:#4a5468">{{ c.text }}</p>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="mission" ref="{{ missionRef }}" data-nav-theme="dark" data-screen-label="07 Mission Control" aria-labelledby="mc-h" style="position:relative;overflow:hidden;color:#f2f5f9;background:#050c18;padding:clamp(110px,12vw,150px) clamp(20px,4vw,64px)">
+  <div aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;pointer-events:none"><div ref="{{ bgMissionRef }}" data-parallax="" style="position:absolute;left:0;right:0;top:-20%;bottom:-20%;background-image:url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=2200&amp;q=70&amp;auto=format&amp;fit=crop');background-size:cover;background-position:center;will-change:transform"></div></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(4,10,22,.86),rgba(4,10,22,.78) 50%,rgba(4,10,22,.9))"></div>
+  <div style="position:relative;max-width:1440px;margin:0 auto">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px 60px">
+      <div>
+        <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.34em;text-transform:uppercase;color:#9fe8fa">Engineering in motion</p>
+        <h2 id="mc-h" style="margin:16px 0 0;max-width:800px;font-size:clamp(40px,5vw,76px);font-weight:500;letter-spacing:-.045em;line-height:1.02">See how intelligence becomes operational.</h2>
+      </div>
+      <p style="margin:0;max-width:440px;font-size:16px;line-height:1.6;color:#b7c5d5">One workflow, followed from first conversation to live operation. Every stage ends at a gate with a measurable acceptance criterion.</p>
+    </div>
+    <div role="tablist" aria-label="Delivery stages" style="margin-top:48px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px">
+      <sc-for list="{{ stages }}" as="s" hint-placeholder-count="5">
+        <button type="button" role="tab" aria-selected="{{ s.sel }}" onClick="{{ s.onSel }}" style="position:relative;min-height:62px;padding:12px 14px 14px;border:none;border-top:2px solid {{ s.bar }};background:{{ s.bg }};color:{{ s.fg }};text-align:left;transition:all .35s">
+          <span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;opacity:.75">{{ s.n }}</span>
+          <span style="display:block;margin-top:4px;font-size:clamp(14px,1.3vw,18px);font-weight:600">{{ s.label }}</span>
+        </button>
+      </sc-for>
+    </div>
+    <div role="tabpanel" aria-live="polite" style="margin-top:14px;border-radius:16px;border:1px solid rgba(190,215,240,.16);background:rgba(8,20,36,.8);overflow:hidden">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:12px 18px;border-bottom:1px solid rgba(190,215,240,.12);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;color:#8ea4ba">
+        <span style="display:flex;align-items:center;gap:10px"><span style="width:7px;height:7px;border-radius:50%;background:#65d8f4;box-shadow:0 0 10px #65d8f4"></span>MISSION CONTROL · Supplier invoice exceptions</span>
+        <span style="padding:3px 9px;border-radius:999px;border:1px solid rgba(255,196,120,.4);color:#ffd59a">Synthetic example data</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap">
+        <div style="flex:1 1 300px;padding:28px;border-right:1px solid rgba(190,215,240,.1)">
+          <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9fe8fa">Stage {{ stage.n }} · {{ stage.label }}</p>
+          <h3 style="margin:12px 0 0;font-size:28px;font-weight:500;letter-spacing:-.035em;line-height:1.15">{{ stage.title }}</h3>
+          <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#c2cfde">{{ stage.text }}</p>
+          <p style="margin:24px 0 10px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#8ea4ba">Decisions at this stage</p>
+          <ol style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px">
+            <sc-for list="{{ stage.decisions }}" as="d" hint-placeholder-count="3">
+              <li style="padding:10px 12px;border-radius:8px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);font-size:14px;color:#e6edf5">{{ d }}</li>
+            </sc-for>
+          </ol>
+        </div>
+        <div style="flex:1.3 1 360px;padding:28px;border-right:1px solid rgba(190,215,240,.1);display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;gap:8px"><span style="padding:6px 12px;border-radius:7px 7px 0 0;background:#0b1d33;border:1px solid rgba(190,215,240,.14);border-bottom:none;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#cfe0f2">{{ stage.file }}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#6f849a">engineering artifact</span></div>
+          <pre style="flex:1;margin:0;padding:18px;border-radius:0 10px 10px 10px;background:#0b1d33;border:1px solid rgba(190,215,240,.14);font-family:'IBM Plex Mono',monospace;font-size:12.5px;line-height:1.75;color:#bff1fc;white-space:pre-wrap;overflow:auto">{{ stage.artifact }}</pre>
+        </div>
+        <div style="flex:1 1 280px;padding:28px;display:flex;flex-direction:column;gap:18px">
+          <div>
+            <p style="margin:0 0 8px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#8ea4ba">Human oversight</p>
+            <p style="margin:0;font-size:14.5px;line-height:1.55;color:#e6edf5">{{ stage.oversight }}</p>
+          </div>
+          <div style="padding:16px;border-radius:12px;border:1px solid rgba(101,216,244,.35);background:rgba(101,216,244,.07)">
+            <p style="margin:0 0 8px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#9fe8fa">Acceptance criterion</p>
+            <p style="margin:0;font-size:15px;line-height:1.5;font-weight:600;color:#fff">{{ stage.accept }}</p>
+            <p style="margin:12px 0 0;display:flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8ef0b0"><span style="width:7px;height:7px;border-radius:50%;background:#8ef0b0"></span>Gate passed in this example</p>
+          </div>
+          <div style="flex:1"></div>
+          <div style="display:flex;gap:8px">
+            <button type="button" onClick="{{ stagePrev }}" aria-label="Previous stage" style="width:44px;height:44px;border-radius:9px;border:1px solid rgba(255,255,255,.22);background:transparent;color:#fff">←</button>
+            <button type="button" onClick="{{ stageNext }}" style="flex:1;min-height:44px;border-radius:9px;border:none;background:#fff;color:#0a1424;font-size:14px;font-weight:600">{{ stageNextLabel }}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="industries" data-nav-theme="light" data-screen-label="08 Industries" aria-labelledby="ind-h" style="background:#f4f3f6;padding:clamp(110px,12vw,150px) clamp(20px,4vw,64px)">
+  <div style="max-width:1440px;margin:0 auto">
+    <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.34em;text-transform:uppercase;color:#4c5a6e">Industry intelligence</p>
+    <h2 id="ind-h" style="margin:16px 0 0;max-width:900px;font-size:clamp(40px,5vw,76px);font-weight:500;letter-spacing:-.045em;line-height:1.02">Different environments. Intelligence built for each.</h2>
+    <div role="tablist" aria-label="Industries" style="margin-top:40px;display:flex;flex-wrap:wrap;gap:8px">
+      <sc-for list="{{ inds }}" as="i" hint-placeholder-count="4">
+        <button type="button" role="tab" aria-selected="{{ i.sel }}" onClick="{{ i.onSel }}" style="min-height:46px;padding:0 20px;border-radius:999px;border:1px solid {{ i.bd }};background:{{ i.bg }};color:{{ i.fg }};font-size:15px;font-weight:600;transition:all .3s">{{ i.label }}</button>
+      </sc-for>
+    </div>
+    <div role="tabpanel" aria-live="polite" style="margin-top:22px;display:flex;flex-wrap:wrap;gap:18px">
+      <div style="flex:1 1 440px;position:relative;overflow:hidden;min-height:460px;border-radius:20px;padding:clamp(26px,3vw,40px);color:#f2f5f9;background:{{ ind.env }};transition:background .6s ease;display:flex;flex-direction:column">
+        <div aria-hidden="true" style="position:absolute;right:-60px;top:-60px;width:320px;height:320px;border-radius:50%;border:1px solid rgba(255,255,255,.14);box-shadow:0 0 0 50px rgba(255,255,255,.025),0 0 0 110px rgba(255,255,255,.02)"></div>
+        <p style="position:relative;margin:0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;opacity:.8">{{ ind.label }}</p>
+        <h3 style="position:relative;margin:14px 0 0;max-width:460px;font-size:clamp(30px,3vw,44px);font-weight:500;letter-spacing:-.04em;line-height:1.06">{{ ind.title }}</h3>
+        <div style="flex:1"></div>
+        <p style="position:relative;margin:30px 0 12px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;opacity:.75">Example challenges</p>
+        <ol style="position:relative;margin:0;padding:0;list-style:none">
+          <sc-for list="{{ ind.challenges }}" as="c" hint-placeholder-count="3">
+            <li style="display:flex;gap:16px;padding:13px 0;border-top:1px solid rgba(255,255,255,.16);font-size:16px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;opacity:.7;padding-top:4px">0{{ c.n }}</span>{{ c.t }}</li>
+          </sc-for>
+        </ol>
+      </div>
+      <div style="flex:1 1 440px;display:flex;flex-direction:column;gap:14px">
+        <div style="padding:26px;border-radius:20px;background:#fff;border:1px solid rgba(10,20,36,.08)">
+          <p style="margin:0 0 12px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#4c5a6e">Relevant AI solutions</p>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px">
+            <sc-for list="{{ ind.solutions }}" as="s" hint-placeholder-count="3">
+              <li style="display:flex;gap:10px;font-size:16px;font-weight:500"><span aria-hidden="true" style="flex:none;margin-top:8px;width:7px;height:7px;border-radius:2px;background:{{ ind.accent }}"></span>{{ s }}</li>
+            </sc-for>
+          </ul>
+        </div>
+        <div style="padding:26px;border-radius:20px;background:#fff;border:1px solid rgba(10,20,36,.08)">
+          <p style="margin:0 0 12px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#4c5a6e">Systems &amp; integrations</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <sc-for list="{{ ind.systems }}" as="s" hint-placeholder-count="4">
+              <span style="padding:7px 12px;border-radius:8px;background:#f1f2f6;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#2c3a4e">{{ s }}</span>
+            </sc-for>
+          </div>
+        </div>
+        <div style="padding:26px;border-radius:20px;background:#fff;border:1px solid rgba(10,20,36,.08)">
+          <p style="margin:0 0 10px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#4c5a6e">Governance considerations</p>
+          <p style="margin:0;font-size:15px;line-height:1.55;color:#2c3a4e">{{ ind.gov }}</p>
+          <p style="margin:12px 0 0;font-size:14px;line-height:1.55;color:#4a5468"><strong style="color:#0a1424">UAE context.</strong> {{ ind.uae }}</p>
+        </div>
+        <a href="#start" onClick="{{ pathDeploy }}" style="display:flex;align-items:center;justify-content:space-between;min-height:56px;padding:0 24px;border-radius:14px;background:#0a1424;color:#fff;font-size:15px;font-weight:600">{{ ind.cta }} <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work" data-nav-theme="light" data-screen-label="09 Selected work" aria-labelledby="work-h" style="background:#eceef3;padding:clamp(110px,12vw,150px) clamp(20px,4vw,64px)">
+  <div style="max-width:1440px;margin:0 auto">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px 60px">
+      <div>
+        <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.34em;text-transform:uppercase;color:#4c5a6e">Selected engineering work</p>
+        <h2 id="work-h" style="margin:16px 0 0;font-size:clamp(40px,5vw,76px);font-weight:500;letter-spacing:-.045em;line-height:1.02">We don't just advise. We build.</h2>
+      </div>
+      <p style="margin:0;max-width:440px;font-size:16px;line-height:1.6;color:#4a5468">Each item is labelled by what it is. Client implementations appear only where disclosure is authorized.</p>
+    </div>
+    <div style="margin-top:48px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:16px">
+      <sc-for list="{{ work }}" as="w" hint-placeholder-count="6">
+        <article style="display:flex;flex-direction:column;border-radius:18px;overflow:hidden;background:#fff;border:1px solid {{ w.bd }}">
+          <div style="aspect-ratio:16/8;background:{{ w.ph }};position:relative;overflow:hidden">
+            <sc-if value="{{ w.hasImg }}" hint-placeholder-val="{{ false }}"><img src="{{ w.img }}" alt="{{ w.alt }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></img></sc-if>
+            <sc-if value="{{ w.noImg }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:20px;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6b778a">{{ w.phText }}</div></sc-if>
+          </div>
+          <div style="padding:22px 24px 24px;display:flex;flex-direction:column;gap:8px;flex:1">
+            <span style="align-self:flex-start;padding:4px 10px;border-radius:999px;background:{{ w.tagBg }};color:{{ w.tagFg }};font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.06em">{{ w.kind }}</span>
+            <h3 style="margin:6px 0 0;font-size:22px;font-weight:600;letter-spacing:-.03em">{{ w.name }}</h3>
+            <p style="margin:0;font-size:14.5px;line-height:1.55;color:#4a5468">{{ w.text }}</p>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="venture-factory" data-nav-theme="light" data-screen-label="10 Venture Factory" aria-labelledby="vf-h" style="background:#f4f3f6;padding:clamp(100px,10vw,130px) clamp(20px,4vw,64px);border-top:1px solid rgba(10,20,36,.06)">
+  <div style="max-width:1440px;margin:0 auto;display:flex;flex-wrap:wrap;gap:48px 72px">
+    <div style="flex:1 1 420px">
+      <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.34em;text-transform:uppercase;color:#4c5a6e">DLI Venture Factory</p>
+      <h2 id="vf-h" style="margin:16px 0 0;font-size:clamp(32px,3.4vw,50px);font-weight:500;letter-spacing:-.045em;line-height:1.05">We also build and operate our own AI-native businesses.</h2>
+      <p style="margin:18px 0 0;max-width:520px;font-size:16px;line-height:1.6;color:#4a5468">The Venture Factory applies the same engineering, market intelligence, automation and human governance we bring to clients to creating new products. What we learn operating them comes back into client work.</p>
+      <ol style="margin:32px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px">
+        <sc-for list="{{ vfSteps }}" as="s" hint-placeholder-count="5">
+          <li style="padding:14px 12px;border-top:2px solid #0a1424;background:#fff;border-radius:0 0 10px 10px"><span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b778a">{{ s.n }}</span><span style="display:block;margin-top:4px;font-size:14px;font-weight:700">{{ s.t }}</span><span style="display:block;margin-top:4px;font-size:12px;line-height:1.4;color:#4a5468">{{ s.d }}</span></li>
+        </sc-for>
+      </ol>
+      <a href="#start" onClick="{{ pathProduct }}" style="margin-top:28px;display:inline-flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #0a1424;font-size:15px;font-weight:600">Build an AI product with us <span aria-hidden="true">→</span></a>
+    </div>
+    <ul style="flex:1 1 420px;margin:0;padding:0;list-style:none;display:flex;flex-direction:column">
+      <sc-for list="{{ vfEntities }}" as="e" hint-placeholder-count="6">
+        <li style="display:flex;align-items:baseline;gap:18px;padding:18px 4px;border-bottom:1px solid rgba(10,20,36,.1)">
+          <span style="flex:none;width:210px;font-size:19px;font-weight:600;letter-spacing:-.02em">{{ e.name }}</span>
+          <span style="flex:1;font-size:14.5px;line-height:1.5;color:#4a5468">{{ e.role }}</span>
+          <span style="flex:none;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:{{ e.c }}">{{ e.status }}</span>
+        </li>
+      </sc-for>
+    </ul>
+  </div>
+</section>
+
+<section id="method" data-nav-theme="light" data-screen-label="11 DLI Method" aria-labelledby="method-h" style="background:#fff;padding:clamp(110px,12vw,150px) clamp(20px,4vw,64px)">
+  <div style="max-width:1440px;margin:0 auto">
+    <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.34em;text-transform:uppercase;color:#4c5a6e">The DLI method</p>
+    <h2 id="method-h" style="margin:16px 0 0;max-width:900px;font-size:clamp(40px,5vw,76px);font-weight:500;letter-spacing:-.045em;line-height:1.02">Closer to your team. Closer to the outcome.</h2>
+    <div role="tablist" aria-label="Engagement timeline" style="position:relative;margin-top:64px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr))">
+      <div aria-hidden="true" style="position:absolute;left:0;right:0;top:9px;height:1px;background:rgba(10,20,36,.15)"></div>
+      <div aria-hidden="true" style="position:absolute;left:0;top:8px;height:3px;width:{{ methodBar }};background:linear-gradient(90deg,#3d7df2,#65d8f4);transition:width .6s cubic-bezier(.2,.8,.2,1)"></div>
+      <sc-for list="{{ methodSteps }}" as="m" hint-placeholder-count="5">
+        <button type="button" role="tab" aria-selected="{{ m.sel }}" onClick="{{ m.onSel }}" style="position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:0 10px 0 0;border:none;background:transparent;color:#0a1424;text-align:left">
+          <span style="width:20px;height:20px;border-radius:50%;border:2px solid {{ m.ring }};background:{{ m.dot }};transition:all .35s"></span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5d6a7e">{{ m.when }}</span>
+          <span style="font-size:clamp(17px,1.7vw,24px);font-weight:600;letter-spacing:-.03em;opacity:{{ m.op }}">{{ m.t }}</span>
+        </button>
+      </sc-for>
+    </div>
+    <div role="tabpanel" aria-live="polite" style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:1px;background:rgba(10,20,36,.1);border:1px solid rgba(10,20,36,.1);border-radius:16px;overflow:hidden">
+      <div style="background:#f7f7fa;padding:24px"><p style="margin:0 0 8px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#4c5a6e">What happens</p><p style="margin:0;font-size:15.5px;line-height:1.55">{{ method.what }}</p></div>
+      <div style="background:#f7f7fa;padding:24px"><p style="margin:0 0 8px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#4c5a6e">In the room</p><p style="margin:0;font-size:15.5px;line-height:1.55">{{ method.who }}</p></div>
+      <div style="background:#f7f7fa;padding:24px"><p style="margin:0 0 8px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#4c5a6e">You receive</p><p style="margin:0;font-size:15.5px;line-height:1.55">{{ method.out }}</p></div>
+      <div style="background:#f7f7fa;padding:24px"><p style="margin:0 0 8px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#4c5a6e">Decision gate</p><p style="margin:0;font-size:15.5px;line-height:1.55;font-weight:600">{{ method.gate }}</p></div>
+    </div>
+    <p style="margin:14px 0 0;font-size:12.5px;color:#5d6a7e">Illustrative timing. Every engagement is scoped to the workflow and environment.</p>
+  </div>
+</section>
+
+<section id="faq" data-nav-theme="light" data-screen-label="12 FAQ" aria-labelledby="faq-h" style="background:#f4f3f6;padding:clamp(90px,10vw,120px) clamp(20px,4vw,64px)">
+  <div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:32px 72px">
+    <h2 id="faq-h" style="flex:1 1 260px;margin:0;font-size:clamp(32px,3vw,44px);font-weight:500;letter-spacing:-.04em;line-height:1.05">Questions leaders ask us.</h2>
+    <div style="flex:2 1 480px">
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="5">
+        <details style="border-bottom:1px solid rgba(10,20,36,.12);padding:4px 0">
+          <summary style="cursor:pointer;padding:18px 0;font-size:18px;font-weight:600;letter-spacing:-.015em">{{ f.q }}</summary>
+          <p style="margin:0 0 20px;font-size:15.5px;line-height:1.65;color:#4a5468">{{ f.a }}</p>
+        </details>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="start" data-nav-theme="dark" data-screen-label="13 Conversion" aria-labelledby="start-h" style="position:relative;overflow:hidden;color:#f2f5f9;background:#061222;padding:clamp(110px,12vw,150px) clamp(20px,4vw,64px)">
+  <div aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;pointer-events:none"><div ref="{{ bgStartRef }}" data-parallax="" style="position:absolute;left:0;right:0;top:-20%;bottom:-20%;background-image:url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=2200&amp;q=70&amp;auto=format&amp;fit=crop');background-size:cover;background-position:center 40%;will-change:transform"></div></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(4,10,22,.9) 0%,rgba(4,10,22,.72) 55%,rgba(4,10,22,.6) 100%),linear-gradient(180deg,rgba(4,10,22,.4),rgba(4,10,22,.75))"></div>
+  <div style="position:relative;max-width:1440px;margin:0 auto;display:flex;flex-wrap:wrap;gap:48px 72px">
+    <div style="flex:1 1 440px">
+      <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.34em;text-transform:uppercase;color:#9fe8fa">Start a deployment</p>
+      <h2 id="start-h" style="margin:16px 0 0;font-size:clamp(40px,5vw,76px);font-weight:500;letter-spacing:-.045em;line-height:1.02">Have a complex problem? Let's engineer the answer.</h2>
+      <p style="margin:20px 0 0;max-width:480px;font-size:16px;line-height:1.6;color:#b7c5d5">Choose a starting point and tell us about the work. A senior engineer reviews every brief and replies with next steps.</p>
+      <div role="radiogroup" aria-label="Engagement type" style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px">
+        <sc-for list="{{ paths }}" as="p" hint-placeholder-count="4">
+          <button type="button" role="radio" aria-checked="{{ p.sel }}" onClick="{{ p.onSel }}" style="display:flex;flex-direction:column;gap:6px;min-height:96px;padding:16px;border-radius:12px;border:1px solid {{ p.bd }};background:{{ p.bg }};color:#fff;text-align:left;transition:all .3s">
+            <span style="display:flex;justify-content:space-between;width:100%;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#8ea4ba">{{ p.n }}<span style="width:14px;height:14px;border-radius:50%;border:1.5px solid {{ p.bd }};background:{{ p.dot }}"></span></span>
+            <span style="font-size:16px;font-weight:600;line-height:1.25">{{ p.t }}</span>
+          </button>
+        </sc-for>
+      </div>
+      <div style="margin-top:36px;border-top:1px solid rgba(255,255,255,.14);padding-top:26px">
+        <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.34em;text-transform:uppercase;color:#9fe8fa">Free resources</p>
+        <h3 style="margin:10px 0 0;font-size:22px;font-weight:500;letter-spacing:-.03em">Read the research before the first call.</h3>
+        <p style="margin:10px 0 0;max-width:420px;font-size:14px;line-height:1.6;color:#8ea4ba">Two short briefings DLI prepared on innovation during recession and the future of work. Select one, leave your work email, and we will send it over.</p>
+        <div style="margin-top:18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px">
+          <button type="button" onClick="{{ pickResourceA }}" aria-pressed="{{ resourceA }}" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px;padding:0 16px;border-radius:10px;border:1px solid {{ resourceA ? 'rgba(101,216,244,.7)' : 'rgba(255,255,255,.16)' }};background:{{ resourceA ? 'rgba(101,216,244,.12)' : 'rgba(255,255,255,.03)' }};color:#fff;font-size:14px;font-weight:600;text-align:left;transition:all .25s">The Power of Innovation in Recession <span aria-hidden="true">→</span></button>
+          <button type="button" onClick="{{ pickResourceB }}" aria-pressed="{{ resourceB }}" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px;padding:0 16px;border-radius:10px;border:1px solid {{ resourceB ? 'rgba(101,216,244,.7)' : 'rgba(255,255,255,.16)' }};background:{{ resourceB ? 'rgba(101,216,244,.12)' : 'rgba(255,255,255,.03)' }};color:#fff;font-size:14px;font-weight:600;text-align:left;transition:all .25s">Jobs of the Future <span aria-hidden="true">→</span></button>
+        </div>
+        <p style="margin:12px 0 0;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#65d8f4">{{ resourceNote }}</p>
+      </div>
+    </div>
+    <div style="flex:1 1 440px;border-radius:20px;border:1px solid rgba(190,215,240,.16);background:rgba(8,20,36,.75);backdrop-filter:blur(12px);padding:clamp(22px,3vw,36px)">
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ submit }}" noValidate="" aria-label="Deployment brief" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:14px">
+          <input name="hp_website" tabIndex="-1" autoComplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" />
+          <label style="display:flex;flex-direction:column;gap:7px;font-size:12.5px;font-weight:600;color:#d3deea">Full name<input value="{{ form.name }}" onChange="{{ onName }}" autoComplete="name" required="" style="min-height:48px;padding:0 14px;border-radius:9px;border:1px solid rgba(255,255,255,.16);background:#081729;color:#fff;font-size:16px;outline:none"></input></label>
+          <label style="display:flex;flex-direction:column;gap:7px;font-size:12.5px;font-weight:600;color:#d3deea">Work email<input type="email" value="{{ form.email }}" onChange="{{ onEmail }}" autoComplete="email" required="" style="min-height:48px;padding:0 14px;border-radius:9px;border:1px solid rgba(255,255,255,.16);background:#081729;color:#fff;font-size:16px;outline:none"></input></label>
+          <label style="display:flex;flex-direction:column;gap:7px;font-size:12.5px;font-weight:600;color:#d3deea">Organization<input value="{{ form.org }}" onChange="{{ onOrg }}" autoComplete="organization" required="" style="min-height:48px;padding:0 14px;border-radius:9px;border:1px solid rgba(255,255,255,.16);background:#081729;color:#fff;font-size:16px;outline:none"></input></label>
+          <label style="display:flex;flex-direction:column;gap:7px;font-size:12.5px;font-weight:600;color:#d3deea">Timeline<select value="{{ form.timeline }}" onChange="{{ onTimeline }}" style="min-height:48px;padding:0 12px;border-radius:9px;border:1px solid rgba(255,255,255,.16);background:#081729;color:#fff;font-size:16px"><option>Within 3 months</option><option>3–6 months</option><option>6–12 months</option><option>Exploring</option></select></label>
+          <label style="grid-column:1/-1;display:flex;flex-direction:column;gap:7px;font-size:12.5px;font-weight:600;color:#d3deea">What should change? <textarea value="{{ form.msg }}" onChange="{{ onMsg }}" rows="4" placeholder="The workflow, the systems involved and what success looks like." style="padding:12px 14px;border-radius:9px;border:1px solid rgba(255,255,255,.16);background:#081729;color:#fff;font-size:16px;outline:none;resize:vertical"></textarea></label>
+          <sc-if value="{{ hasErr }}" hint-placeholder-val="{{ false }}"><p role="alert" style="grid-column:1/-1;margin:0;font-size:13.5px;color:#ffb4a8">{{ err }}</p></sc-if>
+          <button type="submit" style="grid-column:1/-1;min-height:52px;border-radius:10px;border:none;background:#fff;color:#0a1424;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:12px;opacity:{{ submitOpacity }}">{{ submitLabel }} <span aria-hidden="true">→</span></button>
+          <p style="grid-column:1/-1;margin:0;font-size:12px;line-height:1.5;color:#8ea4ba">By sending this form you agree to be contacted about your enquiry. We use these details only to respond to your enquiry.</p>
+        </form>
+      </sc-if>
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div role="status" style="min-height:360px;display:flex;flex-direction:column;justify-content:center;gap:14px">
+          <span style="width:44px;height:44px;border-radius:50%;border:1px solid #8ef0b0;display:flex;align-items:center;justify-content:center;color:#8ef0b0;font-size:20px">✓</span>
+          <h3 style="margin:0;font-size:30px;font-weight:500;letter-spacing:-.035em">Brief received, {{ firstName }}.</h3>
+          <p style="margin:0;max-width:420px;font-size:15.5px;line-height:1.6;color:#c2cfde">A senior engineer will review your {{ pathLabelLower }} brief and reply to {{ form.email }}.</p>
+          <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8ef0b0">Your details were sent to the DLI team.</p>
+          <sc-if value="{{ resourceSent }}"><a href="{{ resourceUrl }}" download style="align-self:flex-start;display:flex;align-items:center;gap:10px;min-height:44px;padding:0 18px;border-radius:9px;background:#fff;color:#0a1424;font-size:14px;font-weight:700">Download your PDF <span aria-hidden="true">↓</span></a></sc-if>
+          <button type="button" onClick="{{ resetForm }}" style="align-self:flex-start;min-height:44px;padding:0 18px;border-radius:9px;border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;font-weight:600">Send another</button>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer data-nav-theme="dark" style="background:#040a14;color:#b7c5d5;padding:56px clamp(20px,4vw,64px) 40px;border-top:1px solid rgba(255,255,255,.06)">
+  <div style="max-width:1440px;margin:0 auto;display:flex;flex-wrap:wrap;gap:32px 64px;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:10px;color:#fff">
+      <img src="assets/continuum-mark.png" alt="" style="width:40px;height:32px;object-fit:contain;filter:brightness(2.4) saturate(.6)"></img>
+      <span style="font-weight:800;font-size:24px;letter-spacing:-.04em">DLI</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:600;letter-spacing:.34em;line-height:1.45;text-transform:uppercase;margin-left:6px">Deep Learning<br>Intelligence</span>
+    </div>
+    <nav aria-label="Footer" style="display:flex;flex-wrap:wrap;gap:12px 32px;font-size:14px">
+      <a href="#solutions" style-hover="color:#fff">Solutions</a><a href="#experience-lab" style-hover="color:#fff">Experience Lab</a><a href="#industries" style-hover="color:#fff">Industries</a><a href="#venture-factory" style-hover="color:#fff">Venture Factory</a><a href="#faq" style-hover="color:#fff">FAQ</a><a href="#start" style-hover="color:#fff">Start a Deployment</a>
+    </nav>
+  </div>
+  <p style="max-width:1440px;margin:40px auto 0;font-size:12px;line-height:1.6;color:#6f849a">© 2026 Deep Learning Intelligence. Independent engineering services. Referenced technologies are trademarks of their respective owners. No partnership or endorsement is implied. Experience Lab items are labelled by status; previews and prototypes use synthetic data.</p>
+</footer>
+
+<sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeModal }}" style="position:fixed;inset:0;z-index:80;background:rgba(2,6,14,.6);backdrop-filter:blur(6px)"></div>
+  <aside role="dialog" aria-modal="true" aria-labelledby="m-title" style="position:fixed;z-index:81;top:0;right:0;bottom:0;width:min(560px,100vw);overflow-y:auto;background:#071426;color:#f2f5f9;border-left:1px solid rgba(190,215,240,.16);box-shadow:-30px 0 80px rgba(0,0,0,.4)">
+    <div style="position:relative;aspect-ratio:16/9;background:#06101e">
+      <sc-if value="{{ m.hasImg }}" hint-placeholder-val="{{ false }}"><div role="img" aria-label="{{ m.alt }}" style="width:100%;height:100%;background-image:{{ m.bgImg }};background-size:cover;background-position:center"></div></sc-if>
+      <sc-if value="{{ m.noImg }}" hint-placeholder-val="{{ false }}"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(135deg,rgba(101,216,244,.06) 0 10px,transparent 10px 20px);font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8ea4ba">product visual — cloud &amp; AI readiness assessment</div></sc-if>
+      <button ref="{{ closeBtnRef }}" type="button" onClick="{{ closeModal }}" aria-label="Close" style="position:absolute;top:14px;right:14px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(5,12,24,.7);color:#fff;font-size:18px">✕</button>
+    </div>
+    <div style="padding:28px 30px 36px">
+      <span style="display:inline-flex;align-items:center;gap:7px;padding:5px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.14);font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:{{ m.badgeFg }}"><span style="width:6px;height:6px;border-radius:50%;background:{{ m.badgeFg }}"></span>{{ m.status }}</span>
+      <p style="margin:16px 0 0;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:#d7e3f0">{{ m.name }}</p>
+      <h2 id="m-title" style="margin:6px 0 0;font-size:34px;font-weight:500;letter-spacing:-.04em;line-height:1.08">{{ m.cat }}</h2>
+      <p style="margin:12px 0 0;font-size:16px;line-height:1.6;color:#c2cfde">{{ m.desc }}</p>
+      <p style="margin:24px 0 10px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#8ea4ba">What you'll experience</p>
+      <ol style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px">
+        <sc-for list="{{ m.exp }}" as="e" hint-placeholder-count="3"><li style="padding:11px 14px;border-radius:9px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);font-size:14.5px">{{ e }}</li></sc-for>
+      </ol>
+      <p style="margin:18px 0 0;font-size:14px;line-height:1.55;color:#b7c5d5"><strong style="color:#fff">Fits:</strong> {{ m.fits }}</p>
+      <p style="margin:12px 0 0;padding:12px 14px;border-radius:9px;border:1px solid rgba(255,196,120,.3);background:rgba(255,196,120,.06);font-size:13px;line-height:1.5;color:#ffe3bd">{{ m.sim }}</p>
+      <div style="margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <button type="button" onClick="{{ actTry }}" style="grid-column:1/-1;min-height:50px;border-radius:10px;border:none;background:#fff;color:#0a1424;font-size:15px;font-weight:700">{{ m.tryLabel }} →</button>
+        <button type="button" onClick="{{ actTech }}" style="min-height:46px;border-radius:10px;border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;font-size:13.5px;font-weight:600">Explore the Technology</button>
+        <button type="button" onClick="{{ actDeploy }}" style="min-height:46px;border-radius:10px;border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;font-size:13.5px;font-weight:600">Deploy This Capability</button>
+        <button type="button" onClick="{{ actCustom }}" style="grid-column:1/-1;min-height:46px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:transparent;color:#c2cfde;font-size:13.5px;font-weight:600">Discuss a Custom Solution</button>
+      </div>
+      <sc-if value="{{ tryNote }}" hint-placeholder-val="{{ false }}"><p role="status" style="margin:14px 0 0;font-size:13px;color:#9fe8fa">{{ tryNote }}</p></sc-if>
+    </div>
+  </aside>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;marqueeSpeed&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:42,&quot;min&quot;:20,&quot;max&quot;:80,&quot;step&quot;:2,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;missionAutoplay&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+class Component extends DCLogic {
+  static LABS = [
+    { id:'athena', name:'Athena', cat:'Conversational AI', status:'Interactive Preview', img:'assets/lab-athena.webp', alt:'Luminous voice waveform', cta:'Try Athena', outcome:'A natural, voice-first AI assistant for work, customers and operations.', desc:'Explore how natural conversation can connect to approved knowledge and clearly bounded actions.', exp:['Ask a short operational question','See sources and response boundaries','Review an action before approval'], sim:'Guided preview. It does not request microphone access or connect to a live assistant.', fits:'Customer support, employee knowledge, service triage' },
+    { id:'lexi', name:'Lexi', cat:'Digital Human', status:'Prototype', img:'assets/lab-lexi.webp', alt:'Digital human representative in an office setting', cta:'Meet Lexi', outcome:'A lifelike AI avatar for engagement, training, support and sales.', desc:'See where a clearly disclosed digital representative can make complex information easier to navigate.', exp:['Choose an onboarding scenario','Preview a guided explanation','Review human handoff points'], sim:'Prototype. The portrait is an illustration, not a real person or a live avatar session.', fits:'Learning, onboarding, product guidance, sales enablement' },
+    { id:'agent-desk', name:'Agent Desk', cat:'AI Workforce', status:'Prototype', img:'assets/lab-agent-desk.webp', alt:'Stacked agent task panels: research, analyze, create, review', cta:'Run a Mission', outcome:'Coordinate specialized agents to complete complex work end to end.', desc:'Follow a synthetic mission as research, analysis, creation and review hand off with human control.', exp:['Inspect a synthetic mission','Trace agent and tool handoffs','Approve the final artifact'], sim:'Prototype with synthetic missions. No external tools or client credentials are used.', fits:'Research operations, reporting, case handling, internal workflows' },
+    { id:'atlas', name:'Intelligence Atlas', cat:'Multi-Market Intelligence', status:'Interactive Preview', img:'assets/lab-atlas.webp', alt:'Illuminated globe with connected market arcs', cta:'Explore the Atlas', outcome:'Explore connected data, insights and opportunities across markets.', desc:'A reference experience for turning approved data into interpretable operational pathways.', exp:['Select a market and industry','Trace a signal to its context','Route an insight into a workflow'], sim:'Uses synthetic relationships. Not a live market feed or proprietary data access.', fits:'Strategy, market operations, investment research, planning' },
+    { id:'gfin', name:'GoFundItNow', cat:'Funding Intelligence', status:'Live Demo', img:'assets/lab-gfin.webp', alt:'City skyline with a funding checklist overlay', cta:'Explore GFIN', outcome:'Discover, qualify and access funding opportunities faster.', desc:'Vertical intelligence applied to funding discovery and pursuit management.', exp:['Review a funding pathway','Understand eligibility checkpoints','Track application progress'], sim:'GoFundItNow is an operating DLI product. Confirm the public link and current availability before launch.', fits:'Funding teams, grants, growth programs, advisory workflows' },
+    { id:'cloud', name:'Cloud Adoption Architect', cat:'Cloud & AI Modernization', status:'Coming Soon', img:'', alt:'', cta:'Join the Waitlist', outcome:'An interactive cloud and AI modernization assessment, from CloudAdoptionFramework.com.', desc:'A vendor-neutral assessment spanning cloud, data, AI and governance readiness.', exp:['Review readiness dimensions','Identify architecture dependencies','Outline a phased roadmap'], sim:'Future product. No assessment runs in this preview.', fits:'Transformation leaders, CIO offices, cloud and data teams' },
+  ];
+  static BADGE = { 'Live Demo':'#8ef0b0', 'Interactive Preview':'#9fe8fa', 'Prototype':'#c3b4ff', 'Coming Soon':'#c9d3df' };
+  static AR = {"openai.svg":1,"copilot.svg":1.152,"aws.svg":1.673,"azure.svg":1,"gcloud.svg":6.522,"oracle.svg":7.692,"palantir.svg":1,"anthropic.svg":1,"hermes.webp":5.842,"openclaw.svg":4.871,"grok.svg":2.655};
+  static WORDMARKS = [
+    { name:'OpenAI', logo:'assets/logos/openai.svg', h:'40px', text:'OpenAI' },
+    { name:'Microsoft Copilot', logo:'assets/logos/copilot.svg', h:'38px', text:'Microsoft Copilot' },
+    { name:'AWS', logo:'assets/logos/aws.svg', h:'46px' },
+    { name:'Microsoft Azure', logo:'assets/logos/azure.svg', h:'42px', text:'Azure' },
+    { name:'Google Cloud', logo:'assets/logos/gcloud.svg', h:'38px' },
+    { name:'Oracle', logo:'assets/logos/oracle.svg', h:'26px' },
+    { name:'Palantir', logo:'assets/logos/palantir.svg', h:'38px', text:'Palantir' },
+    { name:'Anthropic', logo:'assets/logos/anthropic.svg', h:'34px', text:'Anthropic' },
+    { name:'Hermes Agent', logo:'assets/logos/hermes.webp', h:'40px', r:'6px' },
+    { name:'OpenClaw', logo:'assets/logos/openclaw.svg', h:'40px' },
+    { name:'Grok', logo:'assets/logos/grok.svg', h:'40px' },
+  ];
+  static LAYERS = [
+    { id:'infra', label:'Systems & Infrastructure', title:'Runs where your organization runs.', text:'Cloud, on-premise or sovereign environments, plus the identity, networking and enterprise systems AI has to work within.', eng:['Environment and identity integration','Deployment pipelines and secrets handling','Cost and capacity planning'], signal:'Environment → identity → runtime' },
+    { id:'data', label:'Data & Context', title:'Grounded in what your business knows.', text:'Approved knowledge, operational records and live inputs, connected with their permissions intact.', eng:['Source mapping and access control','Retrieval and context pipelines','Data quality checks'], signal:'Sources → permissions → trusted context' },
+    { id:'models', label:'AI Models', title:'The right model for each task.', text:'Chosen on accuracy, cost, latency, data residency and risk for the task at hand, independent of vendor.', eng:['Model evaluation and selection','Routing and fallbacks','Prompt and fine-tune management'], signal:'Task → model → evaluation' },
+    { id:'agents', label:'Agents', title:'Reasoning that takes bounded action.', text:'Agents plan, call approved tools and hand work to each other inside explicit permissions.', eng:['Tool permissions and scopes','Multi-agent orchestration','Traceable handoffs'], signal:'Plan → act → hand off' },
+    { id:'workflows', label:'Enterprise Workflows', title:'From insight to authorized action.', text:'Intelligence placed in the processes, applications and queues where work already happens.', eng:['Process redesign with owners','ERP, CRM and ticketing integration','Exception paths'], signal:'Insight → approval → action' },
+    { id:'gov', label:'Governance', title:'Reliable enough to operate.', text:'Policy turned into engineering: access, audit, evaluation, monitoring and change control.', eng:['Audit logging and policy checks','Evaluation suites','Release controls'], signal:'Policy → control → evidence' },
+    { id:'human', label:'Human Oversight', title:'People stay accountable.', text:'Review points are designed in wherever judgment, risk or regulation requires a person.', eng:['Approval queues','Escalation design','Operator training'], signal:'Review → approve → learn' },
+    { id:'outcomes', label:'Business Outcomes', title:'Measured against what you set out to change.', text:'Every system is tied to a baseline and an owner, so improvement is visible and the approach can change if it is not.', eng:['Baselines and success measures','Outcome reporting','Iteration roadmap'], signal:'Baseline → result → decision' },
+  ];
+  static STAGES = [
+    { label:'Discover', title:'Find the work worth changing.', text:'Map objectives, systems, constraints, exceptions and an outcome baseline before anything is built.', decisions:['Choose 1 workflow from 7 candidates','Agree baseline measures','Name the accountable owner'], file:'opportunity-map.yaml', artifact:'workflow: supplier-invoice-exceptions\nvolume_per_month: 4200\nmanual_touch_rate: 38%\nowners: [AP lead, Financial controller]\nconstraints:\n  - ERP read-only in phase 1\n  - Arabic + English supplier docs\npriority: 1 of 7', oversight:'Executive sponsor and process owner sign the opportunity brief.', accept:'Baseline measured on 90 days of history; owner has signed the brief.' },
+    { label:'Engineer', title:'Connect intelligence to the work.', text:'Build the experience, authorized tools, data integration and orchestration inside your environment.', decisions:['Which actions are draft-only and which execute','Which sources ground the agent','Where the work appears in the AP queue'], file:'agent.tools.ts', artifact:'tool("erp.lookupInvoice",  { scope: "read" })\ntool("erp.proposeMatch",   { scope: "draft" })\ntool("email.requestInfo",  { approval: "required" })\ndeny("erp.postPayment")\n\nescalate.when(confidence < 0.8)\naudit.log("all")', oversight:'Your security team reviews every tool scope before connection.', accept:'Zero tools with write access outside the approved scope.' },
+    { label:'Validate', title:'Prove it before production.', text:'Test expected and failure cases for usefulness, safety, permissions and the agreed acceptance criteria.', decisions:['Size and make-up of the evaluation set','Which failures block release','Who reviews borderline cases'], file:'eval-run-14.report', artifact:'cases:              400 synthetic + 120 historical\npass:               386 / 400   (96.5%)\nunsafe_actions:     0\nescalated_correctly 41 / 42\nlatency_p95:        4.1s\nreviewer:           AP lead (signed)', oversight:'Process owner reviews every failed and escalated case.', accept:'≥ 95% pass rate, zero unsafe actions, every miss reviewed.' },
+    { label:'Deploy', title:'Make it work in your environment.', text:'Staged release with a named operating owner, trained users and a tested rollback.', decisions:['Shadow-mode duration','Share of queue per stage','Rollback trigger'], file:'release-plan.md', artifact:'stage 1   shadow mode, no actions     2 wks\nstage 2   10% of queue, full review   2 wks\nstage 3   full queue, 5% sampling\n\nrollback: feature flag, < 5 min\nowner:    AP operations lead', oversight:'Operating owner approves each stage transition.', accept:'Shadow-mode agreement ≥ 90% before stage 2; rollback tested.' },
+    { label:'Operate', title:'Measure, learn and improve.', text:'Monitor quality, cost, exceptions and drift. Improve through controlled, evaluated releases.', decisions:['Which changes need re-evaluation','When to widen scope','Budget thresholds'], file:'weekly-ops.review', artifact:'exceptions_reviewed:  63\ndrift_alerts:         1  (supplier format change)\ncost_per_case:        within budget\nchange_requests:      2 approved, 1 deferred\nnext_review:          monthly outcome report', oversight:'Monthly outcome review with the sponsor against the original baseline.', accept:'Outcome reported against baseline monthly; only owner-approved changes ship.' },
+  ];
+  static INDS = [
+    { label:'Healthcare', hue:180, title:'Intelligence with clinical context.', challenges:['Referral and scheduling backlogs','Documentation load on clinical staff','Fragmented patient communication'], solutions:['Referral triage with clinician review','Documentation drafting for clinician sign-off','Bilingual patient communication assistant'], systems:['EHR (HL7 FHIR)','Scheduling','Contact centre','Document management'], gov:'Clinicians keep decision authority. Patient-data handling, consent and audit are designed per project.', uae:'We plan for emirate-level health-data requirements (for example DoH Abu Dhabi or DHA) and the UAE data protection law, confirmed with your compliance team.', cta:'Discuss a healthcare deployment' },
+    { label:'Financial Services', hue:250, title:'Financial decisions, connected.', challenges:['Manual reconciliation exceptions','High onboarding and KYC case volume','Policy knowledge scattered across documents'], solutions:['Reconciliation exception agent','Onboarding case preparation','Policy-grounded knowledge assistant'], systems:['Core banking','CRM','Case management','Data warehouse'], gov:'Sensitive actions require explicit controls, full audit trails and model risk review.', uae:'Requirements differ by jurisdiction (CBUAE, DFSA, FSRA). We work to your compliance function’s interpretation; DLI holds no regulatory approvals.', cta:'Discuss a financial services deployment' },
+    { label:'Enterprise Operations', hue:285, title:'Enterprise systems that can act.', challenges:['Long procurement cycle times','Support queues that grow faster than teams','Reporting assembled by hand'], solutions:['Procurement intake and comparison agent','Support resolution with approvals','Automated operational reporting'], systems:['ERP','CRM','ITSM','Microsoft 365 / Google Workspace'], gov:'Agent permissions mirror existing roles. Every action is logged and attributable.', uae:'Arabic and English operation, and hosting in UAE cloud regions where data residency requires it.', cta:'Discuss an enterprise deployment' },
+    { label:'Government & Public Services', hue:215, title:'Complex services, easier to navigate.', challenges:['High service-request volume','Document-heavy case processing','Information that is hard to find'], solutions:['Bilingual service assistant','Case summarization for officers','Knowledge access for staff'], systems:['Case management','Digital identity (where authorized)','Document management','Contact centre'], gov:'Procurement, accessibility and information-governance requirements apply to every engagement.', uae:'Designed around national AI and data guidance and sovereign hosting expectations, reviewed with the entity’s own governance teams.', cta:'Discuss a public-sector deployment' },
+  ];
+  static WORK = [
+    { name:'GoFundItNow', kind:'Operational DLI product', text:'Funding intelligence for discovering, qualifying and pursuing funding opportunities.', img:'assets/lab-gfin.webp', alt:'GoFundItNow interface preview', tone:'green' },
+    { name:'Any.xyz', kind:'AI product studio', text:'DLI’s product studio for design-led, AI-native applications and operating systems.', img:'', phText:'product interface — Any.xyz', tone:'blue' },
+    { name:'Agent Desk', kind:'Engineering prototype', text:'Multi-agent orchestration with tool permissions and human approval, demonstrated on synthetic missions.', img:'assets/lab-agent-desk.webp', alt:'Agent Desk task panels', tone:'violet' },
+    { name:'Intelligence Atlas', kind:'Exploratory concept', text:'A reference experience for connecting cross-market signals, explanations and decisions.', img:'assets/lab-atlas.webp', alt:'Intelligence Atlas globe', tone:'grey' },
+    { name:'Client implementations', kind:'Disclosed when authorized', text:'Active client work is published only with written permission. Case studies to be added as approvals are received.', img:'', phText:'architecture diagram — authorized case study', tone:'amber' },
+    { name:'Founder experience', kind:'Prior-employer experience', text:'Relevant engineering leadership from previous roles, described within confidentiality limits. Content to be supplied and verified.', img:'', phText:'verified founder track record', tone:'grey' },
+  ];
+  static TONES = { green:['rgba(34,160,90,.1)','#17703f'], blue:['rgba(61,125,242,.1)','#2853a8'], violet:['rgba(120,90,230,.1)','#5a3fb8'], grey:['rgba(10,20,36,.06)','#3c4a5e'], amber:['rgba(220,150,40,.12)','#8a5a10'] };
+  static METHOD = [
+    { t:'Embed', when:'Weeks 1–2', what:'Engineers join your team on site or alongside it, inside the actual workflow and its systems.', who:'DLI: FDE lead and engineer. You: sponsor and process owner.', out:'Opportunity brief, baseline and scoped plan.', gate:'Sponsor approves scope and success measures.' },
+    { t:'Build', when:'Weeks 3–6', what:'A working system in your environment, connected to approved data and tools.', who:'DLI: FDE pod. You: process owner, IT and security.', out:'Running system in a controlled environment.', gate:'Security review of data access and tool scopes.' },
+    { t:'Prove', when:'Weeks 6–9', what:'Evaluation against expected and failure cases, then shadow mode on live work.', who:'DLI: engineers and evaluation lead. You: reviewers from the team.', out:'Evaluation report and shadow-mode results.', gate:'Acceptance criteria met and signed.' },
+    { t:'Launch', when:'Weeks 9–12', what:'Staged release, user training and a tested rollback path.', who:'DLI: FDE pod. You: operating owner and users.', out:'Production release and runbooks.', gate:'Operating owner approves go-live.' },
+    { t:'Operate', when:'Ongoing', what:'Managed AI operations by DLI, or a structured handover to your own team.', who:'DLI: operations engineers. You: owner and sponsor.', out:'Monthly outcome reporting against baseline.', gate:'Quarterly review: extend, change or stop.' },
+  ];
+  static PATHS = ['Start an Enterprise Deployment','Build an AI Product','Explore an FDE Engagement','Discuss AI Adoption & Modernization'];
+  static PATH_SHORT = ['Enterprise deployment','AI product','FDE engagement','AI adoption'];
+
+  state = { navShown:false, hoverTop:false, headerFocus:false, nav:'light', mobile:false, menuOpen:false, labIdx:0, labProg:0, modal:null, tryNote:'', arch:3, stage:0, stageTouched:false, ind:0, method:0, path:0, form:{name:'',email:'',org:'',timeline:'Within 3 months',msg:''}, sent:false, err:'', philo:0, philoTyped:0, sending:false, resource:'', sentResource:'', marqueePaused:false };
+  heroArtRef = React.createRef(); heroImgRef = React.createRef(); shineRef = React.createRef(); sweepRef = React.createRef(); cueRef = React.createRef();
+  marqueeRef = React.createRef(); marqueeShellRef = React.createRef(); trackRef = React.createRef(); waveRef = React.createRef();
+  philoRef = React.createRef(); heroRef = React.createRef(); floatRef = React.createRef(); imageryRef = React.createRef(); markRef = React.createRef();
+  bgLabRef = React.createRef(); bgArchRef = React.createRef(); bgMissionRef = React.createRef(); bgStartRef = React.createRef(); lastY = 0; heroAnims = []; missionRef = React.createRef(); geoRef = React.createRef(); closeBtnRef = React.createRef();
+  m = { x:0, y:0, tx:0, ty:0 }; anims = [];
+
+  componentDidMount() {
+    this.reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.startedAt = Date.now();
+    this.philoStarted = false;
+    this.onResize = () => { const mob = window.innerWidth < 1080; if (mob !== this.state.mobile) this.setState({ mobile: mob, menuOpen: false }); };
+    this.onScroll = () => { if (!this.sRaf) this.sRaf = requestAnimationFrame(() => { this.sRaf = 0; this.tick(); }); };
+    this.onMouse = (e) => { const y = e.clientY; const ht = y < 50 || (this.state.hoverTop && y < 92); if (ht !== this.state.hoverTop) this.setState({ hoverTop: ht }); if (!this.heroMotion()) return; this.m.tx = e.clientX / window.innerWidth * 2 - 1; this.m.ty = e.clientY / window.innerHeight * 2 - 1; if (!this.mRaf) this.mRaf = requestAnimationFrame(this.lerp); };
+    this.lerp = () => { const m = this.m; m.x += (m.tx - m.x) * .045; m.y += (m.ty - m.y) * .045; this.applyHero(); this.mRaf = (Math.abs(m.tx - m.x) + Math.abs(m.ty - m.y) > .002) ? requestAnimationFrame(this.lerp) : 0; };
+    this.onKey = (e) => { if (e.key === 'Escape' && this.state.modal) this.closeModal(); };
+    window.addEventListener('resize', this.onResize); window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('mousemove', this.onMouse, { passive: true }); window.addEventListener('keydown', this.onKey);
+    this.onDocLeave = () => { if (this.state.hoverTop) this.setState({ hoverTop: false }); }; document.addEventListener('mouseleave', this.onDocLeave);
+    this.lastY = window.scrollY;
+    this.onResize(); this.tick();
+    this.startMotion(); this.startMarquee(); this.startWave();
+    this.mcTimer = setInterval(() => { if (this.props.missionAutoplay === false || this.state.stageTouched || !this.missionVisible || this.reduce) return; this.setState(s => ({ stage: (s.stage + 1) % 5 })); }, 6500);
+  }
+  componentDidUpdate(pp, ps) {
+    pp = pp || {}; ps = ps || {};
+    if (pp.marqueeSpeed !== this.props.marqueeSpeed) this.startMarquee();
+    if (pp.heroMotion !== this.props.heroMotion) { this.anims.forEach(a => a.cancel()); this.heroAnims.forEach(a => a.cancel()); this.anims = []; this.heroAnims = []; (this.markAnim || []).forEach(a => a.cancel()); this.heroIO && this.heroIO.disconnect(); this.startMotion(); this.applyHero(); }
+    if (!this._lastModal && this.state.modal && this.closeBtnRef.current) this.closeBtnRef.current.focus();
+    this._lastModal = this.state.modal;
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize); window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('mousemove', this.onMouse); window.removeEventListener('keydown', this.onKey);
+    document.removeEventListener('mouseleave', this.onDocLeave); this.heroIO && this.heroIO.disconnect(); this.heroAnims.forEach(a => a.cancel()); (this.markAnim || []).forEach(a => a.cancel());
+    cancelAnimationFrame(this.sRaf); cancelAnimationFrame(this.mRaf); cancelAnimationFrame(this.wRaf);
+    clearInterval(this.mcTimer); this.io && this.io.disconnect(); this.anims.forEach(a => a.cancel()); this.mq && this.mq.cancel();
+  }
+  heroMotion() { return this.props.heroMotion !== false && !this.reduce; }
+  startMotion() {
+    if (this.reduce) return;
+    const mark = this.markRef.current;
+    if (mark) { this.markAnim = []; const dirs = [[-1,-1],[1,-1],[1,1],[-1,1]]; mark.querySelectorAll('[data-frag]').forEach((f, k) => { const [dx, dy] = dirs[k]; const r = (k % 2 ? 1 : -1) * 6; this.markAnim.push(f.animate([
+      { transform:'translate(0,0) rotate(0deg) scale(1)', opacity:1, offset:0 },
+      { transform:'translate(0,0) rotate(0deg) scale(1)', opacity:1, offset:.9 },
+      { transform:`translate(${dx * 3.5}px,${dy * 3}px) rotate(${r}deg) scale(.94)`, opacity:.7, offset:.935 },
+      { transform:'translate(0,0) rotate(0deg) scale(1.02)', opacity:1, offset:.975 },
+      { transform:'translate(0,0) rotate(0deg) scale(1)', opacity:1, offset:1 }
+    ], { duration: 15000, iterations: Infinity, easing:'cubic-bezier(.4,0,.2,1)', delay: 2000 })); }); }
+    if (!this.heroMotion()) return;
+    const fl = this.floatRef.current, im = this.imageryRef.current, sw = this.sweepRef.current, cue = this.cueRef.current, geo = this.geoRef.current;
+    const H = this.heroAnims;
+    if (fl) H.push(fl.animate([
+      { transform:'translate3d(0,0,0) rotateX(0deg) rotateY(0deg) rotateZ(0deg)' },
+      { transform:'translate3d(0,-8px,0) rotateX(2.2deg) rotateY(-3.2deg) rotateZ(.4deg)' },
+      { transform:'translate3d(0,-2px,0) rotateX(-1.2deg) rotateY(2.8deg) rotateZ(-.45deg)' },
+      { transform:'translate3d(0,7px,0) rotateX(-2deg) rotateY(.8deg) rotateZ(.25deg)' },
+      { transform:'translate3d(0,0,0) rotateX(0deg) rotateY(0deg) rotateZ(0deg)' }
+    ], { duration: 24000, iterations: Infinity, easing:'ease-in-out' }));
+    if (im) H.push(im.animate([
+      { transform:'translate(0,0) scale(1.04)' },
+      { transform:'translate(-1.2%,.6%) scale(1.055)' },
+      { transform:'translate(.7%,-.8%) scale(1.045)' },
+      { transform:'translate(1.1%,.5%) scale(1.055)' },
+      { transform:'translate(0,0) scale(1.04)' }
+    ], { duration: 24000, iterations: Infinity, easing:'ease-in-out' }));
+    if (sw) H.push(sw.animate([{ backgroundPosition:'-80% 0', offset:0 }, { backgroundPosition:'180% 0', offset:.3 }, { backgroundPosition:'180% 0', offset:1 }], { duration: 12000, iterations: Infinity, easing:'cubic-bezier(.45,0,.2,1)', delay: 1500 }));
+    if (cue) H.push(cue.animate([{ transform:'scaleY(0)', opacity:1 }, { transform:'scaleY(1)', opacity:1, offset:.6 }, { transform:'scaleY(1)', opacity:0 }], { duration: 2400, iterations: Infinity }));
+    if (geo) this.anims.push(geo.animate([{ transform:'rotate(0deg)' }, { transform:'rotate(360deg)' }], { duration: 120000, iterations: Infinity }));
+    if (this.heroRef.current) { this.heroIO = new IntersectionObserver(es => { const v = es[0].isIntersecting; this.heroAnims.forEach(a => v ? a.play() : a.pause()); }); this.heroIO.observe(this.heroRef.current); }
+  }
+  applyHero() {
+    const el = this.heroArtRef.current; if (!el) return;
+    const on = this.heroMotion(); const p = Math.min(1, window.scrollY / window.innerHeight); const m = on ? this.m : { x:0, y:0 };
+    if (on && p >= 1 && !this.mRaf) return;
+    el.style.transform = on ? `translate3d(${m.x * -5}px, ${-p * 80 + m.y * -4}px, 0) rotateX(${m.y * 3.2}deg) rotateY(${m.x * -4.5}deg) scale(${1 - p * .14})` : 'none';
+    el.style.opacity = on ? String(Math.max(0, 1 - p * 1.1)) : '1';
+    const sh = this.shineRef.current; if (sh) { sh.style.setProperty('--mx', (50 + m.x * 26) + '%'); sh.style.setProperty('--my', (38 + m.y * 20) + '%'); sh.style.setProperty('--ang', (135 + m.x * 40) + 'deg'); sh.style.opacity = on ? '1' : '0'; }
+  }
+  startPhilo() {
+    if (this.philoStarted) return;
+    this.philoStarted = true;
+    const LINES = ['AI is not the outcome.', 'What it makes', 'possible is.'];
+    const flat = LINES.join('');
+    const total = flat.length;
+    const ends = []; let run = 0;
+    LINES.forEach(l => { run += l.length; ends.push(run); });
+    if (this.reduce) { this.setState({ philoTyped: total }); return; }
+    let n = 0;
+    const step = () => {
+      n += 1;
+      this.setState({ philoTyped: n });
+      if (n >= total) return;
+      const ch = flat.charAt(n - 1);
+      const pause = ends.includes(n) ? 190 : ch === ' ' ? 45 : /[.!?…]/.test(ch) ? 260 : 18 + Math.random() * 30;
+      setTimeout(step, pause);
+    };
+    setTimeout(step, 180);
+  }
+  tick() {
+    this.applyHero();
+    let theme = 'light';
+    document.querySelectorAll('[data-nav-theme]').forEach(s => { const r = s.getBoundingClientRect(); if (r.top <= 40 && r.bottom > 40) theme = s.getAttribute('data-nav-theme'); });
+    const upd = {};
+    if (theme !== this.state.nav) upd.nav = theme;
+    const y = window.scrollY, dy = y - this.lastY;
+    if (Math.abs(dy) > 4) { const shown = dy < 0; if (shown !== this.state.navShown) upd.navShown = shown; this.lastY = y; }
+    if (!this.reduce) { const vh = window.innerHeight; [this.bgLabRef, this.bgArchRef, this.bgMissionRef, this.bgStartRef].forEach(r => { const b = r.current; if (!b) return; const s = b.parentNode.getBoundingClientRect(); if (s.bottom < -50 || s.top > vh + 50) return; const off = (s.top + s.height / 2 - vh / 2); b.style.transform = 'translate3d(0,' + (off * -0.22).toFixed(1) + 'px,0)'; }); }
+    const ph = this.philoRef.current;
+    if (ph) { const r = ph.getBoundingClientRect(); const p = Math.max(0, Math.min(1, (window.innerHeight * .9 - r.top) / (r.height * .75))); if (Math.abs(p - this.state.philo) > .01) upd.philo = p; if (p > 0.02) this.startPhilo(); }
+    const mc = this.missionRef.current; if (mc) { const r = mc.getBoundingClientRect(); this.missionVisible = r.top < window.innerHeight * .6 && r.bottom > window.innerHeight * .4; }
+    if (Object.keys(upd).length) this.setState(upd);
+  }
+  startMarquee() {
+    const el = this.marqueeRef.current; if (!el) return;
+    if (this.mq) this.mq.cancel();
+    if (this.reduce) { this.mq = null; return; }
+    this.mq = el.animate([{ transform:'translateX(0)' }, { transform:'translateX(-50%)' }], { duration: (this.props.marqueeSpeed ?? 42) * 1000, iterations: Infinity });
+    if (this.state.marqueePaused) this.mq.pause();
+  }
+  startWave() {
+    const c = this.waveRef.current; if (!c) return; const ctx = c.getContext('2d');
+    const draw = (t) => {
+      const dpr = Math.min(2, window.devicePixelRatio || 1), w = c.clientWidth, h = c.clientHeight;
+      if (c.width !== Math.round(w * dpr)) { c.width = Math.round(w * dpr); c.height = Math.round(h * dpr); }
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, w, h);
+      const cols = 120, rows = 24;
+      for (let j = 0; j < rows; j++) {
+        const z = j / (rows - 1);
+        for (let i = 0; i < cols; i++) {
+          const x = i / (cols - 1);
+          const y = Math.sin(x * 5.4 + t * .00055 + z * 1.7) * .6 + Math.sin(x * 12 - t * .0004 + z * 3.1) * .16;
+          const env = Math.pow(Math.sin(Math.PI * Math.min(1, x * 1.05)), .7) * (.3 + x * .9);
+          const sx = w * x + (z - .5) * 40;
+          const sy = h * (.22 + z * .5) - y * env * h * .2;
+          const a = (.12 + z * .7) * (.45 + (y + .8) * .4);
+          ctx.fillStyle = `hsla(${188 + x * 82},95%,${62 + z * 12}%,${Math.min(.95, a)})`;
+          ctx.beginPath(); ctx.arc(sx, sy, .5 + z * 1.25, 0, 6.283); ctx.fill();
+        }
+      }
+    };
+    if (this.reduce) { draw(0); return; }
+    let vis = false;
+    const loop = (t) => { if (!vis) { this.wRaf = 0; return; } draw(t); this.wRaf = requestAnimationFrame(loop); };
+    this.io = new IntersectionObserver(es => { vis = es[0].isIntersecting; if (vis && !this.wRaf) this.wRaf = requestAnimationFrame(loop); });
+    this.io.observe(c); draw(0);
+  }
+  closeModal = () => this.setState({ modal: null, tryNote: '' });
+  goTo = (id, path) => {
+    const upd = { modal: null, tryNote: '', menuOpen: false }; if (path != null) upd.path = path; this.setState(upd);
+    const el = document.getElementById(id); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 70, behavior: this.reduce ? 'auto' : 'smooth' });
+  };
+  labStep(d) { const t = this.trackRef.current; if (!t) return; const card = t.querySelector('article'); const w = card ? card.offsetWidth + 18 : 360; t.scrollBy({ left: d * w, behavior: this.reduce ? 'auto' : 'smooth' }); }
+  field(k) { return (e) => { const v = e.target.value; this.setState(s => ({ form: { ...s.form, [k]: v }, err: '' })); }; }
+
+  renderVals() {
+    const S = this.state, C = Component, dark = S.nav === 'dark';
+    const nav = dark
+      ? { bg:'linear-gradient(115deg,rgba(14,35,56,.72),rgba(5,19,34,.5))', fg:'#f2f5f9', border:'rgba(255,255,255,.14)', shadow:'0 12px 40px rgba(0,0,0,.25)', ctaBg:'#fff', ctaFg:'#0a1424', markFilter:'brightness(2.4) saturate(.6)' }
+      : { bg:'linear-gradient(115deg,rgba(255,255,255,.62),rgba(242,246,250,.38))', fg:'#0a1424', border:'rgba(255,255,255,.7)', shadow:'0 10px 34px rgba(19,44,70,.07)', ctaBg:'#0a1424', ctaFg:'#fff', markFilter:'none' };
+    const labs = C.LABS.map(l => ({ ...l, hasImg: !!l.img, noImg: !l.img, badgeFg: C.BADGE[l.status], open: () => this.setState({ modal: l.id, tryNote: '' }) }));
+    const ml = labs.find(l => l.id === S.modal) || labs[0];
+    const m = { ...ml, bgImg: ml.img ? `url("${ml.img}")` : 'none', tryLabel: ml.status === 'Coming Soon' ? 'Join the Waitlist' : 'Try the Experience' };
+    const PH = ['AI is not the outcome.', 'What it makes', 'possible is.'];
+    const phOff = [0, PH[0].length, PH[0].length + PH[1].length];
+    const phTotal = PH.join('').length;
+    const phSlice = (i) => PH[i].slice(0, Math.max(0, Math.min((S.philoTyped || 0) - phOff[i], PH[i].length)));
+    const phOn = (i) => (S.philoTyped || 0) >= phOff[i] && (S.philoTyped || 0) < phOff[i] + PH[i].length;
+    const L = C.LAYERS;
+    const layersTop = L.map((l, i) => ({ ...l, i, n: String(i + 1).padStart(2, '0'), sel: i === S.arch, bg: i === S.arch ? 'rgba(101,216,244,.12)' : 'transparent', bd: i === S.arch ? 'rgba(101,216,244,.55)' : 'rgba(190,215,240,.1)', fg: i === S.arch ? '#fff' : '#b7c5d5', onSel: () => this.setState({ arch: i }) })).reverse();
+    const plates = L.map((l, i) => { const sel = i === S.arch; const z = i * 34 + (i > S.arch ? 46 : 0) + (sel ? 22 : 0); return { n: String(i + 1).padStart(2, '0'), label: l.label, z: z + 'px', bg: sel ? 'rgba(40,120,170,.42)' : 'rgba(14,34,60,.66)', bd: sel ? '#65d8f4' : 'rgba(150,190,230,.24)', fg: sel ? '#e9fbff' : 'rgba(190,215,240,.55)', shadow: sel ? '0 0 50px rgba(101,216,244,.35), inset 0 0 40px rgba(101,216,244,.15)' : '0 10px 30px rgba(0,0,0,.25)', op: sel ? 1 : (i > S.arch ? .55 : .85), core: sel ? '64px' : '28px', onSel: () => this.setState({ arch: i }) }; });
+    const arch = { ...L[S.arch], n: String(S.arch + 1).padStart(2, '0') };
+    const stages = C.STAGES.map((s, i) => ({ ...s, n: String(i + 1).padStart(2, '0'), sel: i === S.stage, bar: i <= S.stage ? '#65d8f4' : 'rgba(255,255,255,.15)', bg: i === S.stage ? 'rgba(101,216,244,.1)' : 'rgba(255,255,255,.025)', fg: i === S.stage ? '#fff' : '#8ea4ba', onSel: () => this.setState({ stage: i, stageTouched: true }) }));
+    const stage = stages[S.stage];
+    const inds = C.INDS.map((d, i) => ({ ...d, sel: i === S.ind, bg: i === S.ind ? '#0a1424' : 'transparent', fg: i === S.ind ? '#fff' : '#0a1424', bd: i === S.ind ? '#0a1424' : 'rgba(10,20,36,.2)', onSel: () => this.setState({ ind: i }) }));
+    const di = C.INDS[S.ind];
+    const ind = { ...di, env: `radial-gradient(ellipse at 80% 10%, oklch(0.55 0.14 ${di.hue} / .55), transparent 60%), linear-gradient(160deg, oklch(0.26 0.06 ${di.hue}), oklch(0.16 0.04 ${di.hue}))`, accent: `oklch(0.55 0.14 ${di.hue})`, challenges: di.challenges.map((t, i) => ({ t, n: i + 1 })) };
+    const work = C.WORK.map(w => { const [tb, tf] = C.TONES[w.tone]; return { ...w, hasImg: !!w.img, noImg: !w.img, tagBg: tb, tagFg: tf, bd: 'rgba(10,20,36,.08)', ph: w.img ? '#0a1424' : 'repeating-linear-gradient(135deg,rgba(10,20,36,.04) 0 10px,transparent 10px 20px),#f4f5f8' }; });
+    const methodSteps = C.METHOD.map((s, i) => ({ ...s, sel: i === S.method, ring: i <= S.method ? '#3d7df2' : 'rgba(10,20,36,.25)', dot: i === S.method ? '#3d7df2' : (i < S.method ? '#cfe0ff' : '#fff'), op: i === S.method ? 1 : .55, onSel: () => this.setState({ method: i }) }));
+    const paths = C.PATHS.map((t, i) => ({ t, n: '0' + (i + 1), sel: i === S.path, bd: i === S.path ? '#65d8f4' : 'rgba(255,255,255,.16)', bg: i === S.path ? 'rgba(101,216,244,.1)' : 'rgba(255,255,255,.02)', dot: i === S.path ? '#65d8f4' : 'transparent', onSel: () => this.setState({ path: i }) }));
+    const mob = S.mobile;
+    const showHeader = S.navShown || S.hoverTop || S.headerFocus || S.menuOpen;
+    return {
+      headerT: 'none', headerO: 1, navPE: 'auto',
+      headerFocus: () => this.setState({ headerFocus: true }), headerBlur: () => this.setState({ headerFocus: false }),
+      headerEnter: () => {}, headerLeave: () => {},
+      heroRef: this.heroRef, floatRef: this.floatRef, imageryRef: this.imageryRef, markRef: this.markRef,
+      bgLabRef: this.bgLabRef, bgArchRef: this.bgArchRef, bgMissionRef: this.bgMissionRef, bgStartRef: this.bgStartRef,
+      nav, desktop: !mob, mobile: mob, menuOpen: S.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })), closeMenu: () => this.setState({ menuOpen: false }),
+      navLinks: [{ label:'Solutions', href:'#solutions' }, { label:'Experience Lab', href:'#experience-lab' }, { label:'Industries', href:'#industries' }, { label:'Insights', href:'#faq' }, { label:'Company', href:'#venture-factory' }],
+      heroArtRef: this.heroArtRef, heroImgRef: this.heroImgRef, shineRef: this.shineRef, sweepRef: this.sweepRef, cueRef: this.cueRef,
+      marqueeRef: this.marqueeRef, marqueeShellRef: this.marqueeShellRef, wordmarks: C.WORDMARKS.map(w => ({ ...w, bgImg: 'url("' + w.logo + '")', ar: String(Component.AR[w.logo.split('/').pop()] || 1), alt: w.text ? '' : w.name, showText: !!w.text, r: w.r || '0' })),
+      marqueeAnimated: !this.reduce, marqueeOverflow: this.reduce ? 'auto' : 'hidden', marqueePaused: S.marqueePaused, marqueeLabel: S.marqueePaused ? '▶ Play' : '❚❚ Pause',
+      toggleMarquee: () => { const p = !S.marqueePaused; this.setState({ marqueePaused: p }); if (this.mq) p ? this.mq.pause() : this.mq.play(); },
+      pauseMarquee: () => { this.mq && this.mq.pause(); }, resumeMarquee: () => { if (this.mq && !this.state.marqueePaused) this.mq.play(); },
+      waveRef: this.waveRef, trackRef: this.trackRef,
+      statusKey: Object.keys(C.BADGE).map(k => ({ label: k, dot: C.BADGE[k] })),
+      labs, labCounter: String(S.labIdx + 1).padStart(2, '0') + ' / ' + String(labs.length).padStart(2, '0'), labProgW: Math.max(8, S.labProg * 100) + '%',
+      onTrackScroll: (e) => { const t = e.currentTarget; const max = t.scrollWidth - t.clientWidth; const p = max > 0 ? t.scrollLeft / max : 0; const idx = Math.round(p * (labs.length - 1)); if (Math.abs(p - this.state.labProg) > .01 || idx !== this.state.labIdx) this.setState({ labProg: p, labIdx: idx }); },
+      labPrev: () => this.labStep(-1), labNext: () => this.labStep(1),
+      modalOpen: !!S.modal, m, closeModal: this.closeModal, closeBtnRef: this.closeBtnRef, tryNote: S.tryNote,
+      actTry: () => this.setState({ tryNote: ml.status === 'Coming Soon' ? 'Waitlist sign-up connects to CloudAdoptionFramework.com at launch.' : 'Experience launches in its own route (/lab/' + ml.id + ') once the demo build is connected.' }),
+      actTech: () => this.goTo('architecture'), actDeploy: () => this.goTo('start', 0), actCustom: () => this.goTo('start', 3),
+      philoRef: this.philoRef, philoL1: phSlice(0), philoL2: phSlice(1), philoL3: phSlice(2),
+      philoC1: phOn(0), philoC2: phOn(1), philoC3: phOn(2),
+      submitLabel: S.sending ? 'Sending…' : 'Send deployment brief — ' + C.PATH_SHORT[S.path], submitOpacity: S.sending ? '.7' : '1',
+      sending: S.sending, resourceA: S.resource === 'the-power-of-innovation-in-recession', resourceB: S.resource === 'jobs-of-the-future',
+      resourceNote: S.resource ? (S.resource === 'jobs-of-the-future' ? 'Selected: Jobs of the Future — submit the form to receive it.' : 'Selected: The Power of Innovation in Recession — submit the form to receive it.') : '',
+      resourceSent: S.sent && !!S.sentResource, resourceUrl: S.sentResource === 'jobs-of-the-future' ? '/resources/Jobs-of-the-Future.pdf' : (S.sentResource ? '/resources/The-Power-of-Innovation-in-Recession.pdf' : ''),
+      pickResourceA: () => this.setState({ resource: 'the-power-of-innovation-in-recession', sent: false, sentResource: '' }),
+      pickResourceB: () => this.setState({ resource: 'jobs-of-the-future', sent: false, sentResource: '' }),
+      layersTop, plates, arch, stackTransform: `rotateX(58deg) rotateZ(-42deg) scale(${mob ? .78 : 1}) translateZ(-120px)`,
+      archUp: () => this.setState(s => ({ arch: Math.min(7, s.arch + 1) })), archDown: () => this.setState(s => ({ arch: Math.max(0, s.arch - 1) })),
+      geoRef: this.geoRef,
+      fdePoints: [{ a:'Scoped implementation sprint', b:'one workflow' }, { a:'Dedicated FDE pod', b:'multi-workflow' }, { a:'On site or alongside your team', b:'UAE · GCC · international' }],
+      capsOther: [
+        { n:'02', tag:'Any.xyz', title:'AI Product Studio', text:'Product discovery, interaction design and application engineering for AI-native software, from first concept to customer-ready release.' },
+        { n:'03', tag:'After go-live', title:'Managed AI Operations', text:'Evaluation, monitoring, cost control and governed improvement, so systems keep working as conditions change.' },
+        { n:'04', tag:'Across regions', title:'Multi-Market Intelligence', text:'Approved data, local context and consistent frameworks that turn cross-market signals into decisions and workflows.' },
+      ],
+      missionRef: this.missionRef, stages, stage,
+      stagePrev: () => this.setState(s => ({ stage: (s.stage + 4) % 5, stageTouched: true })), stageNext: () => this.setState(s => ({ stage: (s.stage + 1) % 5, stageTouched: true })),
+      stageNextLabel: S.stage === 4 ? 'Restart from Discover' : 'Next: ' + C.STAGES[S.stage + 1].label + ' →',
+      inds, ind, work,
+      vfSteps: [{ n:'01', t:'Discover', d:'Market signal and a real buyer problem' }, { n:'02', t:'Validate', d:'Evidence of demand before build' }, { n:'03', t:'Build', d:'Reusable DLI engineering assets' }, { n:'04', t:'Launch', d:'Commercial gate and go-to-market' }, { n:'05', t:'Operate', d:'Automation with human governance' }],
+      vfEntities: [
+        { name:'DLI', role:'Engineering company. Forward-deployed engineering and managed operations.', status:'Core', c:'#0a1424' },
+        { name:'Any.xyz', role:'AI product studio for AI-native applications.', status:'Active', c:'#2853a8' },
+        { name:'DLI Labs', role:'Research, prototypes and the Experience Lab.', status:'Active', c:'#2853a8' },
+        { name:'GoFundItNow', role:'Funding intelligence product.', status:'Operating', c:'#17703f' },
+        { name:'Role.ai', role:'Emerging venture.', status:'In development', c:'#5a3fb8' },
+        { name:'CloudAdoptionFramework.com', role:'Cloud and AI modernization assessment.', status:'Future product', c:'#6b778a' },
+      ],
+      methodSteps, method: C.METHOD[S.method], methodBar: (S.method / 4 * 100) + '%',
+      faqs: [
+        { q:'What is forward-deployed AI engineering?', a:'DLI engineers work inside your team and workflows to design, integrate, validate and operate an AI system, accountable to an outcome agreed at the start. It replaces the hand-off between advisory and delivery with one team that builds.' },
+        { q:'Do you work with a specific AI vendor?', a:'No. We are vendor-neutral and select models and platforms per task on accuracy, cost, latency, data residency and risk. Technologies shown on this site are referenced for context; no partnership or endorsement is implied.' },
+        { q:'Where does DLI work?', a:'Our focus is enterprises and institutions in the UAE and wider GCC, and we take on international engagements. Work can be on site or alongside your team.' },
+        { q:'Are the Experience Lab demos live products?', a:'Each item is labelled: Live Demo, Interactive Preview, Prototype or Coming Soon. Previews and prototypes use synthetic data and are not connected to client systems.' },
+        { q:'How does an engagement start?', a:'With a short scoping conversation, then a two-week embed to map the workflow, agree a baseline and decide whether to build. You can stop at any decision gate.' },
+      ],
+      paths, pathLabel: C.PATH_SHORT[S.path], pathLabelLower: C.PATH_SHORT[S.path].toLowerCase(),
+      pathFde: () => this.setState({ path: 2 }), pathDeploy: () => this.setState({ path: 0 }), pathProduct: () => this.setState({ path: 1 }),
+      form: S.form, onName: this.field('name'), onEmail: this.field('email'), onOrg: this.field('org'), onTimeline: this.field('timeline'), onMsg: this.field('msg'),
+      hasErr: !!S.err, err: S.err, sent: S.sent, notSent: !S.sent, firstName: (S.form.name || '').split(' ')[0],
+      submit: async (e) => {
+        e.preventDefault();
+        if (S.sending) return;
+        const f = S.form;
+        const formEl = e.currentTarget;
+        const hp = formEl ? formEl.querySelector('[name="hp_website"]') : null;
+        if (hp && hp.value) return;
+        if (Date.now() - (this.startedAt || 0) < 4000) return;
+        if (!f.name.trim() || !f.org.trim()) return this.setState({ err: 'Please add your name and organization.' });
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email)) return this.setState({ err: 'Please enter a valid work email.' });
+        const resource = S.resource || undefined;
+        const payload = { name: f.name, email: f.email, organization: f.org, market: '', need: C.PATHS[S.path], timeline: f.timeline, problem: f.msg, resource };
+        this.setState({ sending: true, err: '' });
+        let ok = false;
+        try {
+          const res = await fetch('https://api.deeplearningintelligence.com/api/leads', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(payload), signal: AbortSignal.timeout(15000) });
+          ok = res.ok;
+        } catch (err) { ok = false; }
+        if (!ok) { this.setState({ sending: false, err: 'Your note could not be sent just now. Please email damu@DeepLearningIntelligence.com directly.' }); return; }
+        try {
+          window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'dli_lead_submit', pathway: C.PATHS[S.path], resource: resource || null });
+          window.dispatchEvent(new CustomEvent('dli:lead', { detail: { pathway: C.PATHS[S.path], resource: resource || null } }));
+        } catch (err) {}
+        this.setState({ sending: false, sent: true, sentResource: resource || '', err: '' });
+      },
+      resetForm: () => this.setState({ sent: false, sentResource: '', resource: '', form: { name:'', email:'', org:'', timeline:'Within 3 months', msg:'' } }),
+    };
+  }
+}
+</script>
+</body>
+</html>

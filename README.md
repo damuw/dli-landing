@@ -1,39 +1,37 @@
-# Deep Learning Intelligence — 2027 Landing (React + Vite)
+# Deep Learning Intelligence — 2027 site (prototype-derived)
 
-Production source for the new `www.DeepLearningIntelligence.com` landing page.
+Production source for `www.DeepLearningIntelligence.com`.
 
-## Stack
+## What is deployed
 
-- React 19 + TypeScript + Vite 7
-- framer-motion (motion) for scroll choreography and the philosophy typewriter
-- Three.js for the intelligence architecture canvas
-- Tailwind CSS for layout/type
-- Static SEO shell (`index.html`) + five static topic routes under `public/`
+`site/` is the production site, built from the approved `DLI Homepage 2027` prototype
+(`DLI Homepage 2027.dc.html` + `support.js` + `assets/`), with these additions:
 
-## Develop
-
-```bash
-cd app
-npm ci
-npm run dev     # http://localhost:3000
-npm run build   # tsc -b && vite build  -> app/dist
-npm run preview # serve the production build
-```
+- **Typewriter philosophy statement** — "AI is not the outcome. What it makes possible is."
+  typed line-by-line with natural cadence, blinking cursor and reduced-motion fallback.
+- **Real lead capture** — the deployment brief posts to `https://api.deeplearningintelligence.com/api/leads`
+  with honeypot + submit-timing spam guards, validation, sending state and error handling.
+- **Free resources** — two research PDFs delivered by email, with a direct download after submission.
+- **SEO metadata** — canonical, OG/Twitter, favicon.
 
 ## Deploy
-
-Docker (nginx) serving `app/dist`:
 
 ```bash
 docker build -t dli-landing .
 docker run -p 8080:80 dli-landing
 ```
 
-The build expects `app/dist` to exist (`npm run build` first).
+The Dockerfile serves `site/` with nginx (SPA-safe fallback, asset caching).
 
-## Content notes
+## Lead API
 
-- Philosophy thesis is typewriter-animated ("AI is not the outcome. What it makes possible is.") with a blinking cursor and reduced-motion fallback.
-- Experience Lab cards, dialogs and keyboard navigation are prototype-grade and disclose simulated state.
-- Lead capture lives behind `POST {LEAD_API_URL}/api/leads`.
-- Free research PDFs are served from `app/public/resources/` and delivered by email via the lead API.
+Separate service: `damuw/dli-lead-api` (Express + Nodemailer). Configure via Coolify env vars:
+
+- `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`
+- `MAIL_FROM`, `LEAD_TO` (defaults to `damu@DeepLearningIntelligence.com`)
+- `ALLOWED_ORIGINS`
+
+## Legacy
+
+`app/` is the earlier React/Vite baseline (V3.1 brand strip). It is kept for reference and is
+not served by the current Dockerfile.
