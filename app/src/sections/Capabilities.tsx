@@ -9,6 +9,8 @@ import { Typewriter } from "@/components/Typewriter";
 
 // Text-based vendor wordmarks avoid suggesting an official technology-partner relationship.
 // Replace with provider-approved logo assets only after reviewing the applicable brand terms.
+const PHILOSOPHY_LINES = ["AI is not the outcome.", "What it makes", "possible is."];
+
 const technologies = [
   { name: "OpenAI", style: "brand-openai" },
   { name: "Microsoft Copilot", style: "brand-microsoft" },
@@ -63,7 +65,7 @@ export function Capabilities() {
         <div className="mx-auto max-w-[1500px] px-5 sm:px-8 lg:px-16">
           <Reveal>
             <p className="eyebrow text-[#31567c]">Beyond the prototype</p>
-            <Typewriter lines={["AI is not the outcome.", "What it makes", "possible is."]} className="mt-8 max-w-6xl text-[clamp(3rem,7.2vw,7.8rem)] font-medium leading-[0.96] tracking-[-0.072em]" gradientLine={2} />
+            <Typewriter lines={PHILOSOPHY_LINES} className="mt-8 max-w-6xl text-[clamp(3rem,7.2vw,7.8rem)] font-medium leading-[0.96] tracking-[-0.072em]" gradientLine={2} />
           </Reveal>
           <div className="mt-12 grid gap-8 border-t border-[#0a1424]/15 pt-8 md:grid-cols-2">
             <Reveal><p className="max-w-xl text-lg leading-relaxed text-[#42536a]">Intelligence becomes valuable when it moves beyond experiments and into the decisions, systems and experiences that shape how organizations operate.</p></Reveal>

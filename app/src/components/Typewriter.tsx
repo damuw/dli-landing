@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useInView, useReducedMotion } from "framer-motion";
+import { useReducedMotion } from "framer-motion";
 
 /**
  * Typewriter heading.
@@ -7,9 +7,9 @@ import { useInView, useReducedMotion } from "framer-motion";
  * Ported from the Motion (motion.dev) "typewriter change content" behaviour:
  * text is revealed character by character with natural typing cadence (variable
  * speed, pauses at punctuation/spaces), a blinking cursor follows the active line,
- * and when the text prop changes the animation retires and re-types.
+ * and each line reserves its final size so nothing below shifts while typing.
  *
- * Here the content is expressed as ordered lines so the design's line breaks
+ * The content is expressed as ordered lines so the design's line breaks
  * (philosophy thesis) are preserved while still feeling typewriter-driven.
  */
 type TypewriterProps = {
@@ -18,22 +18,43 @@ type TypewriterProps = {
   className?: string;
   /** Zero-based index of the line that renders with the metallic gradient. */
   gradientLine?: number;
-  /** Initial delay in ms before typing starts. */
+  /** Initial delay in ms before typing starts once the heading is in view. */
   startDelay?: number;
 };
 
 export function Typewriter({ lines, className = "", gradientLine = -1, startDelay = 0 }: TypewriterProps) {
   const reduce = useReducedMotion();
   const ref = useRef<HTMLHeadingElement | null>(null);
-  const inView = useInView(ref, { once: true, amount: 0.35 });
+  const textKey = lines.join("\u0000");
+  const [started, setStarted] = useState(false);
   const [counts, setCounts] = useState<number[]>(() => (reduce ? lines.map((line) => line.length) : lines.map(() => 0)));
+
+  // Start when the heading approaches the viewport. Uses scroll/resize geometry
+  // rather than IntersectionObserver so it still works in throttled/hidden tabs.
+  useEffect(() => {
+    if (reduce || started || lines.length === 0) return;
+    const element = ref.current;
+    if (!element) return;
+    const check = () => {
+      const rect = element.getBoundingClientRect();
+      const viewport = window.innerHeight || document.documentElement.clientHeight;
+      if (rect.top < viewport * 0.88 && rect.bottom > 0) setStarted(true);
+    };
+    check();
+    window.addEventListener("scroll", check, { passive: true });
+    window.addEventListener("resize", check);
+    return () => {
+      window.removeEventListener("scroll", check);
+      window.removeEventListener("resize", check);
+    };
+  }, [reduce, started, lines.length]);
 
   useEffect(() => {
     if (reduce) {
       setCounts(lines.map((line) => line.length));
       return;
     }
-    if (!inView) return;
+    if (!started || lines.length === 0) return;
     let cancelled = false;
     const timers: number[] = [];
     const wait = (ms: number, fn: () => void) => {
@@ -56,14 +77,8 @@ export function Typewriter({ lines, className = "", gradientLine = -1, startDela
       const done = charIndex >= line.length;
       if (done) {
         if (lineIndex < lines.length - 1) {
-          const nextIndex = lineIndex + 1;
-          lineIndex = nextIndex;
+          lineIndex += 1;
           charIndex = 0;
-          setCounts((prev) => {
-            const next = [...prev];
-            next[nextIndex] = 0;
-            return next;
-          });
           wait(140 + Math.random() * 180, tick);
           return;
         }
@@ -78,17 +93,24 @@ export function Typewriter({ lines, className = "", gradientLine = -1, startDela
       cancelled = true;
       timers.forEach((t) => window.clearTimeout(t));
     };
-  }, [inView, reduce, lines, startDelay]);
+  }, [started, reduce, textKey, startDelay, lines]);
+
+  const fullText = lines.join(" ");
 
   return (
-    <h2 ref={ref} className={className} aria-label={lines.join(" ")}>
+    <h2 ref={ref} className={className} aria-label={fullText} style={{ minHeight: `${Math.max(1, lines.length) * 0.98}em` }}>
+      {/* Real text for crawlers, screen readers and no-JS; the animated copy stays aria-hidden. */}
+      <span className="sr-only">{fullText}</span>
       {lines.map((line, index) => {
-        const active = !reduce && inView && (counts[index] ?? 0) > 0 && (counts[index] ?? 0) < line.length;
-        const text = line.slice(0, reduce ? line.length : Math.min(counts[index] ?? 0, line.length));
+        const typed = reduce ? line.length : Math.min(counts[index] ?? 0, line.length);
+        const active = !reduce && started && typed < line.length;
         return (
-          <span key={`${line}-${index}`} aria-hidden="true" className={`typewriter-line block ${gradientLine === index ? "text-metallic" : ""}`}>
-            {text}
-            {active ? <span className="typewriter-cursor" aria-hidden="true" /> : null}
+          <span key={`${line}-${index}`} className="typewriter-line" aria-hidden="true">
+            <span className="typewriter-ghost">{line}</span>
+            <span className={`typewriter-text ${gradientLine === index ? "text-metallic" : ""}`}>
+              {line.slice(0, typed)}
+              {active ? <span className="typewriter-cursor" /> : null}
+            </span>
           </span>
         );
       })}
