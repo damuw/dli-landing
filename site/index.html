@@ -17,7 +17,7 @@
 <meta property="og:title" content="DLI | Intelligence. Deployed.">
 <meta property="og:description" content="Forward-deployed AI engineering, agentic workflows, AI-native products and managed AI operations for enterprises in the UAE, GCC and internationally.">
 <meta property="og:url" content="https://deeplearningintelligence.com/">
-<meta property="og:image" content="https://deeplearningintelligence.com/assets/continuum-hero-flat.png">
+<meta property="og:image" content="https://deeplearningintelligence.com/assets/continuum-peel.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="/assets/continuum-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,18 +32,12 @@ button,input,select,textarea{font:inherit}
 button{cursor:pointer}
 :focus-visible{outline:2px solid #3d7df2;outline-offset:3px}
 ::selection{background:rgba(61,125,242,.22)}
-.philo-line{display:block;position:relative;white-space:pre-wrap;overflow-wrap:break-word}
-.philo-ghost{visibility:hidden}
-.philo-text{position:absolute;inset:0;white-space:pre-wrap;overflow-wrap:break-word}
-.philo-grad .philo-text{background:linear-gradient(100deg,#132c46 10%,#3d7df2 46%,#65a5c4 64%,#132c46 92%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.tw-cursor{display:inline-block;width:.09em;height:.82em;margin-left:.03em;background:#3d7df2;vertical-align:text-bottom;animation:tw-blink 1.1s steps(1,end) infinite}
-@keyframes tw-blink{0%,60%{opacity:1}61%,100%{opacity:0}}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.tw-cursor{animation:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </helmet>
 
 <header onFocus="{{ headerFocus }}" onBlur="{{ headerBlur }}" onMouseEnter="{{ headerEnter }}" onMouseLeave="{{ headerLeave }}" style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;justify-content:center;padding:12px clamp(10px,2vw,24px);pointer-events:none;transform:{{ headerT }};opacity:{{ headerO }};transition:transform .42s cubic-bezier(.2,.8,.2,1),opacity .32s ease">
-  <nav aria-label="Primary" style="pointer-events:{{ navPE }};width:100%;max-width:1440px;display:flex;align-items:center;gap:20px;padding:9px 10px 9px 16px;border-radius:14px;border:1px solid {{ nav.border }};background:{{ nav.bg }};color:{{ nav.fg }};backdrop-filter:blur(22px) saturate(160%);box-shadow:{{ nav.shadow }};transition:background .45s ease,color .45s ease,border-color .45s ease,box-shadow .45s ease">
+  <nav aria-label="Primary" style="pointer-events:{{ navPE }};width:100%;max-width:1440px;display:flex;align-items:center;gap:20px;padding:9px 10px 9px 16px;border-radius:14px;border:1px solid {{ nav.border }};background:{{ nav.bg }};color:{{ nav.fg }};backdrop-filter:{{ nav.blur }};-webkit-backdrop-filter:{{ nav.blur }};box-shadow:{{ nav.shadow }};transition:background .6s ease,color .45s ease,border-color .6s ease,box-shadow .6s ease,backdrop-filter .6s ease">
     <a href="#top" aria-label="Deep Learning Intelligence — home" style="display:flex;align-items:center;gap:10px;flex:none">
       <span ref="{{ markRef }}" aria-hidden="true" style="position:relative;display:block;width:40px;height:32px;filter:{{ nav.markFilter }};transition:filter .45s">
         <span data-frag="0" style="position:absolute;inset:0;background:url('assets/continuum-mark.png') center/contain no-repeat;clip-path:polygon(0 0,50% 0,50% 50%,0 50%)"></span>
@@ -81,24 +75,18 @@ button{cursor:pointer}
 </sc-if>
 
 <main>
-<section id="top" ref="{{ heroRef }}" data-nav-theme="light" data-screen-label="01 Hero" aria-labelledby="hero-h" style="position:relative;overflow:hidden;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:92px 20px 26px;background:#ffffff;color:#0a1424">
+<section id="top" ref="{{ heroRef }}" data-nav-theme="light" data-screen-label="01 Hero" aria-labelledby="hero-h" style="position:relative;overflow:hidden;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:84px 20px 26px;background:radial-gradient(ellipse 70% 60% at 50% 30%,#f1edee 0%,#e2e0e5 48%,#d3d2d8 100%);color:#0a1424">
   <div style="perspective:1400px;position:relative;z-index:1">
-    <div ref="{{ heroArtRef }}" style="will-change:transform,opacity;transform-style:preserve-3d">
-      <div ref="{{ floatRef }}" role="img" aria-label="The DLI Continuum: a sculptural silver Möbius-inspired ribbon whose openings show a city skyline, a connected globe, a data wave and enterprise interfaces." style="position:relative;width:clamp(300px,min(84vw,calc((100vh - 380px) * 1.333)),660px);aspect-ratio:660/495;will-change:transform;transform-style:preserve-3d">
-        <div aria-hidden="true" style="position:absolute;inset:0;transform:translateZ(-42px) scale(1.03);mask-image:url('assets/continuum-cutout.png');mask-size:100% 100%;mask-repeat:no-repeat">
-          <div ref="{{ imageryRef }}" style="position:absolute;inset:0;background:url('assets/continuum-cutout.png') center/100% 100% no-repeat;will-change:transform"></div>
-        </div>
-        <div aria-hidden="true" style="position:absolute;inset:0;transform:translateZ(-8px) scale(1.006);background:url('assets/continuum-ribbon.png') center/100% 100% no-repeat;filter:brightness(.62) contrast(1.1)"></div>
-        <div aria-hidden="true" style="position:absolute;inset:0;transform:translateZ(-4px) scale(1.003);background:url('assets/continuum-ribbon.png') center/100% 100% no-repeat;filter:brightness(.8)"></div>
-        <div style="position:absolute;inset:0;transform:translateZ(0);background:url('assets/continuum-ribbon.png') center/100% 100% no-repeat"></div>
-        <div ref="{{ shineRef }}" aria-hidden="true" style="position:absolute;inset:0;transform:translateZ(1px);pointer-events:none;mix-blend-mode:soft-light;background:radial-gradient(ellipse 34% 30% at var(--mx,50%) var(--my,38%),rgba(255,255,255,1),rgba(255,255,255,0) 100%),linear-gradient(var(--ang,135deg),rgba(255,255,255,.35),rgba(40,50,70,.25));mask-image:url('assets/continuum-ribbon.png');mask-size:100% 100%;mask-repeat:no-repeat"></div>
-        <div ref="{{ sweepRef }}" aria-hidden="true" style="position:absolute;inset:0;transform:translateZ(2px);pointer-events:none;mix-blend-mode:overlay;background:linear-gradient(105deg,rgba(255,255,255,0) 42%,rgba(255,255,255,.85) 50%,rgba(255,255,255,0) 58%);background-size:260% 100%;background-position:-80% 0;mask-image:url('assets/continuum-ribbon.png');mask-size:100% 100%;mask-repeat:no-repeat"></div>
+    <div ref="{{ heroArtRef }}" style="position:relative;will-change:transform,opacity;touch-action:manipulation">
+      <div ref="{{ floatRef }}" role="img" aria-label="The DLI Continuum: a sculptural silver Möbius-inspired ribbon whose openings show a city skyline, a connected globe, a data wave and enterprise interfaces." style="position:relative;width:clamp(320px,min(90vw,calc((100vh - 360px) * 1.404)),760px);aspect-ratio:716/510;z-index:1;will-change:transform;transform-style:preserve-3d">
+        <div ref="{{ imageryRef }}" style="position:absolute;inset:0;background:url('assets/continuum-peel.png') center/100% 100% no-repeat;will-change:transform"></div>
+        <div ref="{{ shineRef }}" aria-hidden="true" style="display:none"></div>
+        <div ref="{{ sweepRef }}" aria-hidden="true" style="display:none"></div>
       </div>
     </div>
   </div>
-  <div style="position:relative;z-index:2;margin-top:-6px;display:flex;flex-direction:column;align-items:center;text-align:center;max-width:960px">
-    <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.5em;text-transform:uppercase;color:#2c3a4e">Deep Learning Intelligence</p>
-    <h1 id="hero-h" style="margin:10px 0 0;font-size:clamp(44px,5.6vw,84px);font-weight:500;letter-spacing:-.045em;line-height:1.04;color:#0a1424">Intelligence. Deployed.</h1>
+  <div style="position:relative;z-index:2;margin-top:-10px;display:flex;flex-direction:column;align-items:center;text-align:center;max-width:960px">
+    <h1 id="hero-h" style="margin:0;font-size:clamp(44px,5.6vw,84px);font-weight:500;letter-spacing:-.045em;line-height:1.04;color:#0a1424">Intelligence. Deployed.</h1>
     <p style="margin:16px 0 0;max-width:800px;font-size:clamp(15px,1.25vw,18px);line-height:1.55;color:#4a5468;text-wrap:balance">We engineer, deploy and operate intelligent systems that turn data, technology and operational complexity into real-world outcomes — across markets, industries and organizations.</p>
     <div style="margin-top:26px;display:flex;flex-wrap:wrap;justify-content:center;gap:14px 28px">
       <a href="#experience-lab" style="display:flex;align-items:center;gap:14px;min-height:46px;padding:0 30px;border-radius:9px;background:#0a1424;color:#fff;font-size:15px;font-weight:600;box-shadow:0 10px 24px rgba(20,35,61,.14);transition:transform .25s" style-hover="transform:translateY(-2px)">Explore the Experience Lab <span aria-hidden="true">→</span></a>
@@ -197,9 +185,8 @@ button{cursor:pointer}
   <div style="max-width:1320px;margin:0 auto">
     <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.34em;text-transform:uppercase;color:#4c5a6e">Our philosophy</p>
     <h2 id="philo-h" aria-label="AI is not the outcome. What it makes possible is." style="margin:24px 0 0;font-size:clamp(48px,8.4vw,136px);font-weight:500;letter-spacing:-.055em;line-height:.98;color:#0a1424">
-      <span aria-hidden="true" class="philo-line"><span class="philo-ghost">AI is not the outcome.</span><span class="philo-text">{{ philoL1 }}<sc-if value="{{ philoC1 }}"><span class="tw-cursor"></span></sc-if></span></span>
-      <span aria-hidden="true" class="philo-line"><span class="philo-ghost">What it makes</span><span class="philo-text">{{ philoL2 }}<sc-if value="{{ philoC2 }}"><span class="tw-cursor"></span></sc-if></span></span>
-      <span aria-hidden="true" class="philo-line philo-grad"><span class="philo-ghost">possible is.</span><span class="philo-text">{{ philoL3 }}<sc-if value="{{ philoC3 }}"><span class="tw-cursor"></span></sc-if></span></span>
+      <span aria-hidden="true" style="display:block"><sc-for list="{{ philo1 }}" as="w" hint-placeholder-count="5"><span style="opacity:{{ w.op }};transition:opacity .35s ease">{{ w.t }} </span></sc-for></span>
+      <span aria-hidden="true" style="display:block;margin-top:.08em"><sc-for list="{{ philo2 }}" as="w" hint-placeholder-count="5"><span style="opacity:{{ w.op }};transition:opacity .35s ease;background:{{ w.grad }};background-clip:{{ w.clip }};color:{{ w.col }}">{{ w.t }} </span></sc-for></span>
     </h2>
     <div style="margin-top:clamp(48px,7vw,96px);display:flex;flex-wrap:wrap;gap:24px 80px;align-items:flex-start;justify-content:space-between">
       <p style="margin:0;max-width:620px;font-size:clamp(18px,1.6vw,24px);line-height:1.5;color:#2c3a4e;text-wrap:pretty">The value of AI is measured in what changes: decisions made with better context, work that moves without waiting, services that reach people sooner. We engineer for that change and measure our work against it.</p>
@@ -521,7 +508,7 @@ button{cursor:pointer}
           </button>
         </sc-for>
       </div>
-      <div style="margin-top:36px;border-top:1px solid rgba(255,255,255,.14);padding-top:26px">
+      <div id="resources" style="margin-top:36px;border-top:1px solid rgba(255,255,255,.14);padding-top:26px;scroll-margin-top:110px">
         <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.34em;text-transform:uppercase;color:#9fe8fa">Free resources</p>
         <h3 style="margin:10px 0 0;font-size:22px;font-weight:500;letter-spacing:-.03em">Read the research before the first call.</h3>
         <p style="margin:10px 0 0;max-width:420px;font-size:14px;line-height:1.6;color:#8ea4ba">Two short briefings DLI prepared on innovation during recession and the future of work. Select one, leave your work email, and we will send it over.</p>
@@ -569,10 +556,10 @@ button{cursor:pointer}
       <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:600;letter-spacing:.34em;line-height:1.45;text-transform:uppercase;margin-left:6px">Deep Learning<br>Intelligence</span>
     </div>
     <nav aria-label="Footer" style="display:flex;flex-wrap:wrap;gap:12px 32px;font-size:14px">
-      <a href="#solutions" style-hover="color:#fff">Solutions</a><a href="#experience-lab" style-hover="color:#fff">Experience Lab</a><a href="#industries" style-hover="color:#fff">Industries</a><a href="#venture-factory" style-hover="color:#fff">Venture Factory</a><a href="#faq" style-hover="color:#fff">FAQ</a><a href="#start" style-hover="color:#fff">Start a Deployment</a>
+      <a href="#solutions" style-hover="color:#fff">Solutions</a><a href="#experience-lab" style-hover="color:#fff">Experience Lab</a><a href="#industries" style-hover="color:#fff">Industries</a><a href="#resources" style-hover="color:#fff">Resources</a><a href="#venture-factory" style-hover="color:#fff">Venture Factory</a><a href="#faq" style-hover="color:#fff">FAQ</a><a href="#start" style-hover="color:#fff">Start a Deployment</a>
     </nav>
   </div>
-  <p style="max-width:1440px;margin:40px auto 0;font-size:12px;line-height:1.6;color:#6f849a">© 2026 Deep Learning Intelligence. Independent engineering services. Referenced technologies are trademarks of their respective owners. No partnership or endorsement is implied. Experience Lab items are labelled by status; previews and prototypes use synthetic data.</p>
+  <p style="max-width:1440px;margin:40px auto 0;font-size:12px;line-height:1.6;color:#6f849a">© 2020-2026 Deep Learning Intelligence. Independent engineering services. Referenced technologies are trademarks of their respective owners. No partnership or endorsement is implied. Experience Lab items are labelled by status; previews and prototypes use synthetic data.</p>
 </footer>
 
 <sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
@@ -672,17 +659,16 @@ class Component extends DCLogic {
   static PATHS = ['Start an Enterprise Deployment','Build an AI Product','Explore an FDE Engagement','Discuss AI Adoption & Modernization'];
   static PATH_SHORT = ['Enterprise deployment','AI product','FDE engagement','AI adoption'];
 
-  state = { navShown:false, hoverTop:false, headerFocus:false, nav:'light', mobile:false, menuOpen:false, labIdx:0, labProg:0, modal:null, tryNote:'', arch:3, stage:0, stageTouched:false, ind:0, method:0, path:0, form:{name:'',email:'',org:'',timeline:'Within 3 months',msg:''}, sent:false, err:'', philo:0, philoTyped:0, sending:false, resource:'', sentResource:'', marqueePaused:false };
+  state = { navShown:false, hoverTop:false, headerFocus:false, nav:'light', mobile:false, menuOpen:false, labIdx:0, labProg:0, modal:null, tryNote:'', arch:3, stage:0, stageTouched:false, ind:0, method:0, path:0, form:{name:'',email:'',org:'',timeline:'Within 3 months',msg:''}, sent:false, err:'', philo:0, sending:false, resource:'', sentResource:'', marqueePaused:false };
   heroArtRef = React.createRef(); heroImgRef = React.createRef(); shineRef = React.createRef(); sweepRef = React.createRef(); cueRef = React.createRef();
   marqueeRef = React.createRef(); marqueeShellRef = React.createRef(); trackRef = React.createRef(); waveRef = React.createRef();
-  philoRef = React.createRef(); heroRef = React.createRef(); floatRef = React.createRef(); imageryRef = React.createRef(); markRef = React.createRef();
+  philoRef = React.createRef(); heroRef = React.createRef(); floatRef = React.createRef(); imageryRef = React.createRef(); markRef = React.createRef(); 
   bgLabRef = React.createRef(); bgArchRef = React.createRef(); bgMissionRef = React.createRef(); bgStartRef = React.createRef(); lastY = 0; heroAnims = []; missionRef = React.createRef(); geoRef = React.createRef(); closeBtnRef = React.createRef();
   m = { x:0, y:0, tx:0, ty:0 }; anims = [];
 
   componentDidMount() {
     this.reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     this.startedAt = Date.now();
-    this.philoStarted = false;
     this.onResize = () => { const mob = window.innerWidth < 1080; if (mob !== this.state.mobile) this.setState({ mobile: mob, menuOpen: false }); };
     this.onScroll = () => { if (!this.sRaf) this.sRaf = requestAnimationFrame(() => { this.sRaf = 0; this.tick(); }); };
     this.onMouse = (e) => { const y = e.clientY; const ht = y < 50 || (this.state.hoverTop && y < 92); if (ht !== this.state.hoverTop) this.setState({ hoverTop: ht }); if (!this.heroMotion()) return; this.m.tx = e.clientX / window.innerWidth * 2 - 1; this.m.ty = e.clientY / window.innerHeight * 2 - 1; if (!this.mRaf) this.mRaf = requestAnimationFrame(this.lerp); };
@@ -693,7 +679,7 @@ class Component extends DCLogic {
     this.onDocLeave = () => { if (this.state.hoverTop) this.setState({ hoverTop: false }); }; document.addEventListener('mouseleave', this.onDocLeave);
     this.lastY = window.scrollY;
     this.onResize(); this.tick();
-    this.startMotion(); this.startMarquee(); this.startWave();
+    this.startMotion(); this.startMarquee(); this.startWave(); setTimeout(() => this.startTypewriters(), 60);
     this.mcTimer = setInterval(() => { if (this.props.missionAutoplay === false || this.state.stageTouched || !this.missionVisible || this.reduce) return; this.setState(s => ({ stage: (s.stage + 1) % 5 })); }, 6500);
   }
   componentDidUpdate(pp, ps) {
@@ -704,11 +690,43 @@ class Component extends DCLogic {
     this._lastModal = this.state.modal;
   }
   componentWillUnmount() {
+    this.typeIO && this.typeIO.disconnect(); (this.typeTimers || []).forEach(clearTimeout);
     window.removeEventListener('resize', this.onResize); window.removeEventListener('scroll', this.onScroll);
     window.removeEventListener('mousemove', this.onMouse); window.removeEventListener('keydown', this.onKey);
     document.removeEventListener('mouseleave', this.onDocLeave); this.heroIO && this.heroIO.disconnect(); this.heroAnims.forEach(a => a.cancel()); (this.markAnim || []).forEach(a => a.cancel());
     cancelAnimationFrame(this.sRaf); cancelAnimationFrame(this.mRaf); cancelAnimationFrame(this.wRaf);
     clearInterval(this.mcTimer); this.io && this.io.disconnect(); this.anims.forEach(a => a.cancel()); this.mq && this.mq.cancel();
+  }
+  startTypewriters() {
+    if (this.reduce) return;
+    this.typeStore = this.typeStore || new WeakMap();
+    const hs = [...document.querySelectorAll('main h1, main h2')].filter(el => el.id && el.id !== 'm-title');
+    const items = hs.map(el => { const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT); const nodes = []; let n; while ((n = w.nextNode())) nodes.push(n);
+      let full = this.typeStore.get(el); if (!full || full.length !== nodes.length) { full = nodes.map(x => x.nodeValue); this.typeStore.set(el, full); }
+      if (!el.hasAttribute('aria-label')) el.setAttribute('aria-label', full.join('').replace(/\s+/g, ' ').trim());
+      return { el, nodes, full, done: false }; }).filter(it => it.full.join('').trim());
+    this.typeTimers = this.typeTimers || [];
+    const restore = (it) => { it.nodes.forEach((x, i) => x.nodeValue = it.full[i]); it.el.style.minHeight = ''; };
+    const type = (it) => {
+      if (it.done) return; it.done = true;
+      it.el.style.minHeight = it.el.offsetHeight + 'px'; it.nodes.forEach(x => x.nodeValue = '');
+      const caret = document.createElement('span'); caret.setAttribute('aria-hidden', 'true');
+      caret.style.cssText = 'display:inline-block;width:.055em;height:.82em;margin-left:.05em;vertical-align:-.04em;background:#3d7df2;border-radius:1px';
+      const blink = caret.animate([{ opacity: 1 }, { opacity: 1, offset: .5 }, { opacity: 0, offset: .55 }, { opacity: 0 }], { duration: 900, iterations: Infinity });
+      let ni = 0, ci = 0;
+      const step = () => {
+        while (ni < it.nodes.length && !it.full[ni].length) ni++;
+        if (ni >= it.nodes.length || !it.el.isConnected) { restore(it); this.typeTimers.push(setTimeout(() => { caret.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 400, fill: 'forwards' }).onfinish = () => { blink.cancel(); caret.remove(); }; }, 1400)); return; }
+        const node = it.nodes[ni], s = it.full[ni]; ci++; node.nodeValue = s.slice(0, ci);
+        if (node.parentNode && caret.previousSibling !== node) node.parentNode.insertBefore(caret, node.nextSibling);
+        const ch = s[ci - 1]; if (ci >= s.length) { ni++; ci = 0; }
+        this.typeTimers.push(setTimeout(step, 26 + Math.random() * 38 + (ch === '.' ? 300 : ch === ',' || ch === "'" ? 120 : ch === ' ' ? 18 : 0)));
+      };
+      step();
+    };
+    this.typeIO && this.typeIO.disconnect();
+    this.typeIO = new IntersectionObserver(es => es.forEach(en => { if (!en.isIntersecting) return; this.typeIO.unobserve(en.target); const it = items.find(x => x.el === en.target); if (it) this.typeTimers.push(setTimeout(() => type(it), it.el.tagName === 'H1' ? 400 : 100)); }), { threshold: .15, rootMargin: '0px 0px -8% 0px' });
+    items.forEach(it => this.typeIO.observe(it.el));
   }
   heroMotion() { return this.props.heroMotion !== false && !this.reduce; }
   startMotion() {
@@ -732,11 +750,11 @@ class Component extends DCLogic {
       { transform:'translate3d(0,0,0) rotateX(0deg) rotateY(0deg) rotateZ(0deg)' }
     ], { duration: 24000, iterations: Infinity, easing:'ease-in-out' }));
     if (im) H.push(im.animate([
-      { transform:'translate(0,0) scale(1.04)' },
-      { transform:'translate(-1.2%,.6%) scale(1.055)' },
-      { transform:'translate(.7%,-.8%) scale(1.045)' },
-      { transform:'translate(1.1%,.5%) scale(1.055)' },
-      { transform:'translate(0,0) scale(1.04)' }
+      { transform:'translate(0,0) scale(1)' },
+      { transform:'translate(-.6%,.3%) scale(1.012)' },
+      { transform:'translate(.4%,-.4%) scale(1.006)' },
+      { transform:'translate(.5%,.25%) scale(1.012)' },
+      { transform:'translate(0,0) scale(1)' }
     ], { duration: 24000, iterations: Infinity, easing:'ease-in-out' }));
     if (sw) H.push(sw.animate([{ backgroundPosition:'-80% 0', offset:0 }, { backgroundPosition:'180% 0', offset:.3 }, { backgroundPosition:'180% 0', offset:1 }], { duration: 12000, iterations: Infinity, easing:'cubic-bezier(.45,0,.2,1)', delay: 1500 }));
     if (cue) H.push(cue.animate([{ transform:'scaleY(0)', opacity:1 }, { transform:'scaleY(1)', opacity:1, offset:.6 }, { transform:'scaleY(1)', opacity:0 }], { duration: 2400, iterations: Infinity }));
@@ -751,26 +769,6 @@ class Component extends DCLogic {
     el.style.opacity = on ? String(Math.max(0, 1 - p * 1.1)) : '1';
     const sh = this.shineRef.current; if (sh) { sh.style.setProperty('--mx', (50 + m.x * 26) + '%'); sh.style.setProperty('--my', (38 + m.y * 20) + '%'); sh.style.setProperty('--ang', (135 + m.x * 40) + 'deg'); sh.style.opacity = on ? '1' : '0'; }
   }
-  startPhilo() {
-    if (this.philoStarted) return;
-    this.philoStarted = true;
-    const LINES = ['AI is not the outcome.', 'What it makes', 'possible is.'];
-    const flat = LINES.join('');
-    const total = flat.length;
-    const ends = []; let run = 0;
-    LINES.forEach(l => { run += l.length; ends.push(run); });
-    if (this.reduce) { this.setState({ philoTyped: total }); return; }
-    let n = 0;
-    const step = () => {
-      n += 1;
-      this.setState({ philoTyped: n });
-      if (n >= total) return;
-      const ch = flat.charAt(n - 1);
-      const pause = ends.includes(n) ? 190 : ch === ' ' ? 45 : /[.!?…]/.test(ch) ? 260 : 18 + Math.random() * 30;
-      setTimeout(step, pause);
-    };
-    setTimeout(step, 180);
-  }
   tick() {
     this.applyHero();
     let theme = 'light';
@@ -778,10 +776,11 @@ class Component extends DCLogic {
     const upd = {};
     if (theme !== this.state.nav) upd.nav = theme;
     const y = window.scrollY, dy = y - this.lastY;
+    const atTop = y < 24; if (atTop !== this.state.atTop) upd.atTop = atTop;
     if (Math.abs(dy) > 4) { const shown = dy < 0; if (shown !== this.state.navShown) upd.navShown = shown; this.lastY = y; }
     if (!this.reduce) { const vh = window.innerHeight; [this.bgLabRef, this.bgArchRef, this.bgMissionRef, this.bgStartRef].forEach(r => { const b = r.current; if (!b) return; const s = b.parentNode.getBoundingClientRect(); if (s.bottom < -50 || s.top > vh + 50) return; const off = (s.top + s.height / 2 - vh / 2); b.style.transform = 'translate3d(0,' + (off * -0.22).toFixed(1) + 'px,0)'; }); }
     const ph = this.philoRef.current;
-    if (ph) { const r = ph.getBoundingClientRect(); const p = Math.max(0, Math.min(1, (window.innerHeight * .9 - r.top) / (r.height * .75))); if (Math.abs(p - this.state.philo) > .01) upd.philo = p; if (p > 0.02) this.startPhilo(); }
+    if (ph) { const r = ph.getBoundingClientRect(); const p = Math.max(0, Math.min(1, (window.innerHeight * .9 - r.top) / (r.height * .75))); if (Math.abs(p - this.state.philo) > .01) upd.philo = p; }
     const mc = this.missionRef.current; if (mc) { const r = mc.getBoundingClientRect(); this.missionVisible = r.top < window.innerHeight * .6 && r.bottom > window.innerHeight * .4; }
     if (Object.keys(upd).length) this.setState(upd);
   }
@@ -832,14 +831,12 @@ class Component extends DCLogic {
     const nav = dark
       ? { bg:'linear-gradient(115deg,rgba(14,35,56,.72),rgba(5,19,34,.5))', fg:'#f2f5f9', border:'rgba(255,255,255,.14)', shadow:'0 12px 40px rgba(0,0,0,.25)', ctaBg:'#fff', ctaFg:'#0a1424', markFilter:'brightness(2.4) saturate(.6)' }
       : { bg:'linear-gradient(115deg,rgba(255,255,255,.62),rgba(242,246,250,.38))', fg:'#0a1424', border:'rgba(255,255,255,.7)', shadow:'0 10px 34px rgba(19,44,70,.07)', ctaBg:'#0a1424', ctaFg:'#fff', markFilter:'none' };
+    nav.blur = 'blur(22px) saturate(160%)';
+    if ((S.atTop ?? window.scrollY < 24) && !S.menuOpen) Object.assign(nav, { bg:'rgba(255,255,255,0)', border:'rgba(255,255,255,0)', shadow:'0 0 0 rgba(0,0,0,0)', blur:'none' });
     const labs = C.LABS.map(l => ({ ...l, hasImg: !!l.img, noImg: !l.img, badgeFg: C.BADGE[l.status], open: () => this.setState({ modal: l.id, tryNote: '' }) }));
     const ml = labs.find(l => l.id === S.modal) || labs[0];
     const m = { ...ml, bgImg: ml.img ? `url("${ml.img}")` : 'none', tryLabel: ml.status === 'Coming Soon' ? 'Join the Waitlist' : 'Try the Experience' };
-    const PH = ['AI is not the outcome.', 'What it makes', 'possible is.'];
-    const phOff = [0, PH[0].length, PH[0].length + PH[1].length];
-    const phTotal = PH.join('').length;
-    const phSlice = (i) => PH[i].slice(0, Math.max(0, Math.min((S.philoTyped || 0) - phOff[i], PH[i].length)));
-    const phOn = (i) => (S.philoTyped || 0) >= phOff[i] && (S.philoTyped || 0) < phOff[i] + PH[i].length;
+    const pw = (arr, start) => arr.map((t, i) => { const k = (start + i) / 10; const op = this.reduce ? 1 : Math.max(.14, Math.min(1, (S.philo - k * .85) * 6 + .14)); const g = t === 'possible'; return { t, op, grad: g ? 'linear-gradient(100deg,#132c46 0%,#3d7df2 45%,#8a74f0 80%)' : 'none', clip: g ? 'text' : 'border-box', col: g ? 'transparent' : 'inherit' }; });
     const L = C.LAYERS;
     const layersTop = L.map((l, i) => ({ ...l, i, n: String(i + 1).padStart(2, '0'), sel: i === S.arch, bg: i === S.arch ? 'rgba(101,216,244,.12)' : 'transparent', bd: i === S.arch ? 'rgba(101,216,244,.55)' : 'rgba(190,215,240,.1)', fg: i === S.arch ? '#fff' : '#b7c5d5', onSel: () => this.setState({ arch: i }) })).reverse();
     const plates = L.map((l, i) => { const sel = i === S.arch; const z = i * 34 + (i > S.arch ? 46 : 0) + (sel ? 22 : 0); return { n: String(i + 1).padStart(2, '0'), label: l.label, z: z + 'px', bg: sel ? 'rgba(40,120,170,.42)' : 'rgba(14,34,60,.66)', bd: sel ? '#65d8f4' : 'rgba(150,190,230,.24)', fg: sel ? '#e9fbff' : 'rgba(190,215,240,.55)', shadow: sel ? '0 0 50px rgba(101,216,244,.35), inset 0 0 40px rgba(101,216,244,.15)' : '0 10px 30px rgba(0,0,0,.25)', op: sel ? 1 : (i > S.arch ? .55 : .85), core: sel ? '64px' : '28px', onSel: () => this.setState({ arch: i }) }; });
@@ -862,7 +859,7 @@ class Component extends DCLogic {
       bgLabRef: this.bgLabRef, bgArchRef: this.bgArchRef, bgMissionRef: this.bgMissionRef, bgStartRef: this.bgStartRef,
       nav, desktop: !mob, mobile: mob, menuOpen: S.menuOpen,
       toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })), closeMenu: () => this.setState({ menuOpen: false }),
-      navLinks: [{ label:'Solutions', href:'#solutions' }, { label:'Experience Lab', href:'#experience-lab' }, { label:'Industries', href:'#industries' }, { label:'Insights', href:'#faq' }, { label:'Company', href:'#venture-factory' }],
+      navLinks: [{ label:'Solutions', href:'#solutions' }, { label:'Experience Lab', href:'#experience-lab' }, { label:'Industries', href:'#industries' }, { label:'Resources', href:'#resources' }, { label:'Insights', href:'#faq' }, { label:'Company', href:'#venture-factory' }],
       heroArtRef: this.heroArtRef, heroImgRef: this.heroImgRef, shineRef: this.shineRef, sweepRef: this.sweepRef, cueRef: this.cueRef,
       marqueeRef: this.marqueeRef, marqueeShellRef: this.marqueeShellRef, wordmarks: C.WORDMARKS.map(w => ({ ...w, bgImg: 'url("' + w.logo + '")', ar: String(Component.AR[w.logo.split('/').pop()] || 1), alt: w.text ? '' : w.name, showText: !!w.text, r: w.r || '0' })),
       marqueeAnimated: !this.reduce, marqueeOverflow: this.reduce ? 'auto' : 'hidden', marqueePaused: S.marqueePaused, marqueeLabel: S.marqueePaused ? '▶ Play' : '❚❚ Pause',
@@ -876,14 +873,7 @@ class Component extends DCLogic {
       modalOpen: !!S.modal, m, closeModal: this.closeModal, closeBtnRef: this.closeBtnRef, tryNote: S.tryNote,
       actTry: () => this.setState({ tryNote: ml.status === 'Coming Soon' ? 'Waitlist sign-up connects to CloudAdoptionFramework.com at launch.' : 'Experience launches in its own route (/lab/' + ml.id + ') once the demo build is connected.' }),
       actTech: () => this.goTo('architecture'), actDeploy: () => this.goTo('start', 0), actCustom: () => this.goTo('start', 3),
-      philoRef: this.philoRef, philoL1: phSlice(0), philoL2: phSlice(1), philoL3: phSlice(2),
-      philoC1: phOn(0), philoC2: phOn(1), philoC3: phOn(2),
-      submitLabel: S.sending ? 'Sending…' : 'Send deployment brief — ' + C.PATH_SHORT[S.path], submitOpacity: S.sending ? '.7' : '1',
-      sending: S.sending, resourceA: S.resource === 'the-power-of-innovation-in-recession', resourceB: S.resource === 'jobs-of-the-future',
-      resourceNote: S.resource ? (S.resource === 'jobs-of-the-future' ? 'Selected: Jobs of the Future — submit the form to receive it.' : 'Selected: The Power of Innovation in Recession — submit the form to receive it.') : '',
-      resourceSent: S.sent && !!S.sentResource, resourceUrl: S.sentResource === 'jobs-of-the-future' ? '/resources/Jobs-of-the-Future.pdf' : (S.sentResource ? '/resources/The-Power-of-Innovation-in-Recession.pdf' : ''),
-      pickResourceA: () => this.setState({ resource: 'the-power-of-innovation-in-recession', sent: false, sentResource: '' }),
-      pickResourceB: () => this.setState({ resource: 'jobs-of-the-future', sent: false, sentResource: '' }),
+      philoRef: this.philoRef, philo1: pw(['AI', 'is', 'not', 'the', 'outcome.'], 0), philo2: pw(['What', 'it', 'makes', 'possible', 'is.'], 5),
       layersTop, plates, arch, stackTransform: `rotateX(58deg) rotateZ(-42deg) scale(${mob ? .78 : 1}) translateZ(-120px)`,
       archUp: () => this.setState(s => ({ arch: Math.min(7, s.arch + 1) })), archDown: () => this.setState(s => ({ arch: Math.max(0, s.arch - 1) })),
       geoRef: this.geoRef,
@@ -915,6 +905,12 @@ class Component extends DCLogic {
         { q:'How does an engagement start?', a:'With a short scoping conversation, then a two-week embed to map the workflow, agree a baseline and decide whether to build. You can stop at any decision gate.' },
       ],
       paths, pathLabel: C.PATH_SHORT[S.path], pathLabelLower: C.PATH_SHORT[S.path].toLowerCase(),
+      submitLabel: S.sending ? 'Sending…' : 'Send deployment brief — ' + C.PATH_SHORT[S.path], submitOpacity: S.sending ? '.7' : '1',
+      resourceA: S.resource === 'the-power-of-innovation-in-recession', resourceB: S.resource === 'jobs-of-the-future',
+      resourceNote: S.resource ? (S.resource === 'jobs-of-the-future' ? 'Selected: Jobs of the Future — submit the form to receive it.' : 'Selected: The Power of Innovation in Recession — submit the form to receive it.') : '',
+      resourceSent: S.sent && !!S.sentResource, resourceUrl: S.sentResource === 'jobs-of-the-future' ? '/resources/Jobs-of-the-Future.pdf' : (S.sentResource ? '/resources/The-Power-of-Innovation-in-Recession.pdf' : ''),
+      pickResourceA: () => this.setState({ resource: 'the-power-of-innovation-in-recession', sent: false, sentResource: '' }),
+      pickResourceB: () => this.setState({ resource: 'jobs-of-the-future', sent: false, sentResource: '' }),
       pathFde: () => this.setState({ path: 2 }), pathDeploy: () => this.setState({ path: 0 }), pathProduct: () => this.setState({ path: 1 }),
       form: S.form, onName: this.field('name'), onEmail: this.field('email'), onOrg: this.field('org'), onTimeline: this.field('timeline'), onMsg: this.field('msg'),
       hasErr: !!S.err, err: S.err, sent: S.sent, notSent: !S.sent, firstName: (S.form.name || '').split(' ')[0],
