@@ -26,13 +26,19 @@ export function Typewriter({ lines, className = "", gradientLine = -1, startDela
   const reduce = useReducedMotion();
   const ref = useRef<HTMLHeadingElement | null>(null);
   const textKey = lines.join("\u0000");
+  const flat = lines.join("");
+  const total = flat.length;
+  const offsets = lines.reduce<number[]>((acc, _line, index) => {
+    acc.push(index === 0 ? 0 : acc[index - 1] + lines[index - 1].length);
+    return acc;
+  }, []);
   const [started, setStarted] = useState(false);
-  const [counts, setCounts] = useState<number[]>(() => (reduce ? lines.map((line) => line.length) : lines.map(() => 0)));
+  const [typed, setTyped] = useState(() => (reduce ? total : 0));
 
   // Start when the heading approaches the viewport. Uses scroll/resize geometry
   // rather than IntersectionObserver so it still works in throttled/hidden tabs.
   useEffect(() => {
-    if (reduce || started || lines.length === 0) return;
+    if (reduce || started || total === 0) return;
     const element = ref.current;
     if (!element) return;
     const check = () => {
@@ -47,14 +53,20 @@ export function Typewriter({ lines, className = "", gradientLine = -1, startDela
       window.removeEventListener("scroll", check);
       window.removeEventListener("resize", check);
     };
-  }, [reduce, started, lines.length]);
+  }, [reduce, started, total]);
 
   useEffect(() => {
     if (reduce) {
-      setCounts(lines.map((line) => line.length));
+      setTyped(total);
       return;
     }
-    if (!started || lines.length === 0) return;
+    if (!started || total === 0) return;
+    const lineEnds = new Set<number>();
+    let running = 0;
+    for (const line of lines) {
+      running += line.length;
+      lineEnds.add(running);
+    }
     let cancelled = false;
     const timers: number[] = [];
     const wait = (ms: number, fn: () => void) => {
@@ -63,37 +75,31 @@ export function Typewriter({ lines, className = "", gradientLine = -1, startDela
       }, ms);
       timers.push(t);
     };
-    let lineIndex = 0;
-    let charIndex = 0;
-    const tick = () => {
+    let count = 0;
+    const step = () => {
       if (cancelled) return;
-      const line = lines[lineIndex];
-      charIndex += 1;
-      setCounts((prev) => {
-        const next = [...prev];
-        next[lineIndex] = charIndex;
-        return next;
-      });
-      const done = charIndex >= line.length;
-      if (done) {
-        if (lineIndex < lines.length - 1) {
-          lineIndex += 1;
-          charIndex = 0;
-          wait(140 + Math.random() * 180, tick);
-          return;
-        }
-        return;
-      }
-      const ch = line[charIndex - 1];
-      const pause = ch === " " ? 40 + Math.random() * 60 : /[.!?…]/.test(ch) ? 220 + Math.random() * 180 : 16 + Math.random() * 34;
-      wait(pause, tick);
+      count += 1;
+      setTyped(count);
+      if (count >= total) return;
+      const ch = flat.charAt(count - 1);
+      const pause = lineEnds.has(count)
+        ? 150 + Math.random() * 180
+        : ch === " "
+          ? 40 + Math.random() * 60
+          : /[.!?…]/.test(ch)
+            ? 220 + Math.random() * 180
+            : 16 + Math.random() * 34;
+      wait(pause, step);
     };
-    wait(startDelay, tick);
+    wait(startDelay, step);
     return () => {
       cancelled = true;
       timers.forEach((t) => window.clearTimeout(t));
     };
-  }, [started, reduce, textKey, startDelay, lines]);
+    // `lines`/`flat` are derived from `textKey`; keeping the array out of the
+    // dependency list prevents an inline array prop from restarting the loop.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [started, reduce, total, textKey, startDelay]);
 
   const fullText = lines.join(" ");
 
@@ -102,13 +108,14 @@ export function Typewriter({ lines, className = "", gradientLine = -1, startDela
       {/* Real text for crawlers, screen readers and no-JS; the animated copy stays aria-hidden. */}
       <span className="sr-only">{fullText}</span>
       {lines.map((line, index) => {
-        const typed = reduce ? line.length : Math.min(counts[index] ?? 0, line.length);
-        const active = !reduce && started && typed < line.length;
+        const offset = offsets[index] ?? 0;
+        const visible = Math.max(0, Math.min(typed - offset, line.length));
+        const active = !reduce && typed >= offset && typed < offset + line.length;
         return (
           <span key={`${line}-${index}`} className="typewriter-line" aria-hidden="true">
             <span className="typewriter-ghost">{line}</span>
             <span className={`typewriter-text ${gradientLine === index ? "text-metallic" : ""}`}>
-              {line.slice(0, typed)}
+              {line.slice(0, visible)}
               {active ? <span className="typewriter-cursor" /> : null}
             </span>
           </span>
