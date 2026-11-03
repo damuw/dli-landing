@@ -1,5 +1,5 @@
 /* ==========================================================================
-   DLI site UI: cookie consent (scramble reveal) + accessibility menu
+   DLI site UI: cookie consent + accessibility menu
    Self-contained, no dependencies.
    ========================================================================== */
 (function () {
@@ -7,13 +7,6 @@
 
   var CONSENT_KEY = "dli_cookie_consent";
   var A11Y_KEY = "dli_a11y";
-  var CONSENT_TEXT =
-    "We value your privacy. We use cookies to keep the site working and remember your preferences. With your consent we also measure how it is used to improve the product. Read our privacy policy.";
-
-  var reduceMotion = function () {
-    return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  };
-
   function readStore(key) {
     try {
       return window.localStorage.getItem(key);
@@ -65,34 +58,6 @@
     }
   }
 
-  function scramble(el, text, done) {
-    var glyphs = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789#%&*+=?";
-    var start = null;
-    var duration = 1500;
-    function frame(now) {
-      if (start === null) start = now;
-      var t = Math.min(1, (now - start) / duration);
-      var revealed = Math.floor(t * text.length);
-      var out = "";
-      for (var i = 0; i < text.length; i++) {
-        var ch = text.charAt(i);
-        if (i < revealed || ch === " " || ch === "\n" || ch === "." || ch === ",") {
-          out += ch;
-        } else {
-          out += glyphs.charAt(Math.floor(Math.random() * glyphs.length));
-        }
-      }
-      el.textContent = out;
-      if (t < 1) {
-        requestAnimationFrame(frame);
-      } else {
-        el.textContent = text;
-        if (done) done();
-      }
-    }
-    requestAnimationFrame(frame);
-  }
-
   function buildConsent() {
     if (hasConsent()) return;
 
@@ -133,9 +98,6 @@
     wrap.appendChild(inner);
     document.body.appendChild(wrap);
 
-    var plain = CONSENT_TEXT;
-    var originalHTML = text.innerHTML;
-
     requestAnimationFrame(function () {
       wrap.classList.add("is-visible");
       document.documentElement.classList.add("has-consent");
@@ -144,16 +106,6 @@
       };
       syncHeight();
       window.addEventListener("resize", syncHeight);
-      if (reduceMotion()) return;
-      var height = text.offsetHeight;
-      text.style.minHeight = height + "px";
-      text.textContent = "";
-      setTimeout(function () {
-        scramble(text, plain, function () {
-          text.innerHTML = originalHTML;
-          text.style.minHeight = "";
-        });
-      }, 260);
     });
 
     accept.addEventListener("click", function () {
