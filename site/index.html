@@ -9,6 +9,8 @@
 <meta name="theme-color" content="#f4f3f6">
 <link rel="canonical" href="https://deeplearningintelligence.com/">
 <link rel="icon" type="image/png" href="/assets/continuum-mark.png">
+<link rel="stylesheet" href="/assets/site-ui.css">
+<script>(function(){try{var p=JSON.parse(localStorage.getItem("dli_a11y")||"{}");var r=document.documentElement;r.classList.toggle("a11y-text-1",p.text===1);r.classList.toggle("a11y-text-2",p.text===2);r.classList.toggle("a11y-contrast",!!p.contrast);r.classList.toggle("a11y-reduce-motion",!!p.motion);r.classList.toggle("a11y-underline",!!p.underline);}catch(e){}})();</script>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Deep Learning Intelligence">
 <meta property="og:locale" content="en_US">
@@ -610,7 +612,13 @@ button{cursor:pointer}
       <a href="#solutions" style-hover="color:#fff">Solutions</a><a href="#experience-lab" style-hover="color:#fff">Experience Lab</a><a href="#industries" style-hover="color:#fff">Industries</a><a href="#resources" style-hover="color:#fff">Resources</a><a href="#venture-factory" style-hover="color:#fff">Venture Factory</a><a href="#faq" style-hover="color:#fff">FAQ</a><a href="#start" style-hover="color:#fff">Start a Deployment</a>
     </nav>
   </div>
-  <p style="max-width:1440px;margin:40px auto 0;font-size:12px;line-height:1.6;color:#6f849a">© 2020-2026 Deep Learning Intelligence. Independent engineering services. Referenced technologies are trademarks of their respective owners. No partnership or endorsement is implied. Experience Lab items are labelled by status; previews and prototypes use synthetic data.</p>
+  <div style="max-width:1440px;margin:26px auto 0;display:flex;flex-wrap:wrap;gap:10px 24px;font-size:12.5px;color:#8ea4ba">
+      <a href="/privacy/" style-hover="color:#fff">Privacy Policy</a>
+      <a href="/terms/" style-hover="color:#fff">Terms</a>
+      <a href="/cookies/" style-hover="color:#fff">Cookies</a>
+      <a href="#" data-a11y-open style-hover="color:#fff">Accessibility</a>
+    </div>
+    <p style="max-width:1440px;margin:40px auto 0;font-size:12px;line-height:1.6;color:#6f849a">© 2020-2026 Deep Learning Intelligence. Independent engineering services. Referenced technologies are trademarks of their respective owners. No partnership or endorsement is implied. Experience Lab items are labelled by status; previews and prototypes use synthetic data.</p>
 </footer>
 
 <sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
@@ -1106,5 +1114,6 @@ window.DLI_MOTION = {
   }
 })();
 </script>
+<script src="/assets/site-ui.js"></script>
 </body>
 </html>
