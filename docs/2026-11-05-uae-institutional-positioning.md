@@ -1,0 +1,90 @@
+# DLI UAE Institutional Positioning — build plan
+
+Date: 5 November 2026
+Tier: **Critical** (public legal/regulatory claims, lead capture, production deploy)
+
+## Spec — what ships
+
+A visitor can:
+
+1. Understand within one screen that DLI is an independent UAE/GCC-focused institutional
+   AI architecture, forward-deployed engineering and governed-operations partner — without
+   losing the Continuum hero, the technology logo row or the Experience Lab.
+2. Choose one of three institutional pathways (government, enterprise/regulated,
+   sovereign capital) and get copy, evidence and a CTA written for that buyer.
+3. See the UAE market context with dated primary sources, clearly separated from DLI
+   interpretation and with an explicit "DLI is not a government partner" note.
+4. Complete an 8-question, ~3-minute readiness diagnostic, see an indicative profile and
+   prioritised control gaps **before** being asked for contact details, then optionally
+   request a confidential architecture review.
+5. Reach four substantive long-form pages and an insights index that are crawlable
+   without JavaScript, with correct canonicals, sitemap, schema and no soft-404s.
+
+## Failure modes to test
+
+1. **Unsupported claim leaks in** — a certification, government relationship, client name,
+   performance number, guaranteed residency or "zero leakage" phrasing. Mitigation: content
+   provenance file, claim-by-claim review, no new logos or badges.
+2. **Assessment looks like an audit/certification** — mitigation: "indicative" labels,
+   dimension bars not a single percentage, explicit limitations, no security questionnaire.
+3. **Lead path breaks** — spam guards block real users, API rejects the new structured
+   payload, or the form claims success when the request failed. Mitigation: backward-compatible
+   API change, explicit success/error states, one live test submission, API log check.
+4. **Prototype runtime regression** — new `sc-if`/`sc-for` bindings or handlers break render.
+   Mitigation: local Playwright smoke of every interactive block + console error check.
+5. **SEO regression** — unknown routes still soft-404 to the homepage, or new pages ship thin.
+   Mitigation: nginx `=404`, real 404 page, sitemap, canonical audit, word-count check.
+
+## Files
+
+| File | Change |
+| --- | --- |
+| `site/index.html` | Hero, nav, pathways, why-now, outcomes, services, evidence room, proof, FAQ, assessment, footer |
+| `site/assets/assessment.js` | New pure, testable scoring + question model |
+| `site/assets/site-ui.css` | Skip link, new shared utility styles, v3 |
+| `site/assets/longform.css` | New shared styles for static pages |
+| `site/government-agentic-ai/index.html` | New |
+| `site/sovereign-ai-architecture/index.html` | New |
+| `site/forward-deployed-ai-engineering/index.html` | New |
+| `site/institutional-ai-readiness/index.html` | New |
+| `site/insights/index.html` | New |
+| `site/404.html` | New |
+| `site/sitemap.xml` | New |
+| `site/robots.txt` | New (Cloudflare may override; verify live) |
+| `nginx.conf` | 301 `/ai/`, 404 handling, security headers |
+| `src/index.js` (dli-lead-api) | Optional `assessment` object + consent metadata, backward compatible |
+| `docs/content-provenance.md` | New claim register |
+| `README.md` | Deploy notes |
+
+## Reuse, not reinvention
+
+- Existing DC component state/handlers for the assessment (no React app, no new framework).
+- Existing `/api/leads` endpoint; extend its schema instead of inventing an endpoint.
+- Existing `site-ui.css` / `site-ui.js` for consent, accessibility, skip link.
+- Existing nginx static image; no new CDN or database.
+- Existing Continuum hero, marquee, lab, architecture, mission-control and method components.
+
+## Blast-radius fence
+
+Not touching: `app/` legacy React baseline, DNS, mail server, SMTP settings, legal page copy,
+Cloudflare zone settings, GitHub connection, pricing (no prices published).
+
+## Verification
+
+- `node --check` on assessment module and extracted DC script.
+- `node tools/test-assessment.mjs` — all-low, all-high and mixed profiles; gap ordering.
+- Local server + Playwright: desktop 1440, mobile 390/320; no horizontal overflow; console clean.
+- Keyboard: skip link, assessment radios, stage tabs, mobile menu.
+- Reduced motion: hero animations off, content visible.
+- Form: invalid email, missing consent, honeypot, success state (stubbed/local), API live test.
+- Link crawl: every internal href resolves; every canonical matches its route.
+- Live: status codes, sitemap, schema, OG, screenshot, assessment end-to-end.
+- `axe-core` pass on home + one long-form page (no critical violations).
+
+## Approvals required before/at publish
+
+- Founder review of all new public copy, especially the UAE context section and the word
+  "sovereign"; no client names or government relationship is claimed.
+- Confirmation that no pricing is published (none is).
+- Arabic copy is **not** machine-translated. RTL/localisation is scaffolded and documented,
+  pending reviewed translation.

@@ -1,0 +1,171 @@
+/* ==========================================================================
+   DLI long-form institutional pages
+   Shared by /government-agentic-ai, /sovereign-ai-architecture,
+   /forward-deployed-ai-engineering, /institutional-ai-readiness, /insights
+   ========================================================================== */
+
+:root {
+  --ink: #0a1424;
+  --ink-2: #2c3a4e;
+  --muted: #5d6a7e;
+  --line: rgba(10, 20, 36, .12);
+  --paper: #f4f3f6;
+  --blue: #3d7df2;
+  --cyan: #65d8f4;
+  --navy: #071426;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Manrope, system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.65;
+}
+a { color: inherit; text-decoration: none; }
+a:hover { color: inherit; }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+img { max-width: 100%; height: auto; }
+.skip-link {
+  position: fixed; top: -80px; left: 16px; z-index: 200;
+  padding: 12px 18px; border-radius: 8px; background: var(--ink); color: #fff;
+  font-size: 14px; font-weight: 600; transition: top .2s ease;
+}
+.skip-link:focus { top: 12px; color: #fff; }
+
+.lf-header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(244, 243, 246, .88);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  border-bottom: 1px solid rgba(10, 20, 36, .08);
+}
+.lf-header__inner {
+  max-width: 1180px; margin: 0 auto; padding: 10px clamp(16px, 4vw, 40px);
+  display: flex; align-items: center; gap: 18px;
+}
+.lf-brand { display: flex; align-items: center; gap: 9px; flex: none; }
+.lf-brand img { width: 34px; height: 28px; object-fit: contain; }
+.lf-brand strong { font-size: 22px; font-weight: 800; letter-spacing: -.04em; }
+.lf-brand span {
+  font-family: "IBM Plex Mono", monospace; font-size: 8px; font-weight: 600;
+  letter-spacing: .28em; line-height: 1.4; text-transform: uppercase; color: var(--muted);
+}
+.lf-nav { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-left: auto; font-size: 13.5px; font-weight: 500; }
+.lf-nav a { padding: 6px 2px; color: var(--ink-2); }
+.lf-nav a[aria-current="page"], .lf-nav a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1.5px; }
+.lf-cta {
+  flex: none; display: inline-flex; align-items: center; gap: 8px;
+  min-height: 42px; padding: 0 16px; border-radius: 8px;
+  background: var(--ink); color: #fff !important; font-size: 13px; font-weight: 700;
+}
+@media (max-width: 820px) {
+  .lf-nav { display: none; }
+  .lf-brand span { display: none; }
+}
+
+.lf-main { max-width: 1180px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px); }
+.lf-hero { max-width: 900px; padding: clamp(48px, 7vw, 84px) 0 34px; }
+.lf-eyebrow {
+  margin: 0; font-family: "IBM Plex Mono", monospace; font-size: 10px; font-weight: 600;
+  letter-spacing: .3em; text-transform: uppercase; color: var(--muted);
+}
+.lf-hero h1 {
+  margin: 14px 0 0; font-size: clamp(38px, 6vw, 68px); font-weight: 500;
+  letter-spacing: -.045em; line-height: 1.02; text-wrap: balance;
+}
+.lf-standfirst {
+  margin: 20px 0 0; max-width: 760px; font-size: clamp(17px, 1.7vw, 21px);
+  line-height: 1.55; color: var(--ink-2); text-wrap: pretty;
+}
+.lf-meta {
+  margin: 22px 0 0; display: flex; flex-wrap: wrap; gap: 8px 20px;
+  font-family: "IBM Plex Mono", monospace; font-size: 10.5px; letter-spacing: .06em;
+  color: var(--muted); text-transform: uppercase;
+}
+.lf-actions { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 10px; }
+.lf-btn {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 46px;
+  padding: 0 20px; border-radius: 9px; background: var(--ink); color: #fff;
+  font-size: 14px; font-weight: 700;
+}
+.lf-btn--ghost { background: transparent; color: var(--ink); border: 1px solid rgba(10, 20, 36, .32); }
+
+.lf-layout { display: grid; grid-template-columns: minmax(0, 760px) minmax(220px, 280px); gap: 56px; align-items: start; padding-bottom: 60px; }
+@media (max-width: 980px) { .lf-layout { grid-template-columns: 1fr; gap: 32px; } }
+
+.lf-article { min-width: 0; }
+.lf-article h2 {
+  margin: 46px 0 0; font-size: clamp(26px, 3vw, 36px); font-weight: 600;
+  letter-spacing: -.035em; line-height: 1.15; scroll-margin-top: 100px;
+}
+.lf-article h3 {
+  margin: 30px 0 0; font-size: 20px; font-weight: 600; letter-spacing: -.02em; line-height: 1.3;
+}
+.lf-article p { margin: 14px 0 0; font-size: 16.5px; line-height: 1.72; color: var(--ink-2); }
+.lf-article ul, .lf-article ol { margin: 14px 0 0; padding-left: 22px; }
+.lf-article li { margin: 7px 0; font-size: 16.5px; line-height: 1.65; color: var(--ink-2); }
+.lf-article strong { color: var(--ink); }
+.lf-article a:not(.lf-btn) { color: #1d4f8a; text-decoration: underline; text-underline-offset: 3px; }
+.lf-article blockquote {
+  margin: 24px 0; padding: 18px 20px; border-left: 2px solid var(--blue);
+  background: #fff; font-size: 17px; line-height: 1.65; color: var(--ink);
+}
+.lf-article hr { margin: 40px 0; border: none; border-top: 1px solid var(--line); }
+
+.lf-callout {
+  margin: 24px 0 0; padding: 18px 20px; border-radius: 12px;
+  border: 1px solid var(--line); background: #fff;
+}
+.lf-callout--warn { border-color: rgba(180, 83, 9, .28); background: #fffaf2; }
+.lf-callout--note { border-color: rgba(61, 125, 242, .24); background: #f3f7ff; }
+.lf-callout p:first-child { margin-top: 0; }
+.lf-callout p { font-size: 14.5px; line-height: 1.65; }
+.lf-callout__label {
+  display: block; margin: 0 0 6px; font-family: "IBM Plex Mono", monospace;
+  font-size: 9.5px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--muted);
+}
+
+.lf-source-list { margin: 16px 0 0; padding: 0; list-style: none; }
+.lf-source-list li {
+  margin: 0; padding: 12px 0; border-top: 1px solid var(--line);
+  font-size: 13.5px; line-height: 1.6; color: var(--ink-2);
+}
+.lf-source-list a { color: #1d4f8a; text-decoration: underline; text-underline-offset: 3px; }
+.lf-source-date { display: block; font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: .08em; color: var(--muted); text-transform: uppercase; }
+
+.lf-aside { position: sticky; top: 84px; }
+.lf-aside__box { border-radius: 14px; border: 1px solid var(--line); background: #fff; padding: 18px 18px 20px; }
+.lf-aside__box + .lf-aside__box { margin-top: 12px; }
+.lf-aside h2, .lf-aside h3 {
+  margin: 0; font-family: "IBM Plex Mono", monospace; font-size: 9.5px; font-weight: 600;
+  letter-spacing: .2em; text-transform: uppercase; color: var(--muted);
+}
+.lf-aside ul { margin: 10px 0 0; padding: 0; list-style: none; }
+.lf-aside li { margin: 0; padding: 7px 0; border-top: 1px solid rgba(10, 20, 36, .07); font-size: 13.5px; line-height: 1.5; }
+.lf-aside li:first-child { border-top: none; }
+.lf-aside a { color: var(--ink); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+
+.lf-related { margin: 10px 0 0; padding: 30px 0 10px; border-top: 1px solid var(--line); }
+.lf-related h2 { margin: 0; font-size: 22px; font-weight: 600; letter-spacing: -.03em; }
+.lf-cards { margin-top: 16px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 12px; }
+.lf-card { display: flex; flex-direction: column; gap: 6px; padding: 18px; border-radius: 12px; border: 1px solid var(--line); background: #fff; }
+.lf-card span { font-family: "IBM Plex Mono", monospace; font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+.lf-card strong { font-size: 16.5px; font-weight: 600; letter-spacing: -.02em; line-height: 1.3; }
+.lf-card p { margin: 0; font-size: 13.5px; line-height: 1.5; color: var(--ink-2); }
+
+.lf-footer { border-top: 1px solid rgba(10, 20, 36, .1); background: #040a14; color: #b7c5d5; padding: 42px clamp(16px, 4vw, 40px) 32px; }
+.lf-footer__inner { max-width: 1180px; margin: 0 auto; }
+.lf-footer nav { display: flex; flex-wrap: wrap; gap: 10px 26px; font-size: 13.5px; }
+.lf-footer nav a:hover { color: #fff; }
+.lf-footer__legal { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 12px; color: #8ea4ba; }
+.lf-footer p { margin: 22px 0 0; font-size: 11.5px; line-height: 1.6; color: #6f849a; max-width: 900px; }
+
+@media print {
+  .lf-header, .lf-aside, .lf-actions, .lf-footer, .skip-link { display: none; }
+  .lf-layout { display: block; }
+  body { background: #fff; }
+}

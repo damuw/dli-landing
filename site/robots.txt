@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Search and AI answer surfaces may index and cite public pages.
+# Model training is not authorized.
+Content-Signal: search=yes,ai-input=yes,ai-train=no,use=reference
+
+Sitemap: https://deeplearningintelligence.com/sitemap.xml

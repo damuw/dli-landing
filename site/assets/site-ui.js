@@ -75,7 +75,7 @@
 
     var text = document.createElement("p");
     text.className = "dli-consent__text";
-    text.innerHTML = 'We value your privacy. We use cookies to keep the site working and remember your preferences. With your consent we also measure how it is used to improve the product. Read our <a href="/privacy/">privacy policy</a>.';
+    text.innerHTML = 'We use cookies to keep the site working and remember your preferences. With your consent we also measure how the site is used. Read our <a href="/privacy/">privacy policy</a>.';
 
     var actions = document.createElement("div");
     actions.className = "dli-consent__actions";
@@ -98,7 +98,10 @@
     wrap.appendChild(inner);
     document.body.appendChild(wrap);
 
-    requestAnimationFrame(function () {
+    var revealed = false;
+    var reveal = function () {
+      if (revealed) return;
+      revealed = true;
       wrap.classList.add("is-visible");
       document.documentElement.classList.add("has-consent");
       var syncHeight = function () {
@@ -106,7 +109,20 @@
       };
       syncHeight();
       window.addEventListener("resize", syncHeight);
-    });
+    };
+    if (window.matchMedia && window.matchMedia("(max-width: 720px)").matches) {
+      // Do not cover the hero CTA on first paint: reveal on first scroll or after 4s.
+      var onFirstScroll = function () {
+        if (window.scrollY > 40) {
+          window.removeEventListener("scroll", onFirstScroll);
+          reveal();
+        }
+      };
+      window.addEventListener("scroll", onFirstScroll, { passive: true });
+      window.setTimeout(reveal, 4000);
+    } else {
+      requestAnimationFrame(reveal);
+    }
 
     accept.addEventListener("click", function () {
       saveConsent();
