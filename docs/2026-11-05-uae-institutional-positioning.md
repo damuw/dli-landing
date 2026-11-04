@@ -88,3 +88,56 @@ Cloudflare zone settings, GitHub connection, pricing (no prices published).
 - Confirmation that no pricing is published (none is).
 - Arabic copy is **not** machine-translated. RTL/localisation is scaffolded and documented,
   pending reviewed translation.
+
+## Verification results (5 November 2026)
+
+- Static checks: 10 HTML pages, 0 errors (links, canonicals, schema, sitemap, claim scan).
+- Assessment model: 18 assertions (all-low, all-high, mixed, partial, unknown segment).
+- Local browser: 0 console/page errors; axe WCAG 2 A/AA **0 violations** on all 10 routes
+  and on the completed assessment result state.
+- Responsive: no horizontal overflow at 1440, 1024, 768, 390 and 320 px.
+- Reduced motion: hero animation `none`, content visible, no errors.
+- Forms: both forms validated; submit blocked without consent; Playwright route interception
+  captured the structured `assessment` payload and success state.
+- Live: home and four long-form pages + insights return 200; `/ai/` returns `301 /`;
+  unknown route returns 404; sitemap 200; API health `{"ok":true}`; live assessment completed
+  end-to-end. One live assessment lead was submitted to the API (200).
+- Performance: live home transfer ~1.0 MB, FCP ~0.77 s; hero peel 641 KB → 75 KB WebP;
+  React/ReactDOM served locally, no unpkg requests; Unsplash backgrounds reduced to
+  `w=1600&q=60`.
+- Deploys: site commit `cb9bcad` (Coolify `k944dsuoowftemjreiaqhplh`); API commit `39dc292`
+  (Coolify `3rlocqjvkpldo6ua9xz6x59t`).
+
+## Lessons (compound)
+
+1. **The DC runtime does not bind `this` for prototype methods passed as handlers.**
+   `onClick="{{ asmtNext }}"` called the method unbound and failed with
+   `Cannot read properties of undefined (reading 'state')`. Wrap every prototype method in an
+   arrow inside `renderVals` (`() => this.asmtNext()`), or define it as a class field arrow.
+2. **Keep the scoring model and the render model key names identical.** `summary()` returns
+   `dimensions` and `band`; the view mapped `asmtSummary.dims` (undefined) and read
+   `asmtResult.band` (absent), so the profile and bars silently disappeared. Verify the result
+   DOM, not just the click flow.
+3. **Do not typewriter every heading.** The original `startTypewriters()` selected all `h1`
+   and `h2`, so each section heading was blank for ~1 s on scroll and screenshots caught
+   partial words. Scope it to the philosophy statement.
+4. **A fixed consent card can cover the primary CTA.** On desktop use a low bar; on mobile
+   reveal after first scroll or 4 s and keep it at the bottom. Re-test at 390 px.
+5. **Immutable asset caching needs an explicit version bump.** Any change to
+   `site-ui.css`, `site-ui.js`, `assessment.js` or `longform.css` must change its `?v=`,
+   otherwise Cloudflare/nginx keep the old file for 30 days.
+6. **Vendor critical CDN scripts locally.** `support.js` accepts a `window.__resources` map;
+   mapping React/ReactDOM to `/assets/vendor/` removed two third-party requests and a
+   failure mode.
+
+## Open items (not blocking release)
+
+- **Cloudflare managed robots.txt** is prepended to the origin file. It still contains
+  `User-agent: GPTBot / Disallow: /` and `ClaudeBot / Disallow: /`, even though the origin
+  file allows `ai-input` and declares the sitemap. To let AI answer engines read the site,
+  disable the managed override (or allow those agents) in Cloudflare → the zone → Security /
+  AI Crawl Control. Search engines are unaffected.
+- Founder and legal review of `#why-now`, the government page and the sovereign page before
+  paid distribution.
+- Arabic route (`/ar/`) and reviewed translation remain out of scope.
+
