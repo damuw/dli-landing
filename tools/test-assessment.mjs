@@ -44,6 +44,7 @@ const sum = A.summary(mixed, "government");
 assert.equal(sum.segment, "government");
 assert.equal(sum.dimensions.length, 8);
 assert.ok(sum.profileNote.length > 10);
+assert.equal(sum.band.key, A.score(mixed).band.key);
 assert.equal(sum.nextSteps.length, 3);
 
 // Partial answers must not throw or inflate the profile.

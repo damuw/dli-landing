@@ -349,6 +349,7 @@
     return {
       segment: seg.id,
       segmentLabel: seg.label,
+      band: s.band,
       profile: s.band.label,
       profileNote: s.band.note,
       average: s.avg,
