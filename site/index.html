@@ -236,7 +236,7 @@ button{cursor:pointer}
     </div>
     <div class="pathway-grid" style="margin-top:38px">
       <div key="{{ activePathway.id }}" class="pathway-anim" style="position:relative;overflow:hidden;border-radius:18px;min-height:460px;background:#0a1424;border:1px solid rgba(190,215,240,.14)">
-        <img class="pathway-visual-img" src="{{ activePathway.pathwayVisual }}" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        <div class="pathway-visual-img" aria-hidden="true" style="background-image:url('{{ activePathway.pathwayVisual }}');background-size:cover;background-position:center;background-repeat:no-repeat"></div>
         <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,10,22,.08) 0%,rgba(4,10,22,.5) 55%,rgba(4,10,22,.96) 100%)"></div>
         <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 12%,rgba({{ activePathway.pathwayGlow }},.34),transparent 62%)"></div>
         <span aria-hidden="true" style="position:absolute;right:-10px;top:-52px;font-size:clamp(180px,22vw,300px);font-weight:600;letter-spacing:-.08em;line-height:1;color:rgba(255,255,255,.055)">{{ activePathway.n }}</span>
