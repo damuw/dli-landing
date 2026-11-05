@@ -72,8 +72,8 @@ Current home-page cards (as of 5 November 2026):
 | --- | --- | --- | --- |
 | UAE | Agentic AI Application Lab for Government Services | WAM | 30 Oct 2026 |
 | UAE | Control-tower operating model for the 50% mandate | Dark Reading | 22 Oct 2026 |
-| UAE | AIP/MGX/GIP close the ~$40bn Aligned Data Centers acquisition | Aligned Data Centers | 21 Jul 2026 |
-| GCC | UAE Agentic AI Application Lab | WAM | 30 Oct 2026 |
+| UAE | ADNOC, G42 and OpenAI sign an agreement to deploy frontier AI across ADNOC operations | Reuters / CNBC | 2 Nov 2026 |
+| GCC | ADNOC, G42 and OpenAI sign an agreement to deploy frontier AI across ADNOC operations | Reuters / CNBC | 2 Nov 2026 |
 | GCC | HUMAIN plans a $2.5bn fund for 250 MW of Saudi data-center capacity | Bloomberg | 3 Sep 2026 |
 | GCC | Scale AI expands its long-term presence in Qatar | The Peninsula | 29 Oct 2026 |
 | US | Executive Order 14434 and the White House Accord on Super Intelligence | White House | 29 Sep 2026 |
@@ -83,5 +83,6 @@ Current home-page cards (as of 5 November 2026):
 
 The older rows in the claim register above remain useful archive context for long-form
 pages, but they are **not rendered** in the dynamic home-page cards. Stargate UAE (22 May
-2025), the MGX Fund I close (1 Jul 2026) and the original AI Action Plan (23 Jul 2025) were
-removed from the landing page for exceeding the 120-day window.
+2025), the MGX Fund I close (1 Jul 2026), the original AI Action Plan (23 Jul 2025) and
+the Aligned Data Centers deal (21 Jul 2026) were removed from the landing page for exceeding
+the 120-day window or being superseded by a more recent UAE signal.

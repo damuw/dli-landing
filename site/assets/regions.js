@@ -28,7 +28,7 @@
       heroMicro: "Independent · Vendor-neutral · UAE · GCC · International",
       whyEyebrow: "UAE & GCC · Why now",
       whyTitle: "The mandate is here. Delivery is the constraint.",
-      whyIntro: "Recent signals define the current window: a live agentic-government lab, a control-tower model for the 50% mandate, and sovereign capital moving into AI infrastructure. Each raises the same question — who can turn it into a governed operating capability?",
+      whyIntro: "Recent signals define the current window: a live agentic-government lab, a control-tower model for the 50% mandate, and a frontier-model energy partnership. Each raises the same question — who can turn it into a governed operating capability?",
       whyNote: "These references are market context, not endorsements. DLI is not a government partner, holds no regulatory approvals, and is not an investor in the entities named.",
       whyFooter: "Only signals published in the last 120 days are shown. Sources and dates are listed with each card; older context lives in the sourced archive.",
       pathwayOrder: ["government", "enterprise", "capital"],
@@ -58,15 +58,16 @@
           ]
         },
         {
-          tag: "03 · SOVEREIGN CAPITAL",
-          badge: "21 JUL 2026",
-          publishedAt: "2026-07-21",
-          title: "Capital is moving into AI infrastructure.",
-          lead: "AIP, MGX and BlackRock’s GIP closed the ~$40 billion acquisition of Aligned Data Centers on 21 July 2026.",
-          body: "The deal covers 6.4 GW of operational and planned capacity and reflects the scale of capital now moving into AI infrastructure. For operators, the question is how that capacity becomes governed, measurable service.",
-          delivers: "Deployment options, unit economics, vendor portability and exit planning.",
+          tag: "03 · ENERGY × AI",
+          badge: "2 NOV 2026",
+          publishedAt: "2026-11-02",
+          title: "Energy, compute and frontier models are being contracted together.",
+          lead: "ADNOC, G42 and OpenAI signed an agreement on 2 November 2026 to deploy OpenAI’s frontier technology across ADNOC’s operations.",
+          body: "The deal was announced at ADIPEC as Sam Altman met Abu Dhabi Crown Prince Sheikh Khaled bin Mohamed bin Zayed Al Nahyan. OpenAI also signed arrangements with Mubadala and G42 unit Inception42 for investment analysis, opportunity identification and risk assessment. ADNOC said it is the first energy company to deploy OpenAI’s frontier technology.",
+          delivers: "Operating-model design, integration, data-flow and residency mapping, evaluation and human approvals for high-consequence workflows.",
           sources: [
-            { label: "Aligned Data Centers, 21 Jul 2026", url: "https://aligneddc.com/press-release/aip-mgx-and-blackrocks-gip-close-acquisition-of-aligned-data-centers/" }
+            { label: "Reuters, 2 Nov 2026", url: "https://www.reuters.com/business/energy/abu-dhabis-adnoc-g42-sign-deal-with-openai-sam-altman-travels-uae-2026-11-02/" },
+            { label: "CNBC, 2 Nov 2026", url: "https://www.cnbc.com/2026/11/02/openai-abu-dhabi-ai-deals.html" }
           ]
         }
       ]
@@ -80,21 +81,22 @@
       heroMicro: "Independent · Vendor-neutral · GCC · International",
       whyEyebrow: "GCC · Why now",
       whyTitle: "The region is investing. Delivery is the constraint.",
-      whyIntro: "Recent GCC signals show the shift from strategy to operating infrastructure: the UAE’s agentic lab, Saudi compute capital, and Qatar’s expanding AI partnership. Each raises the same question — who can turn it into a governed operating capability?",
+      whyIntro: "Recent GCC signals show the shift from strategy to operating infrastructure: a UAE energy–AI partnership, Saudi compute capital, and Qatar’s expanding AI partnership. Each raises the same question — who can turn it into a governed operating capability?",
       whyNote: "These references are market context, not endorsements. DLI is not a government partner, holds no regulatory approvals, and is not an investor in the entities named.",
       whyFooter: "Only signals published in the last 120 days are shown. Regional strategies differ by entity, sector and procurement route; the delivery questions are shared.",
       pathwayOrder: ["government", "enterprise", "capital"],
       signals: [
         {
-          tag: "01 · UAE",
-          badge: "30 OCT 2026",
-          publishedAt: "2026-10-30",
-          title: "A live lab for agentic government services.",
-          lead: "On 22 October 2026 the UAE Government launched the Agentic AI Application Lab for Government Services.",
-          body: "The lab gives ministries and government entities a working environment to design, test and scale agentic services against the 50% mandate.",
-          delivers: "Service-journey discovery, identity and consent design, human approvals and assurance evidence.",
+          tag: "01 · UAE × ENERGY",
+          badge: "2 NOV 2026",
+          publishedAt: "2026-11-02",
+          title: "Energy, compute and frontier models are being contracted together.",
+          lead: "ADNOC, G42 and OpenAI signed an agreement on 2 November 2026 to deploy OpenAI’s frontier technology across ADNOC’s operations.",
+          body: "The deal was announced at ADIPEC as Sam Altman met Abu Dhabi Crown Prince Sheikh Khaled bin Mohamed bin Zayed Al Nahyan. OpenAI also signed arrangements with Mubadala and G42 unit Inception42 for investment analysis, opportunity identification and risk assessment. ADNOC said it is the first energy company to deploy OpenAI’s frontier technology.",
+          delivers: "Operating-model design, integration, data-flow and residency mapping, evaluation and human approvals for high-consequence workflows.",
           sources: [
-            { label: "WAM, 30 Oct 2026", url: "https://www.wam.ae/en/article/17i0i1c-uae-harnesses-deliver-proactive-autonomous" }
+            { label: "Reuters, 2 Nov 2026", url: "https://www.reuters.com/business/energy/abu-dhabis-adnoc-g42-sign-deal-with-openai-sam-altman-travels-uae-2026-11-02/" },
+            { label: "CNBC, 2 Nov 2026", url: "https://www.cnbc.com/2026/11/02/openai-abu-dhabi-ai-deals.html" }
           ]
         },
         {
