@@ -1,0 +1,8 @@
+name = "dli-region"
+main = "workers/region.js"
+compatibility_date = "2026-11-05"
+
+routes = [
+  { pattern = "deeplearningintelligence.com/region.js*", zone_name = "deeplearningintelligence.com" },
+  { pattern = "www.deeplearningintelligence.com/region.js*", zone_name = "deeplearningintelligence.com" }
+]

@@ -32,7 +32,13 @@ Do **not** route `/*` — the Worker must not touch HTML or assets.
 No IP is logged or stored. The response is `no-store`, so a country-specific
 script is never cached and served to another country.
 
-## Deploy (dashboard)
+## Deploy status
+
+Live as `dli-region`, deployed with `npx wrangler deploy` using `wrangler.toml` at the repo
+root. The two routes were created by that deploy. Re-run `npx wrangler deploy` after editing
+`workers/region.js`.
+
+## Deploy (dashboard, alternative)
 
 1. Cloudflare dashboard → Workers & Pages → Create → Worker.
 2. Name `dli-region`, deploy the default, then Edit code and paste `region.js`.

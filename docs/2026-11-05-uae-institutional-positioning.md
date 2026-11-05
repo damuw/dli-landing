@@ -145,3 +145,20 @@ Cloudflare zone settings, GitHub connection, pricing (no prices published).
   paid distribution.
 - Arabic route (`/ar/`) and reviewed translation remain out of scope.
 
+
+## Regional personalization (5 November 2026)
+
+- Four copy packs in `site/assets/regions.js`: UAE (default), GCC, US, Global.
+- `publishedAt` on every news card and a **120-day filter** at render time
+  (`filterSignals`). Stargate UAE, the MGX Fund I close and the original AI Action
+  Plan were removed from the landing page for exceeding the window. If every card
+  ages out, the page shows a refresh card linking to `/insights/`.
+- Worker `dli-region` deployed with routes
+  `deeplearningintelligence.com/region.js*` and `www.deeplearningintelligence.com/region.js*`.
+  `/region.js` returns the region from `request.cf.country`, with UAE default and
+  UAE for known crawlers.
+- Manual override: `?region=ae|gcc|us|global` (persisted locally) and the footer
+  region selector with an Auto option.
+- Live test: default request resolved to `ae` with 3 recent cards; `?region=us`
+  resolved to `us` with 2 recent cards; no Stargate copy on the landing page.
+- Tests: `node tools/test-regions.mjs` (recency and aging), `node tools/test-assessment.mjs`.
