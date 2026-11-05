@@ -17,14 +17,21 @@
 .dli-consent.is-visible { opacity: 1; transform: none; pointer-events: auto; }
 .dli-consent.is-hiding { opacity: 0; transform: translateY(10px); pointer-events: none; }
 .dli-consent__inner {
-  border: 1px solid rgba(255,255,255,.14);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.28);
   border-radius: 16px;
-  background: rgba(8, 20, 36, .92);
+  background:
+    linear-gradient(155deg, rgba(255,255,255,.18) 0%, rgba(255,255,255,.05) 32%, rgba(255,255,255,0) 58%),
+    linear-gradient(180deg, rgba(9,24,42,.72), rgba(4,12,24,.58));
   color: #f2f5f9;
   padding: 20px 22px 18px;
-  box-shadow: 0 24px 60px rgba(3, 10, 22, .32);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-  backdrop-filter: blur(18px) saturate(140%);
+  box-shadow:
+    0 24px 60px rgba(3, 10, 22, .34),
+    inset 0 1px 0 rgba(255,255,255,.4),
+    inset 0 -1px 0 rgba(255,255,255,.06);
+  -webkit-backdrop-filter: blur(26px) saturate(180%);
+  backdrop-filter: blur(26px) saturate(180%);
 }
 .dli-consent__eyebrow {
   margin: 0 0 8px;
@@ -39,7 +46,7 @@
   margin: 0;
   font-size: 13.5px;
   line-height: 1.62;
-  color: #d3deea;
+  color: #e6edf5;
   text-wrap: pretty;
 }
 .dli-consent__text a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
@@ -65,14 +72,6 @@
   transition: transform .2s ease, background-color .2s ease;
 }
 .dli-consent__accept:hover { transform: translateY(-1px); background: #fff; }
-.dli-consent__link {
-  font-size: 12.5px;
-  font-weight: 600;
-  color: #b7c5d5;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-.dli-consent__link:hover { color: #fff; }
 @media (max-width: 520px) {
   .dli-consent { left: 10px; right: 10px; bottom: 10px; width: auto; }
   .dli-consent__inner { padding: 18px 18px 16px; border-radius: 14px; }
@@ -403,7 +402,6 @@ html.a11y-reduce-motion .hero-live-particles { display: none !important; }
   .dli-consent__text { flex: 1 1 auto; font-size: 12.5px; line-height: 1.45; }
   .dli-consent__actions { margin: 0; flex: none; gap: 12px; flex-wrap: nowrap; }
   .dli-consent__accept { min-height: 36px; padding: 0 16px; }
-  .dli-consent__link { font-size: 12px; }
 }
 
 /* Mobile: a compact bottom notice, revealed after first scroll or a short delay. */

@@ -85,13 +85,7 @@
     accept.className = "dli-consent__accept";
     accept.textContent = "Accept";
 
-    var link = document.createElement("a");
-    link.className = "dli-consent__link";
-    link.href = "/privacy/";
-    link.textContent = "Privacy policy";
-
     actions.appendChild(accept);
-    actions.appendChild(link);
     inner.appendChild(eyebrow);
     inner.appendChild(text);
     inner.appendChild(actions);
