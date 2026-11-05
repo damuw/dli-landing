@@ -426,3 +426,6 @@ html.a11y-reduce-motion .hero-live-particles { display: none !important; }
   html.has-consent .dli-a11y-btn { bottom: calc(14px + var(--consent-h, 0px)); }
 }
 .noscript-title { margin: 0; font-size: clamp(40px, 8vw, 64px); font-weight: 500; letter-spacing: -.04em; line-height: 1.04; }
+
+/* Long venture names must wrap inside the fixed label column, not overlap the role. */
+.vf-name { overflow-wrap: anywhere; line-height: 1.25; }

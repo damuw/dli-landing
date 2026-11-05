@@ -10,6 +10,8 @@ UAE institutional positioning release:
 
 - **Living Continuum hero** — preserved, with the institutional thesis
   “Sovereign by design. Accountable in execution.”
+- **Typewriter section headers** — any `h2` with `class="typewriter"` opts into the same
+  reveal used by the philosophy statement; reduced-motion users see static text.
 - **Technology ecosystem strip** — preserved directly below “Scroll to explore”.
 - **Three institutional pathways** — government, enterprise/regulated, sovereign capital.
 - **Why now** — dated primary sources for the UAE agentic mandate, sovereign compute and
