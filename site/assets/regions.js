@@ -3,9 +3,21 @@
    Four packs, one page, one canonical URL. The region is resolved from
    Cloudflare's country header by the Worker at /region.js, then overridable
    with ?region=ae|gcc|us|global or the footer selector.
+   Dynamic news cards are limited to 120 days at render time.
    ========================================================================== */
 (function (root) {
   "use strict";
+
+  var MAX_AGE_DAYS = 120;
+  var DAY = 24 * 60 * 60 * 1000;
+
+  function filterSignals(signals, now) {
+    var cutoff = (now || Date.now()) - MAX_AGE_DAYS * DAY;
+    return (signals || []).filter(function (s) {
+      var t = Date.parse(s && s.publishedAt);
+      return Number.isFinite(t) && t >= cutoff;
+    });
+  }
 
   var REGIONS = {
     ae: {
@@ -16,43 +28,45 @@
       heroMicro: "Independent · Vendor-neutral · UAE · GCC · International",
       whyEyebrow: "UAE & GCC · Why now",
       whyTitle: "The mandate is here. Delivery is the constraint.",
-      whyIntro: "Three signals define the current window: a national agentic-AI mandate, sovereign compute being built, and institutional capital moving into AI operating infrastructure. Each one raises the same question — who can turn it into a governed operating capability?",
-      whyNote: "These references are market context, not endorsements. DLI is not a government partner, holds no regulatory approvals, and is not an MGX portfolio company. The MGX fund is an investment vehicle, not a procurement budget available to DLI.",
-      whyFooter: "Sources and dates are listed with each signal. Every page that cites a public claim carries a review date and links to the primary source.",
+      whyIntro: "Recent signals define the current window: a live agentic-government lab, a control-tower model for the 50% mandate, and sovereign capital moving into AI infrastructure. Each raises the same question — who can turn it into a governed operating capability?",
+      whyNote: "These references are market context, not endorsements. DLI is not a government partner, holds no regulatory approvals, and is not an investor in the entities named.",
+      whyFooter: "Only signals published in the last 120 days are shown. Sources and dates are listed with each card; older context lives in the sourced archive.",
       pathwayOrder: ["government", "enterprise", "capital"],
       signals: [
         {
           tag: "01 · AGENTIC GOVERNMENT",
-          badge: "APR–MAY 2026",
-          title: "From ambition to a federal implementation framework.",
-          lead: "In April 2026 the UAE set an objective to transition 50% of government services and operations to agentic AI within two years.",
-          body: "On 18 May 2026 the Cabinet approved a federal framework, a first package of services across four categories, and a programme to train 80,000 federal employees.",
-          delivers: "Service-journey discovery, identity and consent design, exception and appeal paths, Arabic/English evaluation, and procurement-ready decision artifacts.",
+          badge: "30 OCT 2026",
+          publishedAt: "2026-10-30",
+          title: "A live lab for agentic government services.",
+          lead: "On 22 October 2026 the UAE Government launched the Agentic AI Application Lab for Government Services.",
+          body: "The lab gives ministries and government entities a working environment to design, test and scale agentic services against the 50% mandate, with service owners and governance teams in the room.",
+          delivers: "Service-journey discovery, identity and consent design, exception and appeal paths, Arabic/English evaluation, and procurement-ready artifacts.",
           sources: [
-            { label: "UAE Cabinet, 23 Apr 2026", url: "https://uaecabinet.ae/en/news/under-directives-of-uae-president-and-in-world-first-mohammed-bin-rashid-reveals-new-uae-government-framework-to-deploy-agentic-ai-across-50-of-government-sectors-operations-within-two-years" },
-            { label: "Government of Dubai Media Office, 18 May 2026", url: "https://www.mediaoffice.ae/en/news/2026/may/18-05/mohammed-bin-rashid-chairs-uae-cabinet-meeting" }
+            { label: "WAM, 30 Oct 2026", url: "https://www.wam.ae/en/article/17i0i1c-uae-harnesses-deliver-proactive-autonomous" }
           ]
         },
         {
-          tag: "02 · SOVEREIGN COMPUTE",
-          badge: "PLANNED",
-          title: "Capacity is being built. Portability still matters.",
-          lead: "Stargate UAE is announced as a 1 GW cluster within a 5 GW UAE–US AI campus, with the first 200 MW expected to come online in 2026.",
-          body: "It is planned infrastructure, not an operational claim. More capacity changes the build/buy calculus; it does not remove the need for cost, latency and exit discipline.",
-          delivers: "Deployment options across in-country, regional and global environments; model routing and fallback; unit-economics modelling; vendor-portability reviews.",
+          tag: "02 · OPERATING MODEL",
+          badge: "22 OCT 2026",
+          publishedAt: "2026-10-22",
+          title: "The 50% target now has a control tower.",
+          lead: "The UAE is operating the agentic transition with a control-tower agent, human and agent audits, and monitoring for trust.",
+          body: "That shifts the delivery question from pilots to operating evidence: which actions are bounded, who approves them, and what is logged when an agent is wrong.",
+          delivers: "Bounded tool permissions, human approvals, audit trails and release gates.",
           sources: [
-            { label: "G42, 22 May 2025", url: "https://www.g42.ai/resources/news/global-tech-alliance-launches-stargate-uae" }
+            { label: "Dark Reading, 22 Oct 2026", url: "https://www.darkreading.com/cybersecurity-operations/uae-transitions-50-government-services-agentic-ai" }
           ]
         },
         {
-          tag: "03 · INSTITUTIONAL CAPITAL",
-          badge: "1 JUL 2026",
-          title: "The question moves from models to operating models.",
-          lead: "MGX confirmed the final close of Fund I at $49 billion in total commitments on 1 July 2026, above its $45 billion target.",
-          body: "For institutional investors, diligence now has to cover data control, compute economics, management ownership and the path from capex to operating value — not only model capability.",
-          delivers: "AI diligence frameworks, portfolio-intelligence architecture, data-control reviews and operating-value plans.",
+          tag: "03 · SOVEREIGN CAPITAL",
+          badge: "21 JUL 2026",
+          publishedAt: "2026-07-21",
+          title: "Capital is moving into AI infrastructure.",
+          lead: "AIP, MGX and BlackRock’s GIP closed the ~$40 billion acquisition of Aligned Data Centers on 21 July 2026.",
+          body: "The deal covers 6.4 GW of operational and planned capacity and reflects the scale of capital now moving into AI infrastructure. For operators, the question is how that capacity becomes governed, measurable service.",
+          delivers: "Deployment options, unit economics, vendor portability and exit planning.",
           sources: [
-            { label: "MGX, 1 Jul 2026", url: "https://www.mgx.ae/news-insights/mgx-pleased-confirm-final-close-mgx-fund-i-49-billion-total-commitments-significantly" }
+            { label: "Aligned Data Centers, 21 Jul 2026", url: "https://aligneddc.com/press-release/aip-mgx-and-blackrocks-gip-close-acquisition-of-aligned-data-centers/" }
           ]
         }
       ]
@@ -66,43 +80,45 @@
       heroMicro: "Independent · Vendor-neutral · GCC · International",
       whyEyebrow: "GCC · Why now",
       whyTitle: "The region is investing. Delivery is the constraint.",
-      whyIntro: "Three GCC signals define the current window: national data and AI strategies, a new wave of AI infrastructure and capital, and the UAE’s agentic government mandate. Each raises the same question — who can turn strategy into a governed operating capability?",
+      whyIntro: "Recent GCC signals show the shift from strategy to operating infrastructure: the UAE’s agentic lab, Saudi compute capital, and Qatar’s expanding AI partnership. Each raises the same question — who can turn it into a governed operating capability?",
       whyNote: "These references are market context, not endorsements. DLI is not a government partner, holds no regulatory approvals, and is not an investor in the entities named.",
-      whyFooter: "Sources and dates are listed with each signal. Regional strategies differ by entity, sector and procurement route; the delivery questions are shared.",
+      whyFooter: "Only signals published in the last 120 days are shown. Regional strategies differ by entity, sector and procurement route; the delivery questions are shared.",
       pathwayOrder: ["government", "enterprise", "capital"],
       signals: [
         {
-          tag: "01 · SAUDI ARABIA",
-          badge: "2020 · VISION 2030",
-          title: "A national strategy with a 2030 target.",
-          lead: "Saudi Arabia’s National Strategy for Data & AI, developed by SDAIA, targets the Kingdom among the top 15 countries in AI by 2030.",
-          body: "The strategy sits under Vision 2030 and covers skills, open data, legislation and sector adoption. For entities, the delivery question is which service or operating workflow proves the model first.",
-          delivers: "Service and workflow discovery, governance, Arabic/English evaluation, and procurement-ready artifacts.",
-          sources: [
-            { label: "SDAIA · National Strategy for Data & AI", url: "https://sdaia.gov.sa/en/SDAIA/SdaiaStrategies/Pages/NationalStrategyForDataAndAI.aspx" }
-          ]
-        },
-        {
-          tag: "02 · QATAR",
-          badge: "2019 · 2024 · 2025",
-          title: "Strategy, digital agenda, and a national AI company.",
-          lead: "Qatar launched its National AI Strategy in 2019, published Digital Agenda 2030 in 2024, and in 2025 formed Qai through a $20 billion QIA–Brookfield partnership.",
-          body: "The sequence shows a shift from strategy to operating infrastructure. The constraint is integrating that capability into services, with data control and measurable outcomes.",
-          delivers: "Architecture options, data-flow and residency mapping, evaluation and managed operations.",
-          sources: [
-            { label: "US ITA, 2 Jul 2026", url: "https://www.trade.gov/market-intelligence/qatar-artificial-intelligence-ai-and-technology-developments" }
-          ]
-        },
-        {
-          tag: "03 · UAE",
-          badge: "APR–MAY 2026",
-          title: "The agentic mandate is now an implementation framework.",
-          lead: "The UAE set an objective to move 50% of government services and operations to agentic AI within two years.",
-          body: "In May 2026 the Cabinet approved a federal framework, a first package of services and a programme to train 80,000 federal employees. The GCC now has a live reference for governed agentic delivery.",
+          tag: "01 · UAE",
+          badge: "30 OCT 2026",
+          publishedAt: "2026-10-30",
+          title: "A live lab for agentic government services.",
+          lead: "On 22 October 2026 the UAE Government launched the Agentic AI Application Lab for Government Services.",
+          body: "The lab gives ministries and government entities a working environment to design, test and scale agentic services against the 50% mandate.",
           delivers: "Service-journey discovery, identity and consent design, human approvals and assurance evidence.",
           sources: [
-            { label: "UAE Cabinet, 23 Apr 2026", url: "https://uaecabinet.ae/en/news/under-directives-of-uae-president-and-in-world-first-mohammed-bin-rashid-reveals-new-uae-government-framework-to-deploy-agentic-ai-across-50-of-government-sectors-operations-within-two-years" },
-            { label: "Dubai Media Office, 18 May 2026", url: "https://www.mediaoffice.ae/en/news/2026/may/18-05/mohammed-bin-rashid-chairs-uae-cabinet-meeting" }
+            { label: "WAM, 30 Oct 2026", url: "https://www.wam.ae/en/article/17i0i1c-uae-harnesses-deliver-proactive-autonomous" }
+          ]
+        },
+        {
+          tag: "02 · SAUDI ARABIA",
+          badge: "3 SEP 2026",
+          publishedAt: "2026-09-03",
+          title: "Compute capital is being raised, not assumed.",
+          lead: "HUMAIN is planning an initial $2.5 billion fund to finance 250 MW of data-center capacity in Saudi Arabia.",
+          body: "The fund is designed to attract global and domestic investors into AI infrastructure. For entities, the constraint is turning capacity into governed services and measurable operating value.",
+          delivers: "Architecture options, data-flow and residency mapping, unit economics.",
+          sources: [
+            { label: "Bloomberg, 3 Sep 2026", url: "https://www.bloomberg.com/news/articles/2026-09-03/saudi-firm-humain-eyes-2-5-billion-fund-to-build-data-centers" }
+          ]
+        },
+        {
+          tag: "03 · QATAR",
+          badge: "29 OCT 2026",
+          publishedAt: "2026-10-29",
+          title: "A longer-term AI presence, not a one-off pilot.",
+          lead: "Scale AI signed an agreement with UDC to establish a long-term home at UDC Tower, The Pearl Island, announced 28–29 October 2026.",
+          body: "Its Doha team works with MCIT across healthcare, justice, education and higher education. The signal is operating integration, not another strategy document.",
+          delivers: "Operating-model design, integration, evaluation and managed operations.",
+          sources: [
+            { label: "The Peninsula, 29 Oct 2026", url: "https://m.thepeninsulaqatar.com/article/29/10/2026/scale-ai-expands-long-term-presence-in-qatar-with-home-in-udc-tower-at-the-pearl-island" }
           ]
         }
       ]
@@ -116,42 +132,33 @@
       heroMicro: "Independent · Vendor-neutral · US · International",
       whyEyebrow: "United States · Why now",
       whyTitle: "The capital is moving. Delivery is the constraint.",
-      whyIntro: "US AI policy, compute investment and private capital are scaling faster than most operating models can absorb. The constraint is no longer access to a model; it is integration, evidence and accountable operation.",
+      whyIntro: "Recent US signals define the current window: a federal reframing of frontier AI and a $5 billion private-capital round at a $190 billion valuation. The constraint is integration, evidence and accountable operation.",
       whyNote: "These references are market context, not endorsements. DLI is not a US government contractor, does not hold federal approvals, and is not an investor in the companies named.",
-      whyFooter: "Policy and capital signals are national; the operating questions are per workflow and per institution.",
+      whyFooter: "Only signals published in the last 120 days are shown. Policy and capital signals are national; the operating questions are per workflow and per institution.",
       pathwayOrder: ["enterprise", "government", "capital"],
       signals: [
         {
           tag: "01 · FEDERAL POLICY",
-          badge: "23 JUL 2025",
-          title: "A federal action plan, not a single programme.",
-          lead: "The White House released America’s AI Action Plan on 23 July 2025.",
-          body: "It sets out more than 100 recommended actions across innovation, infrastructure, and diplomacy and security. For enterprise and agency leaders, the practical question is how to turn policy direction into governed deployments.",
-          delivers: "AI architecture, procurement-ready artifacts, evaluation and assurance.",
+          badge: "29 SEP 2026",
+          publishedAt: "2026-09-29",
+          title: "Frontier AI gets a new federal frame.",
+          lead: "Executive Order 14434, signed 29 September 2026, replaces “artificial intelligence” with “super intelligence” across executive-branch communications.",
+          body: "The same day, the White House and six technology leaders signed a voluntary accord on frontier responsibilities and audits. For operators, the practical question is how voluntary commitments become evidence.",
+          delivers: "Evaluation evidence, audit trails, approval paths and change control.",
           sources: [
-            { label: "White House, 23 Jul 2025", url: "https://www.whitehouse.gov/releases/2025/07/white-house-unveils-americas-ai-action-plan/" }
+            { label: "White House, 29 Sep 2026", url: "https://www.whitehouse.gov/presidential-actions/2026/09/inaugurating-the-era-of-super-intelligence/" }
           ]
         },
         {
-          tag: "02 · COMPUTE",
-          badge: "21 JAN 2025",
-          title: "Private compute is being built at national scale.",
-          lead: "The Stargate Project announced a $500 billion, four-year investment in US AI infrastructure.",
-          body: "Planned capacity changes the build/buy calculus; it does not remove the need for portability, cost visibility and an exit plan.",
-          delivers: "Deployment options, model routing, unit economics and vendor-portability reviews.",
+          tag: "02 · PRIVATE CAPITAL",
+          badge: "13 AUG 2026",
+          publishedAt: "2026-08-13",
+          title: "Capital is concentrating at operating scale.",
+          lead: "Databricks closed a $5 billion strategic funding round at a $190 billion valuation on 13 August 2026.",
+          body: "The round was led by Coatue with Blackstone, MGX, T. Rowe Price and Sixth Street Growth. For operators, the question is which workflows convert capital into measurable operating value.",
+          delivers: "AI diligence, unit economics and operating-value plans.",
           sources: [
-            { label: "OpenAI, 21 Jan 2025", url: "https://openai.com/index/announcing-the-stargate-project/" }
-          ]
-        },
-        {
-          tag: "03 · PRIVATE CAPITAL",
-          badge: "AI INDEX 2026",
-          title: "The investment lead is widening.",
-          lead: "US private AI investment reached $285.9 billion in 2025.",
-          body: "Stanford HAI’s AI Index 2026 puts that more than 23 times the $12.4 billion recorded in China. For operators, the question is which workflows convert capital into measurable operating value.",
-          delivers: "AI diligence, portfolio intelligence and operating-value plans.",
-          sources: [
-            { label: "Stanford HAI, AI Index 2026", url: "https://hai.stanford.edu/ai-index/2026-ai-index-report" }
+            { label: "Databricks, 13 Aug 2026", url: "https://www.databricks.com/company/newsroom/press-releases/databricks-grows-80-yoy-surpasses-7b-revenue-run-rate-scales" }
           ]
         }
       ]
@@ -165,49 +172,43 @@
       heroMicro: "Independent · Vendor-neutral · International",
       whyEyebrow: "Global · Why now",
       whyTitle: "The rules are forming. Delivery is the constraint.",
-      whyIntro: "Three governance signals define the global window: the EU AI Act’s phased obligations, the first international AI treaty, and the OECD principles now endorsed by 47 jurisdictions. Each raises the same question — who can turn principle into evidence?",
+      whyIntro: "Recent governance signals define the global window: the EU AI Act’s general application and the UN’s first global AI governance dialogue. Each raises the same question — who can turn principle into evidence?",
       whyNote: "These references are market context, not legal advice or an endorsement. DLI does not provide legal opinions or certify compliance; obligations are confirmed with your counsel and the relevant authority.",
-      whyFooter: "Regulatory scope differs by jurisdiction and activity. We design for evidence and portability, not for a single legal regime.",
+      whyFooter: "Only signals published in the last 120 days are shown. Regulatory scope differs by jurisdiction and activity; we design for evidence and portability, not for a single legal regime.",
       pathwayOrder: ["enterprise", "government", "capital"],
       signals: [
         {
           tag: "01 · EUROPEAN UNION",
-          badge: "2024–2026",
-          title: "A phased, risk-based regime is now applicable.",
-          lead: "The EU AI Act entered into force on 1 August 2024.",
-          body: "General-purpose AI obligations applied from 2 August 2025 and the Act became generally applicable from 2 August 2026. Providers and deployers need evidence, not just policy statements.",
+          badge: "2 AUG 2026",
+          publishedAt: "2026-08-02",
+          title: "The EU AI Act is now generally applicable.",
+          lead: "The EU AI Act entered into force on 1 August 2024 and became generally applicable on 2 August 2026.",
+          body: "General-purpose AI obligations applied from 2 August 2025. Providers and deployers need evidence, not just policy statements.",
           delivers: "AI system inventory, risk-classification inputs, evaluation evidence, logging and change control. We do not provide legal advice.",
           sources: [
             { label: "European Commission · AI Act", url: "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" }
           ]
         },
         {
-          tag: "02 · INTERNATIONAL",
-          badge: "5 SEP 2024",
-          title: "The first legally binding AI treaty.",
-          lead: "The Council of Europe Framework Convention on AI opened for signature on 5 September 2024.",
-          body: "It covers the lifecycle of AI systems against human rights, democracy and the rule of law, and is a global reference point for cross-border assurance.",
-          delivers: "Human-rights-aware design reviews, approval and escalation paths, and auditability.",
-          sources: [
-            { label: "Council of Europe", url: "https://www.coe.int/en/web/artificial-intelligence/the-framework-convention-on-artificial-intelligence" }
-          ]
-        },
-        {
-          tag: "03 · POLICY CONVERGENCE",
-          badge: "2019 · UPDATED 2024",
-          title: "47 jurisdictions, one set of principles.",
-          lead: "The OECD AI Principles were adopted in 2019 and updated in 2024.",
-          body: "They now have 47 adherents, including the EU. They are a common reference for trustworthy AI, but they are principles, not a certificate.",
+          tag: "02 · UNITED NATIONS",
+          badge: "SEP 2026",
+          publishedAt: "2026-09-01",
+          title: "The first global AI governance dialogue has a summary.",
+          lead: "The inaugural UN Global Dialogue on AI Governance met in Geneva on 6–7 July 2026 and published its Co-Chairs’ Summary in September 2026.",
+          body: "It is the first UN platform where member states and stakeholders convene on AI governance. The practical question for institutions is how to produce evidence that travels across jurisdictions.",
           delivers: "Governance-by-design, evaluation, transparency and accountability artifacts.",
           sources: [
-            { label: "OECD AI Principles", url: "https://oecd.ai/en/ai-principles" }
+            { label: "UN Global Dialogue, Sep 2026", url: "https://www.un.org/global-dialogue-ai-governance/en" }
           ]
         }
       ]
     }
   };
 
-  var api = { REGIONS: REGIONS, allowed: ["ae", "gcc", "us", "global"] };
+  REGIONS.filterSignals = filterSignals;
+  REGIONS.MAX_AGE_DAYS = MAX_AGE_DAYS;
+
+  var api = { REGIONS: REGIONS, allowed: ["ae", "gcc", "us", "global"], filterSignals: filterSignals, MAX_AGE_DAYS: MAX_AGE_DAYS };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   if (root) root.DLI_REGIONS = REGIONS;
 })(typeof window !== "undefined" ? window : null);

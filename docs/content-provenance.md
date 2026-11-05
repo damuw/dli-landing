@@ -58,3 +58,30 @@ long-form pages and the insights index), plus the four regional home-page copy p
 - Arabic translation: not machine-translated. RTL and localization foundations are
   documented in `docs/localization.md`; reviewed translation is required before an `/ar/`
   route is published.
+
+## Dynamic home-page cards — 120-day rule
+
+Implemented 5 November 2026. Every signal in `site/assets/regions.js` carries a
+`publishedAt` date, and `filterSignals()` removes anything older than **120 days** at
+render time. If every card for a region ages out, the page shows a refresh card linking to
+`/insights/` rather than stale news.
+
+Current home-page cards (as of 5 November 2026):
+
+| Region | Signal | Source | Date |
+| --- | --- | --- | --- |
+| UAE | Agentic AI Application Lab for Government Services | WAM | 30 Oct 2026 |
+| UAE | Control-tower operating model for the 50% mandate | Dark Reading | 22 Oct 2026 |
+| UAE | AIP/MGX/GIP close the ~$40bn Aligned Data Centers acquisition | Aligned Data Centers | 21 Jul 2026 |
+| GCC | UAE Agentic AI Application Lab | WAM | 30 Oct 2026 |
+| GCC | HUMAIN plans a $2.5bn fund for 250 MW of Saudi data-center capacity | Bloomberg | 3 Sep 2026 |
+| GCC | Scale AI expands its long-term presence in Qatar | The Peninsula | 29 Oct 2026 |
+| US | Executive Order 14434 and the White House Accord on Super Intelligence | White House | 29 Sep 2026 |
+| US | Databricks closes $5bn at a $190bn valuation | Databricks | 13 Aug 2026 |
+| Global | EU AI Act becomes generally applicable | European Commission | 2 Aug 2026 |
+| Global | UN Global Dialogue on AI Governance publishes its Co-Chairs' Summary | UN | Sep 2026 |
+
+The older rows in the claim register above remain useful archive context for long-form
+pages, but they are **not rendered** in the dynamic home-page cards. Stargate UAE (22 May
+2025), the MGX Fund I close (1 Jul 2026) and the original AI Action Plan (23 Jul 2025) were
+removed from the landing page for exceeding the 120-day window.

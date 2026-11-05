@@ -45,7 +45,7 @@
   if (q && allowed.indexOf(q.toLowerCase()) > -1) { try { localStorage.setItem("dli_region", region); } catch (e) {} }
 })();
 </script>
-<script src="/assets/regions.js?v=1"></script>
+<script src="/assets/regions.js?v=2"></script>
 <script src="/assets/assessment.js?v=2"></script>
 <script>window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"/assets/vendor/react.production.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"/assets/vendor/react-dom.production.min.js"};</script>
 <script src="./support.js"></script>
@@ -304,6 +304,14 @@ button{cursor:pointer}
           <p style="margin:12px 0 0;display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;font-size:11.5px;line-height:1.6;color:#5b6779"><span>Sources:</span><sc-for list="{{ sig.sources }}" as="src" hint-placeholder-count="2"><a href="{{ src.url }}" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">{{ src.label }}</a></sc-for></p>
         </article>
       </sc-for>
+      <sc-if value="{{ noSignals }}" hint-placeholder-val="{{ false }}">
+        <article style="padding:24px 26px;border-radius:16px;border:1px solid rgba(10,20,36,.1);background:#fff">
+          <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#5d6a7e">Signal refresh</p>
+          <h3 style="margin:12px 0 0;font-size:24px;font-weight:600;letter-spacing:-.035em;line-height:1.15">Recent primary sources are being refreshed.</h3>
+          <p style="margin:10px 0 0;font-size:14.5px;line-height:1.65;color:#4a5468">This page only shows market signals published in the last 120 days. Older, sourced context remains in the archive.</p>
+          <a href="/insights/" style="margin-top:14px;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:9px;background:#0a1424;color:#fff;font-size:13.5px;font-weight:700">Open the sourced archive <span aria-hidden="true">→</span></a>
+        </article>
+      </sc-if>
     </div>
   </div>
 </section>
@@ -1445,7 +1453,8 @@ class Component extends DCLogic {
     }));
     const regionId = String(window.DLI_REGION || 'ae').toLowerCase();
     const region = (window.DLI_REGIONS && (window.DLI_REGIONS[regionId] || window.DLI_REGIONS.ae)) || { id: 'ae', label: 'United Arab Emirates', heroSupport: '', heroMicro: 'Independent · Vendor-neutral · International', whyEyebrow: 'Why now', whyTitle: 'The mandate is here. Delivery is the constraint.', whyIntro: '', whyNote: '', whyFooter: '', pathwayOrder: ['government', 'enterprise', 'capital'], signals: [] };
-    const regionSignals = (region.signals || []).map(s => ({ ...s, sources: s.sources || [] }));
+    const recentPool = (window.DLI_REGIONS && window.DLI_REGIONS.filterSignals) ? window.DLI_REGIONS.filterSignals(region.signals) : (region.signals || []);
+    const regionSignals = recentPool.map(s => ({ ...s, sources: s.sources || [] }));
     const orderedIds = region.pathwayOrder || ['government', 'enterprise', 'capital'];
     const segments = orderedIds.map((id, i) => {
       const sg = allSegments.find(x => x.id === id);
@@ -1513,7 +1522,7 @@ class Component extends DCLogic {
         { q:'How is an engagement priced?', a:'A paid, time-boxed decision sprint comes first. Build and operate work is scoped and priced after that gate, against the workflow, data and assurance requirements. No price list is published because those inputs vary materially.' },
       ],
       paths, pathLabel: C.PATH_SHORT[S.path], pathLabelLower: C.PATH_SHORT[S.path].toLowerCase(),
-      segments, asmtSegments: allSegments, activePathway, pathwayProgress: Math.round(((S.pathway + 1) / Math.max(1, segments.length)) * 100) + '%', region, regionSignals, regionId, setRegion: (e) => { const v = e.target.value; try { if (v === 'auto') localStorage.removeItem('dli_region'); else localStorage.setItem('dli_region', v); } catch (err) {} const url = new URL(window.location.href); url.searchParams.delete('region'); window.location.assign(url.toString()); },
+      segments, asmtSegments: allSegments, activePathway, pathwayProgress: Math.round(((S.pathway + 1) / Math.max(1, segments.length)) * 100) + '%', region, regionSignals, hasSignals: regionSignals.length > 0, noSignals: regionSignals.length === 0, regionId, setRegion: (e) => { const v = e.target.value; try { if (v === 'auto') localStorage.removeItem('dli_region'); else localStorage.setItem('dli_region', v); } catch (err) {} const url = new URL(window.location.href); url.searchParams.delete('region'); window.location.assign(url.toString()); },
       asmtNoSegment: !asmtSeg,
       asmtInProgress: !!asmtSeg && !asmt.done,
       asmtDone: !!asmtSeg && asmt.done,
