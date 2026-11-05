@@ -132,11 +132,15 @@ Cloudflare zone settings, GitHub connection, pricing (no prices published).
 
 ## Open items (not blocking release)
 
-- **Cloudflare managed robots.txt** is prepended to the origin file. It still contains
-  `User-agent: GPTBot / Disallow: /` and `ClaudeBot / Disallow: /`, even though the origin
-  file allows `ai-input` and declares the sitemap. To let AI answer engines read the site,
-  disable the managed override (or allow those agents) in Cloudflare → the zone → Security /
-  AI Crawl Control. Search engines are unaffected.
+- **Cloudflare robots: resolved 5 November 2026.** Bot Preference Sync was disabled in
+  AI Crawl Control → Signals. The origin `robots.txt` (250 bytes, with `Content-Signal:
+  search=yes,ai-input=yes,ai-train=no` and the sitemap) is now served instead of the managed
+  prepend. `OAI-SearchBot`, `Claude-SearchBot`, `ChatGPT-User`, `Claude-User` and `Googlebot`
+  receive 200.
+- **Policy decision, not a defect:** AI Crawl Control → Security → Training is set to
+  **Disallow** (Cloudflare's recommended default). `PerplexityBot`, `GPTBot` and `ClaudeBot`
+  therefore receive 403. This matches the site's `ai-train=no` signal. Flipping Training to
+  “Allow (do not block)” would let them fetch; it is a content-use decision for the founder.
 - Founder and legal review of `#why-now`, the government page and the sovereign page before
   paid distribution.
 - Arabic route (`/ar/`) and reviewed translation remain out of scope.
