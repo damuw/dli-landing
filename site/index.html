@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#f4f3f6">
 <link rel="canonical" href="https://deeplearningintelligence.com/">
 <link rel="icon" type="image/png" href="/assets/continuum-mark.png">
-<link rel="stylesheet" href="/assets/site-ui.css?v=5">
+<link rel="stylesheet" href="/assets/site-ui.css?v=6">
 <link rel="preload" as="image" href="/assets/continuum-peel.webp" type="image/webp">
 <script>(function(){try{var p=JSON.parse(localStorage.getItem("dli_a11y")||"{}");var r=document.documentElement;r.classList.toggle("a11y-text-1",p.text===1);r.classList.toggle("a11y-text-2",p.text===2);r.classList.toggle("a11y-contrast",!!p.contrast);r.classList.toggle("a11y-reduce-motion",!!p.motion);r.classList.toggle("a11y-underline",!!p.underline);}catch(e){}})();</script>
 <meta property="og:type" content="website">
@@ -31,6 +31,21 @@
 <meta name="twitter:image:alt" content="Deep Learning Intelligence — Intelligence. Deployed. The DLI Continuum sculpture.">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://deeplearningintelligence.com/#organization","name":"Deep Learning Intelligence","alternateName":"DLI","url":"https://deeplearningintelligence.com/","logo":"https://deeplearningintelligence.com/assets/continuum-mark.png","description":"Independent AI architecture, forward-deployed engineering and governed AI operations for governments, institutional investors and enterprises in the UAE, GCC and internationally.","slogan":"Intelligence. Deployed.","areaServed":[{"@type":"Country","name":"United Arab Emirates"},{"@type":"Country","name":"Saudi Arabia"},{"@type":"Country","name":"Qatar"},{"@type":"Country","name":"Kuwait"},{"@type":"Country","name":"Bahrain"},{"@type":"Country","name":"Oman"}]},{"@type":"WebSite","@id":"https://deeplearningintelligence.com/#website","name":"Deep Learning Intelligence","url":"https://deeplearningintelligence.com/","publisher":{"@id":"https://deeplearningintelligence.com/#organization"},"inLanguage":"en"},{"@type":"ProfessionalService","@id":"https://deeplearningintelligence.com/#service","name":"Deep Learning Intelligence","url":"https://deeplearningintelligence.com/","parentOrganization":{"@id":"https://deeplearningintelligence.com/#organization"},"description":"Institutional AI advisory and architecture, forward-deployed engineering, and managed AI operations.","areaServed":["United Arab Emirates","GCC","International"],"serviceType":["AI architecture","Forward-deployed AI engineering","Governed AI operations","AI readiness assessment"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Institutional AI services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Institutional AI advisory and architecture"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Forward-deployed AI engineering"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Managed AI operations"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"AI-native product engineering"}}]}},{"@type":"FAQPage","@id":"https://deeplearningintelligence.com/#faq","mainEntity":[{"@type":"Question","name":"Is DLI a UAE government partner?","acceptedAnswer":{"@type":"Answer","text":"No. DLI is an independent engineering company. References to UAE government programmes are market context with primary sources; they are not endorsements, partnerships or approvals."}},{"@type":"Question","name":"Is the readiness assessment a certification?","acceptedAnswer":{"@type":"Answer","text":"No. It is an indicative three-minute profile based on your own answers. It is not a security audit, compliance certification, legal opinion or a guarantee of outcomes."}},{"@type":"Question","name":"How does DLI handle data residency?","acceptedAnswer":{"@type":"Answer","text":"We design deployment architectures for data isolation, access controls, auditability and jurisdiction-specific requirements. Obligations are confirmed per processing activity, entity, industry and jurisdiction with your compliance team. DLI does not make a blanket legal claim."}},{"@type":"Question","name":"How does an engagement start?","acceptedAnswer":{"@type":"Answer","text":"With a paid, time-boxed decision sprint that produces an opportunity brief, architecture options, a data-flow and residency map, a risk register and an evaluation plan. Build work is scoped after that gate, and you can stop at any stage."}}]}]}</script>
 
+<script src="/region.js"></script>
+<script>
+(function () {
+  var allowed = ["ae", "gcc", "us", "global"];
+  var q = null; try { q = new URLSearchParams(location.search).get("region"); } catch (e) {}
+  var stored = null; try { stored = localStorage.getItem("dli_region"); } catch (e) {}
+  var detected = String(window.DLI_REGION || "ae").toLowerCase();
+  var region = q && allowed.indexOf(q.toLowerCase()) > -1 ? q.toLowerCase() : (stored && allowed.indexOf(stored) > -1 ? stored : detected);
+  if (allowed.indexOf(region) < 0) region = "ae";
+  window.DLI_REGION = region;
+  document.documentElement.setAttribute("data-region", region);
+  if (q && allowed.indexOf(q.toLowerCase()) > -1) { try { localStorage.setItem("dli_region", region); } catch (e) {} }
+})();
+</script>
+<script src="/assets/regions.js?v=1"></script>
 <script src="/assets/assessment.js?v=2"></script>
 <script>window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"/assets/vendor/react.production.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"/assets/vendor/react-dom.production.min.js"};</script>
 <script src="./support.js"></script>
@@ -158,13 +173,13 @@ button{cursor:pointer}
   <div style="position:relative;z-index:2;margin-top:-10px;display:flex;flex-direction:column;align-items:center;text-align:center;max-width:960px">
     <h1 id="hero-h" style="margin:0;font-size:clamp(42px,5.6vw,84px);font-weight:500;letter-spacing:-.045em;line-height:1.04;color:#0a1424">Intelligence. Deployed.</h1>
     <p style="margin:18px 0 0;font-size:clamp(19px,1.7vw,26px);font-weight:600;letter-spacing:-.03em;line-height:1.25;color:#16263b;text-wrap:balance">Sovereign by design. Accountable in execution.</p>
-    <p style="margin:14px 0 0;max-width:820px;font-size:clamp(15px,1.25vw,18px);line-height:1.55;color:#4a5468;text-wrap:balance">We architect, deploy and operate mission-critical AI systems for governments, institutional investors and enterprises — turning strategic mandates into secure, governed, measurable capabilities.</p>
+    <p style="margin:14px 0 0;max-width:820px;font-size:clamp(15px,1.25vw,18px);line-height:1.55;color:#4a5468;text-wrap:balance">{{ region.heroSupport }}</p>
     <div style="margin-top:26px;display:flex;flex-wrap:wrap;justify-content:center;gap:14px 28px">
       <a href="#assessment" style="display:flex;align-items:center;gap:14px;min-height:48px;padding:0 30px;border-radius:9px;background:#0a1424;color:#fff;font-size:15px;font-weight:600;box-shadow:0 10px 24px rgba(20,35,61,.14);transition:transform .25s" style-hover="transform:translateY(-2px)">Assess Your AI Readiness <span aria-hidden="true">→</span></a>
       <a href="#method" style="display:flex;align-items:center;min-height:48px;padding:0 32px;border-radius:9px;border:1px solid rgba(10,20,36,.55);background:rgba(255,255,255,.25);color:#0a1424;font-size:15px;font-weight:600;transition:background .25s" style-hover="background:rgba(255,255,255,.75)">Explore Our Delivery Method</a>
     </div>
     <a href="#experience-lab" style="margin-top:16px;padding:8px 4px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#3d5a7a;border-bottom:1px solid rgba(61,90,122,.35)">Or explore the Experience Lab <span aria-hidden="true">→</span></a>
-    <p style="margin:18px 0 0;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#5d6a7e">Independent · Vendor-neutral · UAE · GCC · International</p>
+    <p style="margin:18px 0 0;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#5d6a7e">{{ region.heroMicro }}</p>
   </div>
   <a href="#technology" style="position:relative;z-index:2;margin-top:auto;padding-top:26px;display:flex;flex-direction:column;align-items:center;gap:10px;color:#5d6a7e">
     <span ref="{{ cueRef }}" aria-hidden="true" style="width:1px;height:30px;background:linear-gradient(#5d6a7e,rgba(93,106,126,0));transform-origin:top"></span>
@@ -217,76 +232,78 @@ button{cursor:pointer}
         <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.34em;text-transform:uppercase;color:#9fe8fa">Institutional pathways</p>
         <h2 id="path-h" class="typewriter" style="margin:16px 0 0;max-width:820px;font-size:clamp(38px,4.6vw,68px);font-weight:500;letter-spacing:-.045em;line-height:1.03">One delivery standard. Three institutional contexts.</h2>
       </div>
-      <p style="margin:0;max-width:430px;font-size:16px;line-height:1.6;color:#b7c5d5">The mandate, the risk and the procurement route differ. The engineering discipline does not. Choose the context closest to your decision.</p>
+      <p style="margin:0;max-width:360px;font-size:15px;line-height:1.6;color:#b7c5d5">Choose the context closest to your decision. The engineering discipline does not change.</p>
     </div>
-    <div style="margin-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px">
-      <sc-for list="{{ segments }}" as="seg" hint-placeholder-count="3">
-        <article style="display:flex;flex-direction:column;border-radius:18px;padding:26px 26px 24px;border:1px solid rgba(190,215,240,.16);background:linear-gradient(180deg,rgba(20,44,72,.5),rgba(7,18,32,.78))">
-          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;color:#65d8f4">{{ seg.n }}</span>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8ea4ba">{{ seg.short }}</span>
-          </div>
-          <h3 style="margin:18px 0 0;font-size:clamp(24px,2.2vw,31px);font-weight:500;letter-spacing:-.04em;line-height:1.08">{{ seg.headline }}</h3>
-          <p style="margin:12px 0 0;font-size:14.5px;line-height:1.55;color:#b7c5d5">{{ seg.problem }}</p>
-          <ul style="margin:20px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px">
-            <sc-for list="{{ seg.outcomes }}" as="o" hint-placeholder-count="4">
-              <li style="display:flex;gap:10px;font-size:14px;line-height:1.45;color:#e6edf5"><span aria-hidden="true" style="flex:none;width:5px;height:5px;margin-top:7px;border-radius:50%;background:#65d8f4"></span><span>{{ o }}</span></li>
+    <div class="pathway-grid" style="margin-top:38px">
+      <div key="{{ activePathway.id }}" class="pathway-anim" style="position:relative;overflow:hidden;border-radius:18px;min-height:460px;background:#0a1424;border:1px solid rgba(190,215,240,.14)">
+        <img class="pathway-visual-img" src="{{ activePathway.pathwayVisual }}" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,10,22,.08) 0%,rgba(4,10,22,.5) 55%,rgba(4,10,22,.96) 100%)"></div>
+        <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 12%,rgba({{ activePathway.pathwayGlow }},.34),transparent 62%)"></div>
+        <span aria-hidden="true" style="position:absolute;right:-10px;top:-52px;font-size:clamp(180px,22vw,300px);font-weight:600;letter-spacing:-.08em;line-height:1;color:rgba(255,255,255,.055)">{{ activePathway.n }}</span>
+        <span aria-hidden="true" class="pathway-orbit" style="inset:7% 9%"></span>
+        <span aria-hidden="true" class="pathway-orbit" style="inset:18% 22%;animation-duration:28s;animation-direction:reverse"></span>
+        <div style="position:absolute;left:24px;top:22px;display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#d7e3f0"><span style="width:7px;height:7px;border-radius:50%;background:{{ activePathway.pathwayAccent }};box-shadow:0 0 12px {{ activePathway.pathwayAccent }}"></span>Institutional context · {{ activePathway.n }}</div>
+        <div style="position:absolute;left:24px;right:24px;bottom:26px">
+          <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#9fe8fa">Current frame</p>
+          <p style="margin:8px 0 0;font-size:clamp(28px,3.2vw,44px);font-weight:500;letter-spacing:-.04em;line-height:1.05">{{ activePathway.label }}</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;min-width:0">
+        <div role="tablist" aria-label="Institutional pathways" style="display:flex;flex-direction:column;gap:6px">
+          <sc-for list="{{ segments }}" as="seg" hint-placeholder-count="3">
+            <button type="button" role="tab" aria-selected="{{ seg.sel }}" onClick="{{ seg.onPathway }}" onMouseEnter="{{ seg.onPathway }}" onFocus="{{ seg.onPathway }}" style="display:flex;align-items:center;gap:12px;width:100%;min-height:52px;padding:0 14px;border-radius:10px;border:1px solid {{ seg.tabBd }};background:{{ seg.tabBg }};color:{{ seg.tabFg }};text-align:left;font-size:14px;font-weight:600;transition:all .3s">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:{{ seg.tabDot }};opacity:.9">{{ seg.n }}</span>
+              <span style="flex:1">{{ seg.short }}</span>
+              <span aria-hidden="true" style="opacity:.5">→</span>
+            </button>
+          </sc-for>
+        </div>
+        <div aria-hidden="true" style="margin:12px 0 0;height:2px;border-radius:999px;background:rgba(255,255,255,.1);overflow:hidden"><div style="height:100%;width:{{ pathwayProgress }};background:linear-gradient(90deg,#65d8f4,#9a83f7);transition:width .45s cubic-bezier(.2,.8,.2,1)"></div></div>
+        <div key="{{ activePathway.id }}" class="pathway-anim" role="tabpanel" aria-live="polite" style="margin-top:18px;padding:24px;border-radius:16px;border:1px solid rgba(190,215,240,.14);background:rgba(8,20,36,.68)">
+          <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#9fe8fa">Decision context</p>
+          <h3 style="margin:12px 0 0;font-size:clamp(26px,2.8vw,38px);font-weight:500;letter-spacing:-.04em;line-height:1.08">{{ activePathway.headline }}</h3>
+          <p style="margin:12px 0 0;font-size:15px;line-height:1.6;color:#b7c5d5">{{ activePathway.problem }}</p>
+          <ul style="margin:18px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px">
+            <sc-for list="{{ activePathway.shortOutcomes }}" as="o" hint-placeholder-count="3">
+              <li style="display:flex;gap:10px;font-size:14px;line-height:1.45;color:#e6edf5"><span aria-hidden="true" style="flex:none;width:5px;height:5px;margin-top:7px;border-radius:50%;background:{{ activePathway.pathwayAccent }}"></span><span>{{ o }}</span></li>
             </sc-for>
           </ul>
-          <p style="margin:18px 0 0;padding:12px 14px;border-radius:9px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.03);font-size:12.5px;line-height:1.5;color:#9fb2c6">{{ seg.governance }}</p>
-          <div style="flex:1"></div>
-          <a href="{{ seg.primaryHref }}" onClick="{{ seg.onPrimary }}" style="margin-top:22px;display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:46px;padding:0 16px;border-radius:9px;background:#fff;color:#0a1424;font-size:14px;font-weight:700">{{ seg.cta }} <span aria-hidden="true">→</span></a>
-          <a href="{{ seg.secondaryHref }}" onClick="{{ seg.onSecondary }}" style="margin-top:10px;display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:44px;padding:0 16px;border-radius:9px;border:1px solid rgba(255,255,255,.18);color:#c2cfde;font-size:13px;font-weight:600">{{ seg.secondaryLabel }} <span aria-hidden="true">→</span></a>
-        </article>
-      </sc-for>
+          <div style="margin-top:22px;display:flex;flex-wrap:wrap;gap:10px">
+            <a href="{{ activePathway.primaryHref }}" onClick="{{ activePathway.onPrimary }}" style="display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 18px;border-radius:9px;background:#fff;color:#0a1424;font-size:13.5px;font-weight:700">{{ activePathway.cta }} <span aria-hidden="true">→</span></a>
+            <a href="{{ activePathway.secondaryHref }}" onClick="{{ activePathway.onSecondary }}" style="display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 16px;border-radius:9px;border:1px solid rgba(255,255,255,.2);color:#c2cfde;font-size:13px;font-weight:600">{{ activePathway.secondaryLabel }} <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
     </div>
-    <p style="margin:22px 0 0;font-size:12px;line-height:1.6;color:#7f94a9">No client names, government relationships or certifications are claimed on this page. Sector work is described by design pattern, not by implied endorsement.</p>
+    <p style="margin:20px 0 0;font-size:12px;line-height:1.6;color:#7f94a9">No client names, government relationships or certifications are claimed on this page. Sector work is described by design pattern, not by implied endorsement.</p>
   </div>
 </section>
 
 <section id="why-now" data-nav-theme="light" data-screen-label="04 Why now" aria-labelledby="why-h" style="background:#f4f3f6;padding:clamp(96px,11vw,140px) clamp(20px,4vw,64px)">
   <div style="max-width:1440px;margin:0 auto;display:flex;flex-wrap:wrap;gap:40px 72px;align-items:flex-start">
     <div style="flex:1 1 340px;max-width:520px">
-      <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.34em;text-transform:uppercase;color:#4c5a6e">UAE &amp; GCC · Why now</p>
-      <h2 id="why-h" class="typewriter" style="margin:16px 0 0;font-size:clamp(38px,4.4vw,64px);font-weight:500;letter-spacing:-.045em;line-height:1.02">The mandate is here. Delivery is the constraint.</h2>
-      <p style="margin:20px 0 0;font-size:16px;line-height:1.65;color:#4a5468">Three signals define the current window: a national agentic-AI mandate, sovereign compute being built, and institutional capital moving into AI operating infrastructure. Each one raises the same question — who can turn it into a governed operating capability?</p>
+      <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.34em;text-transform:uppercase;color:#4c5a6e">{{ region.whyEyebrow }}</p>
+      <h2 id="why-h" class="typewriter" style="margin:16px 0 0;font-size:clamp(38px,4.4vw,64px);font-weight:500;letter-spacing:-.045em;line-height:1.02">{{ region.whyTitle }}</h2>
+      <p style="margin:20px 0 0;font-size:16px;line-height:1.65;color:#4a5468">{{ region.whyIntro }}</p>
       <div style="margin-top:26px;padding:16px 18px;border-radius:12px;border:1px solid rgba(10,20,36,.12);background:#fff">
         <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8a5a10">Read this correctly</p>
-        <p style="margin:8px 0 0;font-size:13px;line-height:1.6;color:#3c4a5e">These references are market context, not endorsements. DLI is not a government partner, holds no regulatory approvals, and is not an MGX portfolio company. The MGX fund is an investment vehicle, not a procurement budget available to DLI.</p>
+        <p style="margin:8px 0 0;font-size:13px;line-height:1.6;color:#3c4a5e">{{ region.whyNote }}</p>
       </div>
-      <p style="margin:18px 0 0;font-size:12.5px;line-height:1.6;color:#5d6a7e">Sources and dates are listed with each signal. Every page that cites a public claim carries a review date and links to the primary source.</p>
+      <p style="margin:18px 0 0;font-size:12.5px;line-height:1.6;color:#5d6a7e">{{ region.whyFooter }}</p>
     </div>
     <div style="flex:1.4 1 520px;display:flex;flex-direction:column;gap:14px">
-      <article style="padding:24px 26px;border-radius:16px;border:1px solid rgba(10,20,36,.1);background:#fff">
-        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;color:#2853a8">01 · AGENTIC GOVERNMENT</span>
-          <span style="padding:3px 9px;border-radius:999px;background:rgba(61,125,242,.09);color:#2853a8;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.08em">APR–MAY 2026</span>
-        </div>
-        <h3 style="margin:12px 0 0;font-size:clamp(22px,2vw,28px);font-weight:600;letter-spacing:-.035em;line-height:1.15">From ambition to a federal implementation framework.</h3>
-        <p style="margin:10px 0 0;font-size:14.5px;line-height:1.65;color:#4a5468">In April 2026 the UAE set an objective to transition <strong>50% of government services and operations</strong> to agentic AI within two years. On 18 May 2026 the Cabinet approved a federal framework, a first package of services across four categories, and a programme to train <strong>80,000 federal employees</strong>.</p>
-        <p style="margin:12px 0 0;font-size:13.5px;line-height:1.6;color:#2853a8"><strong>What DLI delivers:</strong> service-journey discovery, identity and consent design, exception and appeal paths, Arabic/English evaluation, and procurement-ready decision artifacts.</p>
-        <p style="margin:12px 0 0;font-size:11.5px;line-height:1.6;color:#5b6779">Sources: <a href="https://uaecabinet.ae/en/news/under-directives-of-uae-president-and-in-world-first-mohammed-bin-rashid-reveals-new-uae-government-framework-to-deploy-agentic-ai-across-50-of-government-sectors-operations-within-two-years" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">UAE Cabinet, 23 Apr 2026</a> · <a href="https://www.mediaoffice.ae/en/news/2026/may/18-05/mohammed-bin-rashid-chairs-uae-cabinet-meeting" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">Government of Dubai Media Office, 18 May 2026</a></p>
-      </article>
-      <article style="padding:24px 26px;border-radius:16px;border:1px solid rgba(10,20,36,.1);background:#fff">
-        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;color:#2853a8">02 · SOVEREIGN COMPUTE</span>
-          <span style="padding:3px 9px;border-radius:999px;background:rgba(61,125,242,.09);color:#2853a8;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.08em">PLANNED</span>
-        </div>
-        <h3 style="margin:12px 0 0;font-size:clamp(22px,2vw,28px);font-weight:600;letter-spacing:-.035em;line-height:1.15">Capacity is being built. Portability still matters.</h3>
-        <p style="margin:10px 0 0;font-size:14.5px;line-height:1.65;color:#4a5468">Stargate UAE is announced as a <strong>1 GW</strong> cluster within a <strong>5 GW</strong> UAE–US AI campus, with the first <strong>200 MW expected</strong> to come online in 2026. It is planned infrastructure, not an operational claim. More capacity changes the build/buy calculus; it does not remove the need for cost, latency and exit discipline.</p>
-        <p style="margin:12px 0 0;font-size:13.5px;line-height:1.6;color:#2853a8"><strong>What DLI delivers:</strong> deployment options across in-country, regional and global environments; model routing and fallback; unit-economics modelling; vendor-portability reviews.</p>
-        <p style="margin:12px 0 0;font-size:11.5px;line-height:1.6;color:#5b6779">Source: <a href="https://www.g42.ai/resources/news/global-tech-alliance-launches-stargate-uae" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">G42, 22 May 2025</a></p>
-      </article>
-      <article style="padding:24px 26px;border-radius:16px;border:1px solid rgba(10,20,36,.1);background:#fff">
-        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;color:#2853a8">03 · INSTITUTIONAL CAPITAL</span>
-          <span style="padding:3px 9px;border-radius:999px;background:rgba(61,125,242,.09);color:#2853a8;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.08em">1 JUL 2026</span>
-        </div>
-        <h3 style="margin:12px 0 0;font-size:clamp(22px,2vw,28px);font-weight:600;letter-spacing:-.035em;line-height:1.15">The question moves from models to operating models.</h3>
-        <p style="margin:10px 0 0;font-size:14.5px;line-height:1.65;color:#4a5468">MGX confirmed the final close of Fund I at <strong>$49 billion</strong> in total commitments on 1 July 2026, above its $45 billion target. For institutional investors, diligence now has to cover data control, compute economics, management ownership and the path from capex to operating value — not only model capability.</p>
-        <p style="margin:12px 0 0;font-size:13.5px;line-height:1.6;color:#2853a8"><strong>What DLI delivers:</strong> AI diligence frameworks, portfolio-intelligence architecture, data-control reviews and operating-value plans.</p>
-        <p style="margin:12px 0 0;font-size:11.5px;line-height:1.6;color:#5b6779">Source: <a href="https://www.mgx.ae/news-insights/mgx-pleased-confirm-final-close-mgx-fund-i-49-billion-total-commitments-significantly" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">MGX, 1 Jul 2026</a></p>
-      </article>
+      <sc-for list="{{ regionSignals }}" as="sig" hint-placeholder-count="3">
+        <article style="padding:24px 26px;border-radius:16px;border:1px solid rgba(10,20,36,.1);background:#fff">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;color:#2853a8">{{ sig.tag }}</span>
+            <span style="padding:3px 9px;border-radius:999px;background:rgba(61,125,242,.09);color:#2853a8;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.08em">{{ sig.badge }}</span>
+          </div>
+          <h3 style="margin:12px 0 0;font-size:clamp(22px,2vw,28px);font-weight:600;letter-spacing:-.035em;line-height:1.15">{{ sig.title }}</h3>
+          <p style="margin:10px 0 0;font-size:14.5px;line-height:1.65;color:#4a5468"><strong>{{ sig.lead }}</strong> {{ sig.body }}</p>
+          <p style="margin:12px 0 0;font-size:13.5px;line-height:1.6;color:#2853a8"><strong>What DLI delivers:</strong> {{ sig.delivers }}</p>
+          <p style="margin:12px 0 0;display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;font-size:11.5px;line-height:1.6;color:#5b6779"><span>Sources:</span><sc-for list="{{ sig.sources }}" as="src" hint-placeholder-count="2"><a href="{{ src.url }}" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">{{ src.label }}</a></sc-for></p>
+        </article>
+      </sc-for>
     </div>
   </div>
 </section>
@@ -997,6 +1014,15 @@ owner: risk lead · review: monthly · evidence: audit log</pre>
       <a href="/cookies/" style-hover="color:#fff">Cookies</a>
       <a href="/insights/#editorial-standards" style-hover="color:#fff">Editorial standards &amp; sources</a>
       <a href="#" data-a11y-open style-hover="color:#fff">Accessibility</a>
+      <label style="display:flex;align-items:center;gap:8px;font-size:12.5px;color:#8ea4ba">Region
+        <select value="{{ regionId }}" onChange="{{ setRegion }}" aria-label="Select region" style="background:#0a1424;color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:4px 8px;font-size:12px">
+          <option value="auto">Auto (detected)</option>
+          <option value="ae">UAE</option>
+          <option value="gcc">GCC</option>
+          <option value="us">United States</option>
+          <option value="global">Global</option>
+        </select>
+      </label>
     </div>
     <p style="max-width:1440px;margin:40px auto 0;font-size:12px;line-height:1.6;color:#6f849a">© 2020-2026 Deep Learning Intelligence. Independent engineering services. Referenced technologies are trademarks of their respective owners. No partnership, government relationship, certification or client endorsement is implied. Experience Lab items are labelled by status; previews and prototypes use synthetic data.</p>
 </footer>
@@ -1098,7 +1124,7 @@ class Component extends DCLogic {
   static PATHS = ['Government AI deployment','Enterprise AI deployment','AI product engagement','Advisory & architecture sprint'];
   static PATH_SHORT = ['Government deployment','Enterprise deployment','AI product','Advisory sprint'];
 
-  state = { navShown:false, hoverTop:false, headerFocus:false, nav:'light', mobile:false, menuOpen:false, labIdx:0, labProg:0, modal:null, tryNote:'', arch:3, stage:0, stageTouched:false, ind:0, method:0, path:1, form:{name:'',email:'',org:'',timeline:'Within 3 months',msg:''}, sent:false, err:'', philo:0, sending:false, resource:'', sentResource:'', marqueePaused:false, asmt:{segment:'',step:0,answers:{},done:false,startedAt:0}, review:{open:false,name:'',email:'',org:'',role:'',consent:false,sending:false,sent:false,err:''} };
+  state = { navShown:false, hoverTop:false, headerFocus:false, nav:'light', mobile:false, menuOpen:false, labIdx:0, labProg:0, modal:null, tryNote:'', arch:3, stage:0, stageTouched:false, ind:0, method:0, path:1, form:{name:'',email:'',org:'',timeline:'Within 3 months',msg:''}, sent:false, err:'', philo:0, sending:false, resource:'', sentResource:'', marqueePaused:false, pathway:0, asmt:{segment:'',step:0,answers:{},done:false,startedAt:0}, review:{open:false,name:'',email:'',org:'',role:'',consent:false,sending:false,sent:false,err:''} };
   heroArtRef = React.createRef(); heroImgRef = React.createRef(); shineRef = React.createRef(); sweepRef = React.createRef(); cueRef = React.createRef();
   marqueeRef = React.createRef(); marqueeShellRef = React.createRef(); trackRef = React.createRef(); waveRef = React.createRef();
   philoRef = React.createRef(); heroRef = React.createRef(); floatRef = React.createRef(); imageryRef = React.createRef(); markRef = React.createRef(); 
@@ -1405,7 +1431,9 @@ class Component extends DCLogic {
     const aq = asmtQ0 ? { ...asmtQ0, opts: asmtOpts } : null;
     const asmtCurrentAnswered = !!(asmtQ0 && typeof asmt.answers[asmtQ0.id] === 'number');
     const segBrief = { government: '/government-agentic-ai/', enterprise: '/forward-deployed-ai-engineering/', capital: '/sovereign-ai-architecture/' };
-    const segments = A.SEGMENTS.map((sg, i) => ({
+    const segVisual = { government: 'assets/lab-atlas.webp', enterprise: 'assets/lab-agent-desk.webp', capital: 'assets/work-gfin-og.png' };
+    const segAccent = { government: '#65d8f4', enterprise: '#9a83f7', capital: '#8ef0b0' };
+    const allSegments = A.SEGMENTS.map((sg, i) => ({
       ...sg,
       n: '0' + (i + 1),
       onPick: () => this.asmtSelect(sg.id),
@@ -1415,6 +1443,16 @@ class Component extends DCLogic {
       onSecondary: sg.id === 'capital' ? () => this.asmtSelect(sg.id) : null,
       secondaryLabel: sg.id === 'capital' ? 'Take the readiness assessment' : 'Read the sector brief'
     }));
+    const regionId = String(window.DLI_REGION || 'ae').toLowerCase();
+    const region = (window.DLI_REGIONS && (window.DLI_REGIONS[regionId] || window.DLI_REGIONS.ae)) || { id: 'ae', label: 'United Arab Emirates', heroSupport: '', heroMicro: 'Independent · Vendor-neutral · International', whyEyebrow: 'Why now', whyTitle: 'The mandate is here. Delivery is the constraint.', whyIntro: '', whyNote: '', whyFooter: '', pathwayOrder: ['government', 'enterprise', 'capital'], signals: [] };
+    const regionSignals = (region.signals || []).map(s => ({ ...s, sources: s.sources || [] }));
+    const orderedIds = region.pathwayOrder || ['government', 'enterprise', 'capital'];
+    const segments = orderedIds.map((id, i) => {
+      const sg = allSegments.find(x => x.id === id);
+      if (!sg) return null;
+      return { ...sg, n: '0' + (i + 1), sel: i === S.pathway, pathwayIndex: i, pathwayVisual: segVisual[sg.id], pathwayAccent: segAccent[sg.id], pathwayGlow: { government: '101,216,244', enterprise: '154,131,247', capital: '142,240,176' }[sg.id], tabBd: i === S.pathway ? segAccent[sg.id] : 'rgba(190,215,240,.14)', tabBg: i === S.pathway ? 'rgba(255,255,255,.07)' : 'rgba(255,255,255,.02)', tabFg: i === S.pathway ? '#fff' : '#b7c5d5', tabDot: i === S.pathway ? segAccent[sg.id] : 'transparent', shortOutcomes: (sg.outcomes || []).slice(0, 3), onPathway: () => { if (this.state.pathway !== i) this.setState({ pathway: i }); } };
+    }).filter(Boolean);
+    const activePathway = segments[S.pathway] || segments[0];
     const mob = S.mobile;
     const showHeader = S.navShown || S.hoverTop || S.headerFocus || S.menuOpen;
     return {
@@ -1475,7 +1513,7 @@ class Component extends DCLogic {
         { q:'How is an engagement priced?', a:'A paid, time-boxed decision sprint comes first. Build and operate work is scoped and priced after that gate, against the workflow, data and assurance requirements. No price list is published because those inputs vary materially.' },
       ],
       paths, pathLabel: C.PATH_SHORT[S.path], pathLabelLower: C.PATH_SHORT[S.path].toLowerCase(),
-      segments, asmtSegments: segments,
+      segments, asmtSegments: allSegments, activePathway, pathwayProgress: Math.round(((S.pathway + 1) / Math.max(1, segments.length)) * 100) + '%', region, regionSignals, regionId, setRegion: (e) => { const v = e.target.value; try { if (v === 'auto') localStorage.removeItem('dli_region'); else localStorage.setItem('dli_region', v); } catch (err) {} const url = new URL(window.location.href); url.searchParams.delete('region'); window.location.assign(url.toString()); },
       asmtNoSegment: !asmtSeg,
       asmtInProgress: !!asmtSeg && !asmt.done,
       asmtDone: !!asmtSeg && asmt.done,

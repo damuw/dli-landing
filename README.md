@@ -12,6 +12,10 @@ UAE institutional positioning release:
   “Sovereign by design. Accountable in execution.”
 - **Typewriter section headers** — any `h2` with `class="typewriter"` opts into the same
   reveal used by the philosophy statement; reduced-motion users see static text.
+- **Regional copy packs** — `site/assets/regions.js` holds UAE, GCC, US and Global framing.
+  `/region.js` is served by a Cloudflare Worker from `request.cf.country` (UAE default, bots
+  default to UAE). Users can override with `?region=us` or the footer region selector.
+  Only framing/examples change; the offer, claims and legal text do not.
 - **Technology ecosystem strip** — preserved directly below “Scroll to explore”.
 - **Three institutional pathways** — government, enterprise/regulated, sovereign capital.
 - **Why now** — dated primary sources for the UAE agentic mandate, sovereign compute and

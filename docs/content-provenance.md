@@ -2,7 +2,7 @@
 
 Last updated: 5 November 2026
 Scope: public copy added in the UAE institutional positioning release (home page, four
-long-form pages and the insights index).
+long-form pages and the insights index), plus the four regional home-page copy packs.
 
 ## Rules applied
 
@@ -28,6 +28,14 @@ long-form pages and the insights index).
 | 7 | A purported 2026 blanket UAE rule requiring all personal-data-derived model weights to reside in-country. | None located | — | **NOT VERIFIED. Deliberately not used as a fact.** The sovereign page names it only to retire it. | Sovereign page (myth-check callout) |
 | 8 | UAE Agentic AI Application Lab for Government Services announced 22 Oct 2026, reported by WAM 30 Oct 2026. | WAM URL in the brief | 30 Oct 2026 | **Not used.** The WAM page did not return machine-readable article text from this network, so no sentence depends on it. Add only after a human opens the article and confirms the date. | None |
 | 9 | DLI services, method, ventures and Experience Lab status labels. | Existing site source and product URLs | Pre-existing | **Company-supplied.** Status labels retained (Live Demo / Interactive Preview / Prototype / Coming Soon). No client deployment implied. | Home |
+| 10 | Saudi Arabia's National Strategy for Data & AI targets the Kingdom among the top 15 countries in AI by 2030. | SDAIA, National Strategy for Data & AI | 2020 | **Verified.** Strategy page and published strategy PDF describe the top-15 ambition. | GCC home pack |
+| 11 | Qatar launched its National AI Strategy in 2019, Digital Agenda 2030 in 2024, and formed Qai in 2025 through a $20bn QIA–Brookfield partnership. | US International Trade Administration, Qatar AI market intelligence | 2 Jul 2026 | **Verified.** Page fetched and read. | GCC home pack |
+| 12 | The White House released America's AI Action Plan on 23 July 2025, with more than 100 recommended actions. | White House release | 23 Jul 2025 | **Verified.** Release page and plan PDF. | US home pack |
+| 13 | The Stargate Project announced a $500bn, four-year investment in US AI infrastructure. | OpenAI announcement | 21 Jan 2025 | **Verified.** Page fetched and read. | US home pack |
+| 14 | US private AI investment reached $285.9bn in 2025; China recorded $12.4bn. | Stanford HAI, AI Index 2026 | 2026 | **Verified.** 2026 AI Index economy/top-takeaways page. | US home pack |
+| 15 | The EU AI Act entered into force on 1 Aug 2024; GPAI obligations applied 2 Aug 2025; general application 2 Aug 2026. | European Commission, AI Act policy page | Accessed 5 Nov 2026 | **Verified.** Official application timeline. | Global home pack |
+| 16 | The Council of Europe Framework Convention on AI opened for signature on 5 Sep 2024. | Council of Europe | 5 Sep 2024 | **Verified.** Treaty page. | Global home pack |
+| 17 | The OECD AI Principles were adopted in 2019, updated in 2024, and have 47 adherents. | OECD.AI | Accessed 5 Nov 2026 | **Verified.** OECD AI Principles page and 2024 update release. | Global home pack |
 
 ## Explicitly absent (do not add without evidence)
 

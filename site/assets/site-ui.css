@@ -429,3 +429,48 @@ html.a11y-reduce-motion .hero-live-particles { display: none !important; }
 
 /* Long venture names must wrap inside the fixed label column, not overlap the role. */
 .vf-name { overflow-wrap: anywhere; line-height: 1.25; }
+
+/* --------------------------------------------------- institutional pathways */
+.pathway-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: 16px;
+  align-items: stretch;
+}
+.pathway-visual-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .38;
+  filter: saturate(.85) contrast(1.05);
+  animation: pathway-zoom 20s ease-out both;
+}
+.pathway-orbit {
+  position: absolute;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 50%;
+  animation: pathway-rotate 40s linear infinite;
+}
+.pathway-anim { animation: pathway-in .55s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes pathway-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes pathway-zoom {
+  from { transform: scale(1.02); }
+  to { transform: scale(1.12); }
+}
+@keyframes pathway-rotate { to { transform: rotate(360deg); } }
+
+@media (max-width: 900px) {
+  .pathway-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .pathway-grid > div:first-child { min-height: 300px !important; }
+  .pathway-grid > div:first-child span[class="pathway-orbit"] { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pathway-visual-img, .pathway-orbit, .pathway-anim { animation: none !important; }
+}
