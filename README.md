@@ -10,6 +10,9 @@ UAE institutional positioning release:
 
 - **Living Continuum hero** — preserved, with the institutional thesis
   “Sovereign by design. Accountable in execution.”
+- **Living ink** — a WebGL metaball field behind the Continuum loop, with a subtle
+  aperture reticle. Tune via `window.DLI_INK` (`enabled`, `opacity`, `balls`) or disable it.
+  It pauses off-screen and respects reduced-motion preferences.
 - **Typewriter section headers** — any `h2` with `class="typewriter"` opts into the same
   reveal used by the philosophy statement; reduced-motion users see static text.
 - **Regional copy packs** — `site/assets/regions.js` holds UAE, GCC, US and Global framing.

@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#f4f3f6">
 <link rel="canonical" href="https://deeplearningintelligence.com/">
 <link rel="icon" type="image/png" href="/assets/continuum-mark.png">
-<link rel="stylesheet" href="/assets/site-ui.css?v=7">
+<link rel="stylesheet" href="/assets/site-ui.css?v=13">
 <link rel="preload" as="image" href="/assets/continuum-peel.webp" type="image/webp">
 <script>(function(){try{var p=JSON.parse(localStorage.getItem("dli_a11y")||"{}");var r=document.documentElement;r.classList.toggle("a11y-text-1",p.text===1);r.classList.toggle("a11y-text-2",p.text===2);r.classList.toggle("a11y-contrast",!!p.contrast);r.classList.toggle("a11y-reduce-motion",!!p.motion);r.classList.toggle("a11y-underline",!!p.underline);}catch(e){}})();</script>
 <meta property="og:type" content="website">
@@ -161,10 +161,12 @@ button{cursor:pointer}
   <div style="perspective:1400px;position:relative;z-index:1">
     <div ref="{{ heroArtRef }}" style="position:relative;will-change:transform,opacity;touch-action:manipulation">
       <div ref="{{ floatRef }}" role="img" aria-label="The DLI Continuum: a sculptural silver Möbius-inspired ribbon whose openings show a city skyline, a connected globe, a data wave and enterprise interfaces." style="position:relative;width:clamp(300px,min(88vw,calc((100vh - 470px) * 1.404)),700px);aspect-ratio:716/510;z-index:1;will-change:transform;transform-style:preserve-3d">
+        <canvas class="hero-ink" aria-hidden="true"></canvas>
         <div ref="{{ imageryRef }}" style="position:absolute;inset:0;background:url('assets/continuum-peel.webp') center/100% 100% no-repeat;will-change:transform"></div>
         <div class="hero-live-windows" aria-hidden="true"><canvas class="hero-live-particles"></canvas></div>
         <div class="hero-live-pulse" aria-hidden="true"><span class="orbit"></span></div>
         <div class="hero-live-sheen" aria-hidden="true"></div>
+        <div class="hero-reticle" aria-hidden="true"><span></span><span></span><span></span><i></i></div>
         <div ref="{{ shineRef }}" aria-hidden="true" style="display:none"></div>
         <div ref="{{ sweepRef }}" aria-hidden="true" style="display:none"></div>
       </div>
@@ -1697,6 +1699,8 @@ window.DLI_MOTION = {
   }
 })();
 </script>
+<script>window.DLI_INK = { enabled: true, opacity: 0.9, balls: 20 };</script>
+<script src="/assets/hero-ink.js?v=6"></script>
 <script src="/assets/site-ui.js?v=6"></script>
 </body>
 </html>
