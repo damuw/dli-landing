@@ -473,11 +473,11 @@ html.a11y-reduce-motion .hero-live-particles { display: none !important; }
   .pathway-visual-img, .pathway-orbit, .pathway-anim { animation: none !important; }
 }
 
-/* ------------------------------------------------- The Aperture (prototype)
-   Query-flag-only study for the Continuum hero. A copy of the plate with the
-   four openings cut out sits where the base art would be; four aligned world
-   patches fill those openings and can push in, brighten and settle without
-   introducing a second ribbon or a ghost. Default hero is untouched. */
+/* ------------------------------------------------- The Aperture (default)
+   The Continuum hero. A copy of the plate with the four openings cut out sits
+   where the base art would be; four aligned world patches fill those openings
+   and push in, brighten and settle without introducing a second ribbon or a
+   ghost. `?hero=classic` falls back to the original static plate. */
 .hero-aperture-only { display: none; }
 html.hero-aperture .hero-aperture-only { display: block; }
 html.hero-aperture .hero-base-art {
