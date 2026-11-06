@@ -9,8 +9,9 @@
 <meta name="theme-color" content="#f4f3f6">
 <link rel="canonical" href="https://deeplearningintelligence.com/">
 <link rel="icon" type="image/png" href="/assets/continuum-mark.png">
-<link rel="stylesheet" href="/assets/site-ui.css?v=7">
+<link rel="stylesheet" href="/assets/site-ui.css?v=24">
 <link rel="preload" as="image" href="/assets/continuum-peel.webp" type="image/webp">
+<script>(function(){try{if(new URLSearchParams(location.search).get("hero")==="aperture")document.documentElement.classList.add("hero-aperture");}catch(e){}})();</script>
 <script>(function(){try{var p=JSON.parse(localStorage.getItem("dli_a11y")||"{}");var r=document.documentElement;r.classList.toggle("a11y-text-1",p.text===1);r.classList.toggle("a11y-text-2",p.text===2);r.classList.toggle("a11y-contrast",!!p.contrast);r.classList.toggle("a11y-reduce-motion",!!p.motion);r.classList.toggle("a11y-underline",!!p.underline);}catch(e){}})();</script>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Deep Learning Intelligence">
@@ -161,10 +162,32 @@ button{cursor:pointer}
   <div style="perspective:1400px;position:relative;z-index:1">
     <div ref="{{ heroArtRef }}" style="position:relative;will-change:transform,opacity;touch-action:manipulation">
       <div ref="{{ floatRef }}" role="img" aria-label="The DLI Continuum: a sculptural silver Möbius-inspired ribbon whose openings show a city skyline, a connected globe, a data wave and enterprise interfaces." style="position:relative;width:clamp(300px,min(88vw,calc((100vh - 470px) * 1.404)),700px);aspect-ratio:716/510;z-index:1;will-change:transform;transform-style:preserve-3d">
-        <div ref="{{ imageryRef }}" style="position:absolute;inset:0;background:url('assets/continuum-peel.webp') center/100% 100% no-repeat;will-change:transform"></div>
-        <div class="hero-live-windows" aria-hidden="true"><canvas class="hero-live-particles"></canvas></div>
-        <div class="hero-live-pulse" aria-hidden="true"><span class="orbit"></span></div>
-        <div class="hero-live-sheen" aria-hidden="true"></div>
+        <div ref="{{ imageryRef }}" class="hero-base-art" style="position:absolute;inset:0;background:url('assets/continuum-peel.webp') center/100% 100% no-repeat;will-change:transform"></div>
+        <div class="hero-ap-stack hero-aperture-only" aria-hidden="true">
+          <div class="hero-ap-world hero-ap-world--city"><i></i></div>
+          <div class="hero-ap-world hero-ap-world--globe"><i></i></div>
+          <div class="hero-ap-world hero-ap-world--wave"><i></i></div>
+          <div class="hero-ap-world hero-ap-world--code"><i></i></div>
+          <span class="hero-ap-core"><i></i></span>
+          <svg class="hero-ap-comet" viewBox="0 0 716 510" preserveAspectRatio="none" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true">
+            <defs>
+              <filter id="ap-comet-glow" x="-300%" y="-300%" width="700%" height="700%">
+                <feGaussianBlur stdDeviation="2.4" result="b"/>
+                <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <path id="ap-comet-track" d="M 60 255 A 280 205 0 1 1 620 255 A 280 205 0 1 1 60 255" fill="none"/>
+            </defs>
+            <use href="#ap-comet-track" xlink:href="#ap-comet-track" fill="none" stroke="rgba(160, 232, 255, .3)" stroke-width="4" stroke-linecap="round" stroke-dasharray="92 1510">
+              <animate attributeName="stroke-dashoffset" from="0" to="-1602" dur="16s" repeatCount="indefinite"/>
+            </use>
+            <use href="#ap-comet-track" xlink:href="#ap-comet-track" fill="none" stroke="rgba(225, 252, 255, .92)" stroke-width="2" stroke-linecap="round" stroke-dasharray="26 1576" filter="url(#ap-comet-glow)">
+              <animate attributeName="stroke-dashoffset" from="0" to="-1602" dur="16s" repeatCount="indefinite"/>
+            </use>
+            <circle r="3.4" fill="#f3feff" filter="url(#ap-comet-glow)">
+              <animateMotion dur="16s" repeatCount="indefinite"><mpath href="#ap-comet-track" xlink:href="#ap-comet-track"/></animateMotion>
+            </circle>
+          </svg>
+        </div>
         <div ref="{{ shineRef }}" aria-hidden="true" style="display:none"></div>
         <div ref="{{ sweepRef }}" aria-hidden="true" style="display:none"></div>
       </div>
