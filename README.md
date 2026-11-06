@@ -11,9 +11,9 @@ UAE institutional positioning release:
 - **Living Continuum hero** — preserved, with the institutional thesis
   “Sovereign by design. Accountable in execution.”
 - **Aperture hero study** — a query-flag-only alternative (`?hero=aperture`): the four
-  openings become living worlds with a slow push-in/bloom sequence, a travelling light
-  mote and a small engraved iris. The default hero is unchanged. The masks and cut-out
-  plate are reproducible with `python3 tools/make-aperture-masks.py`.
+  openings become living worlds with a slow push-in/bloom sequence. The default hero is
+  unchanged. The masks and cut-out plate are reproducible with
+  `python3 tools/make-aperture-masks.py`.
 - **Typewriter section headers** — any `h2` with `class="typewriter"` opts into the same
   reveal used by the philosophy statement; reduced-motion users see static text.
 - **Regional copy packs** — `site/assets/regions.js` holds UAE, GCC, US and Global framing.

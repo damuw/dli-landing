@@ -477,8 +477,7 @@ html.a11y-reduce-motion .hero-live-particles { display: none !important; }
    Query-flag-only study for the Continuum hero. A copy of the plate with the
    four openings cut out sits where the base art would be; four aligned world
    patches fill those openings and can push in, brighten and settle without
-   introducing a second ribbon or a ghost. A soft comet and a small engraved
-   iris give the loop a readable centre of gravity. Default hero is untouched. */
+   introducing a second ribbon or a ghost. Default hero is untouched. */
 .hero-aperture-only { display: none; }
 html.hero-aperture .hero-aperture-only { display: block; }
 html.hero-aperture .hero-base-art {
@@ -540,80 +539,7 @@ html.hero-aperture .hero-live-pulse { display: none; }
   16%       { filter: brightness(1.04) saturate(1.02); transform: scale(1.008) translate(0, 0); }
   28%, 100% { filter: brightness(1) saturate(1); transform: scale(1) translate(0, 0); }
 }
-
-.hero-ap-core {
-  position: absolute;
-  left: 51%;
-  top: 51%;
-  width: 14%;
-  aspect-ratio: 1;
-  transform: translate(-50%, -50%);
-  opacity: .34;
-  mix-blend-mode: multiply;
-  animation: ap-core-breathe 16s cubic-bezier(.45, 0, .25, 1) infinite;
-}
-@keyframes ap-core-breathe {
-  0%, 100% { opacity: .3; transform: translate(-50%, -50%) scale(.97); }
-  7%       { opacity: .55; transform: translate(-50%, -50%) scale(1.05); }
-  22%      { opacity: .36; transform: translate(-50%, -50%) scale(1); }
-}
-.hero-ap-core::before,
-.hero-ap-core::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-}
-.hero-ap-core::before {
-  inset: 0;
-  border: 1px solid rgba(10, 36, 62, .24);
-}
-.hero-ap-core::after {
-  inset: 19%;
-  border: 1px dashed rgba(10, 36, 62, .2);
-  animation: ap-core-spin 70s linear infinite;
-}
-.hero-ap-core i {
-  position: absolute;
-  inset: -9%;
-  border-radius: 50%;
-  background: repeating-conic-gradient(from 0deg, rgba(10, 36, 62, .26) 0deg .7deg, transparent .7deg 30deg);
-  -webkit-mask-image: radial-gradient(closest-side, transparent 77%, #000 78% 83%, transparent 84%);
-  mask-image: radial-gradient(closest-side, transparent 77%, #000 78% 83%, transparent 84%);
-  animation: ap-core-spin 110s linear infinite reverse;
-}
-@keyframes ap-core-spin { to { transform: rotate(360deg); } }
-
-.hero-ap-comet {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-  opacity: .85;
-  -webkit-mask-image: url("/assets/continuum-peel-mask.webp");
-  mask-image: url("/assets/continuum-peel-mask.webp");
-  -webkit-mask-position: center;
-  mask-position: center;
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-}
-
-@media (max-width: 640px) {
-  .hero-ap-core { width: 18%; opacity: .3; }
-  .hero-ap-comet { opacity: .6; }
-}
 @media (prefers-reduced-motion: reduce) {
   .hero-ap-world i { animation: none !important; filter: none; transform: none; }
-  .hero-ap-core { animation: none !important; opacity: .28; }
-  .hero-ap-core::after,
-  .hero-ap-core i { animation: none !important; }
-  .hero-ap-comet { display: none; }
 }
 html.a11y-reduce-motion.hero-aperture .hero-ap-world i { animation: none !important; filter: none; transform: none; }
-html.a11y-reduce-motion.hero-aperture .hero-ap-core { animation: none !important; opacity: .28; }
-html.a11y-reduce-motion.hero-aperture .hero-ap-core::after,
-html.a11y-reduce-motion.hero-aperture .hero-ap-core i { animation: none !important; }
-html.a11y-reduce-motion.hero-aperture .hero-ap-comet { display: none; }
