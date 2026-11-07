@@ -518,20 +518,33 @@ html.hero-aperture .hero-live-pulse { display: none; }
   -webkit-mask-image: url("/assets/continuum-ap-code.png?v=1");
   mask-image: url("/assets/continuum-ap-code.png?v=1");
 }
+.hero-ap-world--city { --ap-delay: 0s; --ap-origin: 22% 46%; }
+.hero-ap-world--globe { --ap-delay: 3.2s; --ap-origin: 61% 25%; }
+.hero-ap-world--code { --ap-delay: 6.4s; --ap-origin: 74% 59%; }
+.hero-ap-world--wave { --ap-delay: 9.6s; --ap-origin: 41% 75%; }
 .hero-ap-world i {
   position: absolute;
   inset: 0;
   display: block;
-  background: url("/assets/continuum-peel.webp?v=1") center / 100% 100% no-repeat;
-  transform-origin: 50% 50%;
+  transform-origin: var(--ap-origin, 50% 50%);
   will-change: transform, filter;
   animation: ap-world-breathe 16s cubic-bezier(.4, 0, .2, 1) infinite;
   animation-delay: var(--ap-delay, 0s);
 }
-.hero-ap-world--city i { --ap-delay: 0s; transform-origin: 22% 46%; }
-.hero-ap-world--globe i { --ap-delay: 3.2s; transform-origin: 61% 25%; }
-.hero-ap-world--code i { --ap-delay: 6.4s; transform-origin: 74% 59%; }
-.hero-ap-world--wave i { --ap-delay: 9.6s; transform-origin: 41% 75%; }
+.hero-ap-world i::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  display: block;
+  background: url("/assets/continuum-peel.webp?v=1") center / 100% 100% no-repeat;
+  transform-origin: var(--ap-origin, 50% 50%);
+  transition: transform .42s cubic-bezier(.2, .8, .2, 1), filter .3s ease;
+  will-change: transform, filter;
+}
+.hero-ap-world.is-hovered i::before {
+  transform: scale(1.03) translate(-.35%, .18%);
+  filter: brightness(1.32) saturate(1.09);
+}
 
 @keyframes ap-world-breathe {
   0%        { filter: brightness(1) saturate(1); transform: scale(1) translate(0, 0); }
@@ -541,8 +554,10 @@ html.hero-aperture .hero-live-pulse { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-ap-world i { animation: none !important; filter: none; transform: none; }
+  .hero-ap-world.is-hovered i::before { transform: none; filter: none; }
 }
 html.a11y-reduce-motion.hero-aperture .hero-ap-world i { animation: none !important; filter: none; transform: none; }
+html.a11y-reduce-motion .hero-ap-world.is-hovered i::before { transform: none; filter: none; }
 
 /* ------------------------------------------------- Hero loading
    64x48 blurred cutout, inlined so the first paint never waits on a request. */

@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#f4f3f6">
 <link rel="canonical" href="https://deeplearningintelligence.com/">
 <link rel="icon" type="image/png" href="/assets/continuum-mark.png">
-<link rel="stylesheet" href="/assets/site-ui.css?v=37">
+<link rel="stylesheet" href="/assets/site-ui.css?v=39">
 <link rel="preload" as="image" href="/assets/continuum-peel.webp?v=1" type="image/webp" fetchpriority="high">
 <link rel="preload" as="image" href="/assets/continuum-peel-holes.webp?v=1" type="image/webp" fetchpriority="high">
 <link rel="preload" as="image" href="/assets/continuum-ap-city.png?v=1" type="image/png">
@@ -219,7 +219,7 @@ button{cursor:pointer}
 <section id="top" ref="{{ heroRef }}" data-nav-theme="light" data-screen-label="01 Hero" aria-labelledby="hero-h" style="position:relative;overflow:hidden;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:84px 20px 26px;background:radial-gradient(ellipse 70% 60% at 50% 30%,#f1edee 0%,#e2e0e5 48%,#d3d2d8 100%);color:#0a1424">
   <div style="perspective:1400px;position:relative;z-index:1">
     <div ref="{{ heroArtRef }}" style="position:relative;will-change:transform,opacity;touch-action:manipulation">
-      <div ref="{{ floatRef }}" role="img" aria-label="The DLI Continuum: a sculptural silver Möbius-inspired ribbon whose openings show a city skyline, a connected globe, a data wave and enterprise interfaces." style="position:relative;width:clamp(300px,min(88vw,calc((100vh - 470px) * 1.404)),700px);aspect-ratio:716/510;z-index:1;will-change:transform;transform-style:preserve-3d">
+      <div ref="{{ floatRef }}" class="hero-live-art" role="img" aria-label="The DLI Continuum: a sculptural silver Möbius-inspired ribbon whose openings show a city skyline, a connected globe, a data wave and enterprise interfaces." style="position:relative;width:clamp(300px,min(88vw,calc((100vh - 470px) * 1.404)),700px);aspect-ratio:716/510;z-index:1;will-change:transform;transform-style:preserve-3d">
         <div class="hero-lqip" aria-hidden="true"></div>
         <div ref="{{ imageryRef }}" class="hero-base-art" style="position:absolute;inset:0;background:url('assets/continuum-peel.webp?v=1') center/100% 100% no-repeat;will-change:transform"></div>
         <div class="hero-ap-stack hero-aperture-only" aria-hidden="true">
@@ -1764,6 +1764,7 @@ window.DLI_MOTION = {
   }
 })();
 </script>
+<script src="/assets/hero-hover.js?v=1"></script>
 <script src="/assets/site-ui.js?v=6"></script>
 </body>
 </html>

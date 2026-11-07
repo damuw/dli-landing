@@ -11,7 +11,8 @@ UAE institutional positioning release:
 - **Living Continuum hero** — preserved, with the institutional thesis
   “Sovereign by design. Accountable in execution.”
 - **Aperture hero (default)** — the four openings are living worlds with a slow
-  push-in/bloom sequence; the ribbon and the rest of the approved hero stay still.
+  push-in/bloom sequence; hovering an opening applies the same push-in and
+  brightness locally. The ribbon and the rest of the approved hero stay still.
   `?hero=classic` renders the original static plate for comparison. The masks and
   cut-out plate are reproducible with `python3 tools/make-aperture-masks.py`.
 - **Hero preloader** — a 64×48 blurred cutout is inlined in the stylesheet, so the
@@ -55,9 +56,9 @@ The Dockerfile serves `site/` with nginx. `nginx.conf` redirects `/ai/` to `/`, 
 **Caching model:** HTML is `no-cache`; assets with a `?v=` query are
 `public, max-age=31536000, immutable`; unversioned images are
 `public, max-age=604800, stale-while-revalidate=86400`. **Any change to
-`site-ui.css`, `site-ui.js`, `longform.css` or the hero artwork needs a `?v=` bump in
-the HTML/CSS.** The hero art currently uses `?v=1`; bump it in both `index.html` and
-`site-ui.css` when the cutout, masks or peel change.
+`site-ui.css`, `site-ui.js`, `hero-hover.js`, `longform.css` or the hero artwork
+needs a `?v=` bump in the HTML/CSS.** The hero art currently uses `?v=1`; bump it in
+both `index.html` and `site-ui.css` when the cutout, masks or peel change.
 
 ## Lead API
 
