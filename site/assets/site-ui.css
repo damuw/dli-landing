@@ -565,7 +565,7 @@ html.hero-loading .hero-ap-stack,
 html.hero-loading .hero-live-windows,
 html.hero-loading .hero-live-pulse,
 html.hero-loading .hero-live-sheen { opacity: 0 !important; }
-html.hero-ready .hero-lqip { opacity: 0; }
+html.hero-ready .hero-lqip { opacity: 0; transition: opacity .45s ease 1s; }
 
 .hero-preloader {
   position: absolute;
