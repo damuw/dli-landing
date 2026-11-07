@@ -14,6 +14,10 @@ UAE institutional positioning release:
   push-in/bloom sequence; the ribbon and the rest of the approved hero stay still.
   `?hero=classic` renders the original static plate for comparison. The masks and
   cut-out plate are reproducible with `python3 tools/make-aperture-masks.py`.
+- **Hero preloader** — a 64×48 blurred cutout is inlined in the stylesheet, so the
+  hero shape paints instantly. The sharp hero fades in once the critical images are
+  decoded (320 ms minimum, 4 s fallback). The loader, blur-up and fade respect
+  reduced motion and the accessibility motion toggle.
 - **Typewriter section headers** — any `h2` with `class="typewriter"` opts into the same
   reveal used by the philosophy statement; reduced-motion users see static text.
 - **Regional copy packs** — `site/assets/regions.js` holds UAE, GCC, US and Global framing.
@@ -46,8 +50,14 @@ docker run -p 8080:80 dli-landing
 ```
 
 The Dockerfile serves `site/` with nginx. `nginx.conf` redirects `/ai/` to `/`, returns real
-404s, sets security headers and caches hashed/static assets for 30 days. **Any change to
-`site-ui.css`, `site-ui.js` or `longform.css` needs a `?v=` bump in the HTML.**
+404s and sets security headers.
+
+**Caching model:** HTML is `no-cache`; assets with a `?v=` query are
+`public, max-age=31536000, immutable`; unversioned images are
+`public, max-age=604800, stale-while-revalidate=86400`. **Any change to
+`site-ui.css`, `site-ui.js`, `longform.css` or the hero artwork needs a `?v=` bump in
+the HTML/CSS.** The hero art currently uses `?v=1`; bump it in both `index.html` and
+`site-ui.css` when the cutout, masks or peel change.
 
 ## Lead API
 
